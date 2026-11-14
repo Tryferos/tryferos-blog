@@ -2,7 +2,9 @@ import Link from 'next/link';
 import * as m from 'motion/react-m';
 import { LazyMotion, domAnimation } from 'motion/react';
 
-import { formatDate, partNumber, topics } from '@/content';
+import { topics } from '@/data/content.topics';
+import { formatDate } from '@/lib/format-date';
+import * as topicModel from '@/models/topic.model';
 import {
   firstSectionDelaySeconds,
   headerReveal,
@@ -44,14 +46,14 @@ export default function Home() {
               </p>
 
               <ol className="mt-6 divide-y border-y">
-                {topic.articles.map((article, index) => (
+                {topic.articles.map(article => (
                   <li key={article.slug}>
                     <Link
-                      href={`/${topic.slug}/${article.slug}`}
+                      href={topicModel.articleHref(topic, article)}
                       className="group flex gap-4 py-5 outline-none focus-visible:ring-3 focus-visible:ring-ring"
                     >
                       <span className="w-6 shrink-0 pt-0.5 font-mono text-sm text-primary tabular-nums">
-                        {String(partNumber(index)).padStart(
+                        {String(topicModel.partOf(topic, article)).padStart(
                           partNumberDigits,
                           '0',
                         )}

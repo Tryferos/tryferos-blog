@@ -2,22 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { formatDate, getArticle, topics } from '@/content';
+import { topics } from '@/data/content.topics';
+import { formatDate } from '@/lib/format-date';
+import * as topicModel from '@/models/topic.model';
 
 export function generateStaticParams() {
-  return topics.flatMap(topic =>
-    topic.articles.map(article => ({
-      topic: topic.slug,
-      article: article.slug,
-    })),
-  );
+  return topicModel.articleParams(topics);
 }
 
 export async function generateMetadata({
   params,
 }: PageProps<'/[topic]/[article]'>): Promise<Metadata> {
   const { topic, article } = await params;
-  const entry = getArticle(topic, article);
+  const entry = topicModel.findArticle(topics, topic, article);
   if (!entry) return {};
 
   return {
@@ -30,10 +27,12 @@ export default async function ArticlePage({
   params,
 }: PageProps<'/[topic]/[article]'>) {
   const { topic: topicSlug, article: articleSlug } = await params;
-  const entry = getArticle(topicSlug, articleSlug);
+  const entry = topicModel.findArticle(topics, topicSlug, articleSlug);
   if (!entry) notFound();
 
-  const { topic, article, part, previous, next } = entry;
+  const { topic, article } = entry;
+  const part = topicModel.partOf(topic, article);
+  const { previous, next } = topicModel.neighboursOf(topic, article);
   const { default: Content } = await article.load();
   const hasSeriesNavigation = previous !== undefined || next !== undefined;
 
@@ -42,7 +41,7 @@ export default async function ArticlePage({
       <header className="mb-10 border-b pb-10">
         <p className="text-sm font-medium text-primary">
           <Link
-            href={`/#${topic.slug}`}
+            href={topicModel.sectionHref(topic)}
             className="hover:underline underline-offset-4"
           >
             {topic.title}
@@ -77,7 +76,7 @@ export default async function ArticlePage({
         >
           {previous && (
             <Link
-              href={`/${topic.slug}/${previous.slug}`}
+              href={topicModel.articleHref(topic, previous)}
               className="group rounded-lg border p-4 transition-colors hover:bg-accent"
             >
               <span className="text-xs text-muted-foreground">Previous</span>
@@ -88,7 +87,7 @@ export default async function ArticlePage({
           )}
           {next && (
             <Link
-              href={`/${topic.slug}/${next.slug}`}
+              href={topicModel.articleHref(topic, next)}
               className="group rounded-lg border p-4 text-right transition-colors hover:bg-accent sm:col-start-2"
             >
               <span className="text-xs text-muted-foreground">Next</span>

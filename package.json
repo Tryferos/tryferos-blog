@@ -34,6 +34,7 @@
     "@types/node": "^26.6.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint-plugin-sonarjs": "^4.2.2",
     "knip": "^6.45.1",
     "oxlint": "^1.93.0",
     "oxlint-tsgolint": "^7.0.2007",

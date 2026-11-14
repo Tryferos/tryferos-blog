@@ -1,4 +1,5 @@
 import { defineConfig } from 'oxlint';
+import modularCode from './verification/configs/modular-code.ts';
 import strictTypes from './verification/configs/strict-types.ts';
 
 export default defineConfig({
@@ -11,5 +12,5 @@ export default defineConfig({
     'react/react-in-jsx-scope': 'off',
     'import/no-unassigned-import': ['warn', { allow: ['**/*.css'] }],
   },
-  extends: [strictTypes],
+  extends: [strictTypes, modularCode],
 });

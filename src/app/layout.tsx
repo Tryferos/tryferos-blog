@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Poppins } from "next/font/google";
+import localFont from "next/font/local";
+
+import { cn } from "@/lib/utils";
+
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const wotfard = localFont({
+  variable: "--font-wotfard",
+  display: "swap",
+  src: [
+    { path: "./fonts/wotfard-regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/wotfard-medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/wotfard-semibold.woff2", weight: "600", style: "normal" },
+  ],
 });
 
 const geistMono = Geist_Mono({
@@ -21,9 +37,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={cn(
+        poppins.variable,
+        wotfard.variable,
+        geistMono.variable,
+        "h-full antialiased",
+      )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        {children}
+      </body>
     </html>
   );
 }

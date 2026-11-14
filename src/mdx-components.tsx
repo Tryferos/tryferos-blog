@@ -4,86 +4,60 @@ import type { ComponentProps } from 'react';
 
 import { cn } from '@/lib/utils';
 
+const linkClasses =
+  'text-link underline decoration-link/40 underline-offset-4 transition-colors hover:decoration-link';
+
 const components: MDXComponents = {
-  h2: ({ children, className, ...props }: ComponentProps<'h2'>) => (
+  h2: ({ children, ...props }: ComponentProps<'h2'>) => (
     <h2
-      className={cn(
-        'mt-12 mb-4 scroll-mt-24 text-2xl font-semibold text-foreground',
-        className,
-      )}
+      className="mt-12 mb-4 scroll-mt-24 text-2xl font-semibold text-foreground"
       {...props}
     >
       {children}
     </h2>
   ),
-  h3: ({ children, className, ...props }: ComponentProps<'h3'>) => (
+  h3: ({ children, ...props }: ComponentProps<'h3'>) => (
     <h3
-      className={cn(
-        'mt-8 mb-3 scroll-mt-24 text-xl font-semibold text-foreground',
-        className,
-      )}
+      className="mt-8 mb-3 scroll-mt-24 text-xl font-semibold text-foreground"
       {...props}
     >
       {children}
     </h3>
   ),
-  p: ({ className, ...props }: ComponentProps<'p'>) => (
-    <p className={cn('my-5', className)} {...props} />
-  ),
-  a: ({ href = '', children, className, ...props }: ComponentProps<'a'>) => {
-    const classes = cn(
-      'text-link underline decoration-link/40 underline-offset-4 transition-colors hover:decoration-link',
-      className,
-    );
-    return href.startsWith('/') ? (
-      <Link href={href} className={classes} {...props}>
+  p: (props: ComponentProps<'p'>) => <p className="my-5" {...props} />,
+  a: ({ href = '', children, ...props }: ComponentProps<'a'>) =>
+    href.startsWith('/') ? (
+      <Link href={href} className={linkClasses} {...props}>
         {children}
       </Link>
     ) : (
-      <a href={href} className={classes} {...props}>
+      <a href={href} className={linkClasses} {...props}>
         {children}
       </a>
-    );
-  },
-  strong: ({ className, ...props }: ComponentProps<'strong'>) => (
-    <strong
-      className={cn('font-semibold text-foreground', className)}
-      {...props}
-    />
+    ),
+  strong: (props: ComponentProps<'strong'>) => (
+    <strong className="font-semibold text-foreground" {...props} />
   ),
-  ul: ({ className, ...props }: ComponentProps<'ul'>) => (
+  ul: (props: ComponentProps<'ul'>) => (
     <ul
-      className={cn(
-        'my-5 list-disc space-y-2 pl-6 marker:text-primary',
-        className,
-      )}
+      className="my-5 list-disc space-y-2 pl-6 marker:text-primary"
       {...props}
     />
   ),
-  ol: ({ className, ...props }: ComponentProps<'ol'>) => (
+  ol: (props: ComponentProps<'ol'>) => (
     <ol
-      className={cn(
-        'my-5 list-decimal space-y-2 pl-6 marker:text-primary',
-        className,
-      )}
+      className="my-5 list-decimal space-y-2 pl-6 marker:text-primary"
       {...props}
     />
   ),
-  li: ({ className, ...props }: ComponentProps<'li'>) => (
-    <li className={cn('pl-1', className)} {...props} />
-  ),
-  blockquote: ({ className, ...props }: ComponentProps<'blockquote'>) => (
+  li: (props: ComponentProps<'li'>) => <li className="pl-1" {...props} />,
+  blockquote: (props: ComponentProps<'blockquote'>) => (
     <blockquote
-      className={cn(
-        'my-6 border-l-2 border-primary pl-5 text-muted-foreground italic',
-        className,
-      )}
+      className="my-6 border-l-2 border-primary pl-5 text-muted-foreground italic"
       {...props}
     />
   ),
-  hr: ({ className, ...props }: ComponentProps<'hr'>) => (
-    <hr className={cn('my-12', className)} {...props} />
-  ),
+  hr: (props: ComponentProps<'hr'>) => <hr className="my-12" {...props} />,
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
@@ -93,34 +67,25 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }: ComponentProps<'pre'>) => (
+  pre: (props: ComponentProps<'pre'>) => (
     <pre
-      className={cn(
-        'my-6 overflow-x-auto rounded-lg border bg-code p-4 font-mono text-sm leading-relaxed text-code-foreground [&>code]:bg-transparent [&>code]:p-0 [&>code]:text-inherit',
-        className,
-      )}
+      className="my-6 overflow-x-auto rounded-lg border bg-code p-4 font-mono text-sm leading-relaxed text-code-foreground [&>code]:bg-transparent [&>code]:p-0 [&>code]:text-inherit"
       {...props}
     />
   ),
-  table: ({ className, ...props }: ComponentProps<'table'>) => (
+  table: (props: ComponentProps<'table'>) => (
     <div className="my-6 overflow-x-auto">
-      <table
-        className={cn('w-full text-left text-base', className)}
-        {...props}
-      />
+      <table className="w-full text-left text-base" {...props} />
     </div>
   ),
-  th: ({ className, ...props }: ComponentProps<'th'>) => (
+  th: (props: ComponentProps<'th'>) => (
     <th
-      className={cn(
-        'border-b px-3 py-2 font-semibold text-foreground',
-        className,
-      )}
+      className="border-b px-3 py-2 font-semibold text-foreground"
       {...props}
     />
   ),
-  td: ({ className, ...props }: ComponentProps<'td'>) => (
-    <td className={cn('border-b px-3 py-2', className)} {...props} />
+  td: (props: ComponentProps<'td'>) => (
+    <td className="border-b px-3 py-2" {...props} />
   ),
 };
 

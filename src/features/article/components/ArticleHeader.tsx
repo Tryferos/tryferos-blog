@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { PublishedDate } from '@/components/PublishedDate.shared';
+import { PublishedDate } from '@/components/ui/PublishedDate';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
 

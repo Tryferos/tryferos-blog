@@ -10,10 +10,18 @@ const independentModules = createIndependentModules({
   pathAliases: { baseUrl: '.', paths: tsconfig.compilerOptions.paths },
   reusableImportPatterns: {
     shared: sharedFolders.map(folder => `src/${folder}/**`),
+    ui: ['src/components/ui/**'],
     content: ['src/content/**'],
     features: ['src/features/*/index.tsx', 'src/features/*'],
   },
   modules: [
+    {
+      name: 'UI components',
+      pattern: 'src/components/ui/**',
+      allowImportsFrom: ['{ui}', 'src/lib/**', 'src/data/**', 'src/types/**'],
+      errorMessage:
+        'UI components import only other UI components, lib, data and types. Pass app data in through props.',
+    },
     {
       name: 'Shared code',
       pattern: sharedFolders.map(folder => `src/${folder}/**`),

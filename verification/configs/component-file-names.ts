@@ -14,7 +14,10 @@ const fileComposition = createFileComposition({
   projectRoot: path.join(import.meta.dirname, '../..'),
   filesRules: [
     {
-      filePattern: 'src/**/components/!(*.shared).tsx',
+      filePattern: [
+        'src/**/components/!(*.shared).tsx',
+        'src/components/ui/*.tsx',
+      ],
       rules: [
         {
           selector: ['function', 'arrowFunction'],

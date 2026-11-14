@@ -29,12 +29,14 @@
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
+    "@oxlint/plugins": "^1.93.0",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^26.6.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "knip": "^6.45.1",
     "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2007",
     "prettier": "^3.10.1",
     "tailwindcss": "4.3.3",
     "typescript": "^7.0.2"

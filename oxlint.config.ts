@@ -1,4 +1,5 @@
 import { defineConfig } from 'oxlint';
+import strictTypes from './verification/configs/strict-types.ts';
 
 export default defineConfig({
   plugins: ['typescript', 'react', 'nextjs', 'jsx-a11y', 'import', 'unicorn'],
@@ -10,5 +11,5 @@ export default defineConfig({
     'react/react-in-jsx-scope': 'off',
     'import/no-unassigned-import': ['warn', { allow: ['**/*.css'] }],
   },
-  extends: [],
+  extends: [strictTypes],
 });

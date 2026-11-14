@@ -35,6 +35,7 @@ export default async function ArticlePage({
 
   const { topic, article, part, previous, next } = entry;
   const { default: Content } = await article.load();
+  const hasSeriesNavigation = previous !== undefined || next !== undefined;
 
   return (
     <main className="mx-auto w-full max-w-[68ch] flex-1 px-6 pt-12 pb-24">
@@ -69,7 +70,7 @@ export default async function ArticlePage({
         <Content />
       </article>
 
-      {(previous || next) && (
+      {hasSeriesNavigation && (
         <nav
           aria-label="Series"
           className="mt-16 grid gap-4 border-t pt-8 sm:grid-cols-2"

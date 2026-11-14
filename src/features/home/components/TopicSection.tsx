@@ -1,6 +1,6 @@
 import * as m from 'motion/react-m';
 
-import { ArticleListItem } from '@/components/home/ArticleListItem';
+import { ArticleListItem } from './ArticleListItem';
 import {
   firstSectionDelaySeconds,
   sectionReveal,

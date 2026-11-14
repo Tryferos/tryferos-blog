@@ -24,7 +24,8 @@ Run `pnpm check`, then `pnpm build`. Fix findings in the code, never by disablin
 ## Code
 
 - No comments unless necessary. Make the code clearer instead.
-- Inside a kind folder such as `components/` or `lib/`, group files by what the reader sees, such as the article page: two or more files for the same one go in a kebab-case subfolder named after it, like `components/article/`. A file used by several of them, or the only file for its own, stays in the kind folder. A component used by several is named `<Component>.shared.tsx`.
+- Inside a kind folder such as `components/` or `lib/`, group files by what the reader sees, such as the article page: two or more files for the same one go in a kebab-case subfolder named after it, like `components/series/`. A file used by several of them, or the only file for its own, stays in the kind folder. A component used by several is named `<Component>.shared.tsx`.
+- Each screen lives in `src/features/<name>/`, whose `index.tsx` exports only `<Name>Screen`. Routes in `src/app/` handle params and metadata, then render the screen.
 - Name magic numbers, indexes, offsets and conditions: `user.role === roles.admin`, not `user.role === 2`.
 - Environment variables never get default values.
 - Animations take their values from `src/data/motion.tokens.ts`. Add a token there rather than an inline duration, delay or offset.

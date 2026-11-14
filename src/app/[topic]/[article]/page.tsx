@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { ArticleHeader } from '@/components/article/ArticleHeader';
-import { SeriesNavigation } from '@/components/article/SeriesNavigation';
 import { topics } from '@/data/content.topics';
+import { ArticleScreen } from '@/features/article';
 import * as topicModel from '@/models/topic.model';
 
 export function generateStaticParams() {
@@ -30,16 +29,5 @@ export default async function ArticlePage({
   const entry = topicModel.findArticle(topics, topicSlug, articleSlug);
   if (!entry) notFound();
 
-  const { topic, article } = entry;
-  const { default: Content } = await article.load();
-
-  return (
-    <main className="mx-auto w-full max-w-article flex-1 px-6 pt-12 pb-24">
-      <ArticleHeader topic={topic} article={article} />
-      <article className="text-body text-prose">
-        <Content />
-      </article>
-      <SeriesNavigation topic={topic} article={article} />
-    </main>
-  );
+  return <ArticleScreen topic={entry.topic} article={entry.article} />;
 }

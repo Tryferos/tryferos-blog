@@ -1,4 +1,5 @@
 import { defineConfig } from 'oxlint';
+import componentFileNames from './verification/configs/component-file-names.ts';
 import concernFolders from './verification/configs/concern-folders.ts';
 import designSystem from './verification/configs/design-system.ts';
 import modularCode from './verification/configs/modular-code.ts';
@@ -14,5 +15,11 @@ export default defineConfig({
     'react/react-in-jsx-scope': 'off',
     'import/no-unassigned-import': ['warn', { allow: ['**/*.css'] }],
   },
-  extends: [strictTypes, modularCode, concernFolders, designSystem],
+  extends: [
+    strictTypes,
+    modularCode,
+    concernFolders,
+    designSystem,
+    componentFileNames,
+  ],
 });

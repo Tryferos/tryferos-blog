@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
-import Link from 'next/link';
-
+import { SiteHeader } from '@/components/site-header/SiteHeader';
 import { Toaster } from '@/components/ui/Toaster';
-import { siteDescription, siteLabel, siteName } from '@/data/site.config';
+import { siteDescription, siteName } from '@/data/site.config';
 import { cn } from '@/lib/utils';
 
 import './globals.css';
@@ -51,14 +50,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       )}
     >
       <body className="flex min-h-full flex-col">
-        <header className="mx-auto w-full max-w-2xl px-6 pt-8">
-          <Link
-            href="/"
-            className="font-header text-sm font-medium text-primary"
-          >
-            {siteLabel}
-          </Link>
-        </header>
+        <SiteHeader />
         {children}
         <Toaster />
       </body>

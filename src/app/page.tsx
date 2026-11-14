@@ -3,20 +3,20 @@ import * as m from 'motion/react-m';
 import { LazyMotion, domAnimation } from 'motion/react';
 
 import { formatDate, partNumber, topics } from '@/content';
+import {
+  firstSectionDelaySeconds,
+  headerReveal,
+  sectionReveal,
+  sectionStaggerSeconds,
+} from '@/data/motion.tokens';
 
-const firstSectionDelaySeconds = 0.05;
-const sectionStaggerSeconds = 0.05;
 const partNumberDigits = 2;
 
 export default function Home() {
   return (
     <LazyMotion features={domAnimation}>
       <main className="mx-auto w-full max-w-2xl flex-1 px-6 pt-16 pb-24">
-        <m.header
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-16"
-        >
+        <m.header {...headerReveal} className="mb-16">
           <h1 className="text-3xl font-semibold sm:text-4xl">Tryferos</h1>
           <p className="mt-3 text-lg leading-relaxed text-prose">
             Writing on agentic development.
@@ -29,8 +29,7 @@ export default function Home() {
               key={topic.slug}
               id={topic.slug}
               aria-labelledby={`${topic.slug}-title`}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
+              {...sectionReveal}
               transition={{
                 delay:
                   firstSectionDelaySeconds + sectionStaggerSeconds * topicIndex,

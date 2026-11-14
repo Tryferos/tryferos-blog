@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
+import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/site-header/SiteHeader';
 import { Toaster } from '@/components/ui/Toaster';
 import { siteDescription, siteName } from '@/data/site.config';
@@ -49,9 +50,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         'h-full antialiased',
       )}
     >
-      <body className="flex min-h-full flex-col">
+      <body id="top" className="flex min-h-full flex-col">
         <SiteHeader />
         {children}
+        <SiteFooter />
         <Toaster />
       </body>
     </html>

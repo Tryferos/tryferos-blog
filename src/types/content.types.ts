@@ -14,3 +14,14 @@ export type Topic = {
   description: string;
   articles: Article[];
 };
+
+type ArticleLink = {
+  href: string;
+  title: string;
+  description: string;
+};
+
+export type SearchGroup = {
+  title: string;
+  links: ArticleLink[];
+};

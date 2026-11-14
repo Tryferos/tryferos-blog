@@ -1,7 +1,10 @@
 import Link from 'next/link';
 
+import { ArticleSearch } from './ArticleSearch';
 import { BrandMark } from '@/components/BrandMark';
+import { topics } from '@/data/content.topics';
 import { siteHandle } from '@/data/site.config';
+import * as topicModel from '@/models/topic.model';
 
 export function SiteHeader() {
   return (
@@ -13,6 +16,7 @@ export function SiteHeader() {
             {siteHandle}
           </span>
         </Link>
+        <ArticleSearch groups={topics.map(topicModel.searchGroup)} />
       </div>
     </header>
   );

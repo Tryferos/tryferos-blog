@@ -1,4 +1,4 @@
-import type { Article, Topic } from '@/types/content.types';
+import type { Article, SearchGroup, Topic } from '@/types/content.types';
 
 const firstPart = 1;
 const partLabelDigits = 2;
@@ -37,6 +37,17 @@ export function findArticle(
     candidate => candidate.slug === articleSlug,
   );
   return topic && article ? { topic, article } : undefined;
+}
+
+export function searchGroup(topic: Topic): SearchGroup {
+  return {
+    title: topic.title,
+    links: topic.articles.map(article => ({
+      href: articleHref(topic, article),
+      title: article.title,
+      description: article.description,
+    })),
+  };
 }
 
 export function articleParams(topics: Topic[]) {

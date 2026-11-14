@@ -3,6 +3,7 @@ import componentFileNames from './verification/configs/component-file-names.ts';
 import concernFolders from './verification/configs/concern-folders.ts';
 import designSystem from './verification/configs/design-system.ts';
 import modularCode from './verification/configs/modular-code.ts';
+import reactCompiler from './verification/configs/react-compiler.ts';
 import strictTypes from './verification/configs/strict-types.ts';
 
 export default defineConfig({
@@ -21,5 +22,6 @@ export default defineConfig({
     concernFolders,
     designSystem,
     componentFileNames,
+    reactCompiler,
   ],
 });

@@ -3,6 +3,7 @@ import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import Link from 'next/link';
 
+import { Toaster } from '@/components/ui/Toaster';
 import { siteDescription, siteLabel, siteName } from '@/data/site.config';
 import { cn } from '@/lib/utils';
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           </Link>
         </header>
         {children}
+        <Toaster />
       </body>
     </html>
   );

@@ -2,6 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import type { ComponentProps } from 'react';
 
+import { CodeBlock } from '@/components/ui/CodeBlock';
 import { cn } from '@/lib/utils';
 
 const linkClasses =
@@ -67,12 +68,7 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  pre: (props: ComponentProps<'pre'>) => (
-    <pre
-      className="my-6 overflow-x-auto rounded-lg border bg-code p-4 font-mono text-sm leading-relaxed text-code-foreground [&>code]:bg-transparent [&>code]:p-0 [&>code]:text-inherit"
-      {...props}
-    />
-  ),
+  pre: CodeBlock,
   table: (props: ComponentProps<'table'>) => (
     <div className="my-6 overflow-x-auto">
       <table className="w-full text-left text-base" {...props} />

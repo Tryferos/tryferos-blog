@@ -1,6 +1,6 @@
 import type { MDXContent } from 'mdx/types';
 
-export type Article = {
+type Article = {
   slug: string;
   title: string;
   description: string;
@@ -36,7 +36,7 @@ export function partNumber(index: number) {
   return index + 1;
 }
 
-export function getTopic(topicSlug: string) {
+function getTopic(topicSlug: string) {
   return topics.find(topic => topic.slug === topicSlug);
 }
 

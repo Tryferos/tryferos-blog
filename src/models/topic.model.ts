@@ -1,6 +1,7 @@
 import type { Article, Topic } from '@/types/content.types';
 
 const firstPart = 1;
+const partLabelDigits = 2;
 
 export function sectionHref(topic: Topic) {
   return `/#${topic.slug}`;
@@ -12,6 +13,10 @@ export function articleHref(topic: Topic, article: Article) {
 
 export function partOf(topic: Topic, article: Article) {
   return topic.articles.indexOf(article) + firstPart;
+}
+
+export function partLabel(topic: Topic, article: Article) {
+  return String(partOf(topic, article)).padStart(partLabelDigits, '0');
 }
 
 export function neighboursOf(topic: Topic, article: Article) {

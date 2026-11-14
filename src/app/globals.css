@@ -1,5 +1,3 @@
-@layer ui-sdk;
-
 @import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));

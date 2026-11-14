@@ -1,4 +1,6 @@
+@layer ui-sdk;
 @import 'tailwindcss';
+@import '@ui-sdk/core/web.css' layer(components);
 
 @custom-variant dark (@media (prefers-color-scheme: dark));
 
@@ -103,6 +105,21 @@
   --highlight: oklch(0.92 0.09 85);
   --code: oklch(0.955 0.008 80);
   --code-foreground: oklch(0.36 0.06 40);
+
+  --ui-background: var(--background);
+  --ui-foreground: var(--foreground);
+  --ui-muted: var(--muted);
+  --ui-muted-foreground: var(--muted-foreground);
+  --ui-border: var(--border);
+  --ui-input: var(--input);
+  --ui-primary: var(--primary);
+  --ui-primary-foreground: var(--primary-foreground);
+  --ui-destructive: var(--destructive);
+  --ui-ring: var(--ring);
+  --ui-ring-border: var(--ring);
+  --ui-radius: var(--radius);
+  --ui-font-sans: var(--font-poppins);
+  --ui-font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {

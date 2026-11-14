@@ -2,13 +2,14 @@
   "name": "tryferos-blog",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix",
-    "typecheck": "next typegen && tsc --noEmit",
+    "lint": "oxlint --deny-warnings",
+    "lint:fix": "oxlint --fix --deny-warnings",
+    "typecheck": "next typegen && tsc --noEmit && tsc -p verification",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "unused": "knip"

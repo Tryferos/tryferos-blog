@@ -1,0 +1,14 @@
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({
+  plugins: ['typescript', 'react', 'nextjs', 'jsx-a11y', 'import', 'unicorn'],
+  categories: { correctness: 'error', suspicious: 'warn' },
+  env: { browser: true, node: true },
+  options: { reportUnusedDisableDirectives: 'warn' },
+  ignorePatterns: ['.agents/**', '.claude/**', 'next-env.d.ts'],
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'import/no-unassigned-import': ['warn', { allow: ['**/*.css'] }],
+  },
+  extends: [],
+});

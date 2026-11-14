@@ -17,18 +17,18 @@ export type Topic = {
 
 export const topics: Topic[] = [
   {
-    slug: "agentic-development",
-    title: "Agentic development",
+    slug: "codebase-conventions",
+    title: "Codebase conventions for agentic development",
     description:
-      "Working alongside coding agents: how to shape a codebase, its rules and its workflows so agents do the right thing by default.",
+      "Rules that make a codebase work with coding agents.",
     articles: [
       {
-        slug: "codebase-conventions",
-        title: "Codebase conventions for agentic development",
+        slug: "comments",
+        title: "Comments are for what the code can't say",
         description:
-          "The rules, files and habits that make a repository easy for an agent to work in.",
+          "Don't let your agent spam comments",
         publishedAt: "2026-11-14",
-        load: () => import("./agentic-development/codebase-conventions.mdx"),
+        load: () => import("./codebase-conventions/comments.mdx"),
       },
     ],
   },

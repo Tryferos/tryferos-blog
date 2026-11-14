@@ -2,6 +2,7 @@ import { defineConfig } from 'oxlint';
 import componentFileNames from './verification/configs/component-file-names.ts';
 import concernFolders from './verification/configs/concern-folders.ts';
 import designSystem from './verification/configs/design-system.ts';
+import moduleBoundaries from './verification/configs/module-boundaries.ts';
 import modelConventions from './verification/configs/model-conventions.ts';
 import modularCode from './verification/configs/modular-code.ts';
 import reactCompiler from './verification/configs/react-compiler.ts';
@@ -25,5 +26,6 @@ export default defineConfig({
     componentFileNames,
     reactCompiler,
     modelConventions,
+    moduleBoundaries,
   ],
 });

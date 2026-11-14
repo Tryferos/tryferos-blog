@@ -1,8 +1,8 @@
 'use client';
 
 import { Button } from '@ui-sdk/react/button';
-import { toast } from '@ui-sdk/react/toast';
 
+import { copyToClipboard } from '@/lib/copy-to-clipboard';
 import { cn } from '@/lib/utils';
 
 type Props = { code: string; className?: string };
@@ -12,12 +12,7 @@ export function CopyCodeButton({ code, className }: Props) {
     <Button
       aria-label="Copy code"
       className={cn('bg-background', className)}
-      onClick={() =>
-        navigator.clipboard.writeText(code).then(
-          () => toast.success('Copied to clipboard'),
-          () => toast.error('Couldn’t copy the code'),
-        )
-      }
+      onClick={() => copyToClipboard(code, 'Copied to clipboard')}
     >
       <svg
         aria-hidden="true"

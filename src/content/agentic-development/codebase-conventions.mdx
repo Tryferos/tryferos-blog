@@ -1,0 +1,22 @@
+An agent reads your repository the way a new teammate would on their first day, except it does so every single session. Whatever the codebase says, explicitly or by example, is what the agent will repeat.
+
+## Why conventions matter more with agents
+
+A human contributor absorbs unwritten rules over weeks of reviews. An agent starts from zero each time, so the only conventions that reliably hold are the ones written down where it will read them.
+
+## AGENTS.md as the entry point
+
+Keep a single file at the root that states the rules an agent cannot infer from the code alone.
+
+```md
+## Comments
+
+Do not spam comments. Write a comment only to explain a non-obvious
+reason the code cannot express, such as a workaround or a platform quirk.
+```
+
+## What belongs in a rule
+
+- Decisions the code cannot show, such as why a pattern is banned.
+- Workflows, such as which command proves a change works.
+- Nothing the agent can already read from the code itself.

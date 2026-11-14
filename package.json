@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prepare": "husky",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -36,12 +37,21 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint-plugin-sonarjs": "^4.2.2",
+    "husky": "^9.1.7",
     "knip": "^6.45.1",
+    "lint-staged": "^17.6.0",
     "oxlint": "^1.93.0",
     "oxlint-tsgolint": "^7.0.2007",
     "prettier": "^3.10.1",
     "tailwindcss": "4.3.3",
     "typescript": "^7.0.2"
   },
-  "packageManager": "pnpm@12.18.0"
+  "packageManager": "pnpm@12.18.0",
+  "lint-staged": {
+    "*.{js,jsx,mjs,cjs,ts,tsx}": [
+      "prettier --write",
+      "oxlint --fix --deny-warnings --no-error-on-unmatched-pattern"
+    ],
+    "*.{json,jsonc,md,mdx,yaml,yml,css}": "prettier --write"
+  }
 }

@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@oxlint/plugins": "^1.93.0",
+    "@shadcn/lint": "^0.2.5",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^26.6.6",
     "@types/react": "^19",

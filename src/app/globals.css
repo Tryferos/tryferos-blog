@@ -9,6 +9,11 @@
   --font-heading: var(--font-header);
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.75;
+  --text-inline-code: 0.875em;
+  --container-article: 68ch;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

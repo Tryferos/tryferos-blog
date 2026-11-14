@@ -87,7 +87,7 @@ const components: MDXComponents = {
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
-        'rounded-sm bg-code px-1.5 py-0.5 font-mono text-[0.875em] text-code-foreground',
+        'rounded-sm bg-code px-1.5 py-0.5 font-mono text-inline-code text-code-foreground',
         className,
       )}
       {...props}

@@ -38,7 +38,7 @@ export default async function ArticlePage({
   const hasSeriesNavigation = previous !== undefined || next !== undefined;
 
   return (
-    <main className="mx-auto w-full max-w-[68ch] flex-1 px-6 pt-12 pb-24">
+    <main className="mx-auto w-full max-w-article flex-1 px-6 pt-12 pb-24">
       <header className="mb-10 border-b pb-10">
         <p className="text-sm font-medium text-primary">
           <Link
@@ -66,7 +66,7 @@ export default async function ArticlePage({
         </time>
       </header>
 
-      <article className="text-[1.0625rem] leading-[1.75] text-prose">
+      <article className="text-body text-prose">
         <Content />
       </article>
 

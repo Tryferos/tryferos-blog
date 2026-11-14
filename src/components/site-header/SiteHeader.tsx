@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { ArticleSearch } from './ArticleSearch';
+import { ThemeToggle } from './ThemeToggle';
 import { BrandMark } from '@/components/BrandMark';
 import { topics } from '@/data/content.topics';
 import { siteHandle } from '@/data/site.config';
@@ -17,6 +18,7 @@ export function SiteHeader() {
           </span>
         </Link>
         <ArticleSearch groups={topics.map(topicModel.searchGroup)} />
+        <ThemeToggle />
       </div>
     </header>
   );

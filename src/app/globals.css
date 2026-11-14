@@ -2,7 +2,16 @@
 @import 'tailwindcss';
 @import '@ui-sdk/core/web.css' layer(components);
 
-@custom-variant dark (@media (prefers-color-scheme: dark));
+@custom-variant dark {
+  &:where([data-color-scheme='dark'], [data-color-scheme='dark'] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:not([data-color-scheme='light'], [data-color-scheme='light'] *)) {
+      @slot;
+    }
+  }
+}
 
 @theme inline {
   --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
@@ -121,10 +130,14 @@
   --ui-radius: var(--radius);
   --ui-font-sans: var(--font-poppins);
   --ui-font-mono: var(--font-geist-mono);
+
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+:root {
+  @variant dark {
+    color-scheme: dark;
+
     --background: oklch(0.17 0.006 60);
     --foreground: oklch(0.93 0.01 85);
     --card: oklch(0.2 0.007 60);

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
+import { AppPreferences } from '@/components/AppPreferences';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/site-header/SiteHeader';
 import { Toaster } from '@/components/ui/Toaster';
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn(
         poppins.variable,
         wotfard.variable,
@@ -51,10 +53,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       )}
     >
       <body id="top" className="flex min-h-full flex-col">
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <Toaster />
+        <AppPreferences>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <Toaster />
+        </AppPreferences>
       </body>
     </html>
   );

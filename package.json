@@ -12,7 +12,8 @@
     "typecheck": "next typegen && tsc --noEmit && tsc -p verification",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "unused": "knip"
+    "unused": "knip",
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm unused"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

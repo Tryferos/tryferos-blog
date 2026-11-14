@@ -11,7 +11,10 @@ export function CopyCodeButton({ code, className }: Props) {
   return (
     <Button
       aria-label="Copy code"
-      className={cn('bg-background', className)}
+      className={cn(
+        'border-transparent bg-transparent text-muted-foreground group-hover:opacity-100 hover:bg-accent hover:text-foreground focus-visible:opacity-100 pointer-fine:opacity-0',
+        className,
+      )}
       onClick={() => copyToClipboard(code, 'Copied to clipboard')}
     >
       <svg

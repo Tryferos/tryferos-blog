@@ -188,3 +188,11 @@
     @apply bg-highlight text-foreground;
   }
 }
+
+/* web.css underlines every link from inside components; links here style their own. */
+@layer components {
+  a {
+    color: inherit;
+    text-decoration-line: none;
+  }
+}

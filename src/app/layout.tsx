@@ -3,6 +3,7 @@ import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import Link from 'next/link';
 
+import { siteDescription, siteLabel, siteName } from '@/data/site.config';
 import { cn } from '@/lib/utils';
 
 import './globals.css';
@@ -31,10 +32,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Tryferos',
-    template: '%s · Tryferos',
+    default: siteName,
+    template: `%s · ${siteName}`,
   },
-  description: 'Writing on agentic development.',
+  description: siteDescription,
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
@@ -54,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
             href="/"
             className="font-header text-sm font-medium text-primary"
           >
-            tryferos / blog
+            {siteLabel}
           </Link>
         </header>
         {children}

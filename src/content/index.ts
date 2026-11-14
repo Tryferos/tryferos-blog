@@ -1,4 +1,4 @@
-import type { MDXContent } from "mdx/types";
+import type { MDXContent } from 'mdx/types';
 
 export type Article = {
   slug: string;
@@ -17,18 +17,16 @@ export type Topic = {
 
 export const topics: Topic[] = [
   {
-    slug: "codebase-conventions",
-    title: "Codebase conventions for agentic development",
-    description:
-      "Rules that make a codebase work with coding agents.",
+    slug: 'codebase-conventions',
+    title: 'Codebase conventions for agentic development',
+    description: 'Rules that make a codebase work with coding agents.',
     articles: [
       {
-        slug: "comments",
+        slug: 'comments',
         title: "Comments are for what the code can't say",
-        description:
-          "Don't let your agent spam comments",
-        publishedAt: "2026-11-14",
-        load: () => import("./codebase-conventions/comments.mdx"),
+        description: "Don't let your agent spam comments",
+        publishedAt: '2026-11-14',
+        load: () => import('./codebase-conventions/comments.mdx'),
       },
     ],
   },
@@ -39,12 +37,14 @@ export function partNumber(index: number) {
 }
 
 export function getTopic(topicSlug: string) {
-  return topics.find((topic) => topic.slug === topicSlug);
+  return topics.find(topic => topic.slug === topicSlug);
 }
 
 export function getArticle(topicSlug: string, articleSlug: string) {
   const topic = getTopic(topicSlug);
-  const article = topic?.articles.find((candidate) => candidate.slug === articleSlug);
+  const article = topic?.articles.find(
+    candidate => candidate.slug === articleSlug,
+  );
   if (!topic || !article) return undefined;
 
   const index = topic.articles.indexOf(article);
@@ -58,10 +58,10 @@ export function getArticle(topicSlug: string, articleSlug: string) {
 }
 
 export function formatDate(isoDate: string) {
-  return new Intl.DateTimeFormat("en", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
+  return new Intl.DateTimeFormat('en', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
   }).format(new Date(isoDate));
 }

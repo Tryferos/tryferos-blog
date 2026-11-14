@@ -1,8 +1,8 @@
-import Link from "next/link";
-import * as m from "motion/react-m";
-import { LazyMotion, domAnimation } from "motion/react";
+import Link from 'next/link';
+import * as m from 'motion/react-m';
+import { LazyMotion, domAnimation } from 'motion/react';
 
-import { formatDate, partNumber, topics } from "@/content";
+import { formatDate, partNumber, topics } from '@/content';
 
 const firstSectionDelaySeconds = 0.05;
 const sectionStaggerSeconds = 0.05;
@@ -31,13 +31,18 @@ export default function Home() {
               aria-labelledby={`${topic.slug}-title`}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: firstSectionDelaySeconds + sectionStaggerSeconds * topicIndex }}
+              transition={{
+                delay:
+                  firstSectionDelaySeconds + sectionStaggerSeconds * topicIndex,
+              }}
               className="scroll-mt-16"
             >
               <h2 id={`${topic.slug}-title`} className="text-2xl font-semibold">
                 {topic.title}
               </h2>
-              <p className="mt-2 leading-relaxed text-muted-foreground">{topic.description}</p>
+              <p className="mt-2 leading-relaxed text-muted-foreground">
+                {topic.description}
+              </p>
 
               <ol className="mt-6 divide-y border-y">
                 {topic.articles.map((article, index) => (
@@ -47,14 +52,22 @@ export default function Home() {
                       className="group flex gap-4 py-5 outline-none focus-visible:ring-3 focus-visible:ring-ring"
                     >
                       <span className="w-6 shrink-0 pt-0.5 font-mono text-sm text-primary tabular-nums">
-                        {String(partNumber(index)).padStart(partNumberDigits, "0")}
+                        {String(partNumber(index)).padStart(
+                          partNumberDigits,
+                          '0',
+                        )}
                       </span>
                       <span className="flex flex-col gap-1">
                         <span className="font-header text-lg font-medium underline-offset-4 group-hover:underline">
                           {article.title}
                         </span>
-                        <span className="text-prose">{article.description}</span>
-                        <time dateTime={article.publishedAt} className="text-sm text-muted-foreground">
+                        <span className="text-prose">
+                          {article.description}
+                        </span>
+                        <time
+                          dateTime={article.publishedAt}
+                          className="text-sm text-muted-foreground"
+                        >
                           {formatDate(article.publishedAt)}
                         </time>
                       </span>

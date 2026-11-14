@@ -28,12 +28,12 @@ if (response.ok && !(await response.text())) {
 
 Anything the code already says. Fix the code instead:
 
-```tsx
+```ts
 // Before
-delay: 0.05 * (topicIndex + 1)
+const delay = 0.05 * (topicIndex + 1);
 
 // After
-delay: firstSectionDelaySeconds + sectionStaggerSeconds * topicIndex
+const delay = firstSectionDelaySeconds + sectionStaggerSeconds * topicIndex;
 ```
 
 ## Existing code

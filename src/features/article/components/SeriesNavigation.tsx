@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { Icon } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
@@ -8,49 +9,64 @@ type Props = { topic: Topic; article: Article };
 
 export function SeriesNavigation({ topic, article }: Props) {
   const { previous, next } = topicModel.neighboursOf(topic, article);
-  if (!previous && !next) return null;
 
   return (
     <nav
-      aria-label="Series"
-      className="mt-16 grid gap-4 border-t pt-8 sm:grid-cols-2"
+      aria-label="More articles"
+      className="mt-18 flex flex-wrap justify-between gap-x-12 gap-y-6 border-t pt-7"
     >
-      {previous && (
-        <SeriesLink
+      {previous ? (
+        <PagerLink
           href={topicModel.articleHref(topic, previous)}
-          direction="Previous"
+          label="Previous article"
           title={previous.title}
+          direction="previous"
+        />
+      ) : (
+        <PagerLink
+          href={topicModel.sectionHref(topic)}
+          label="All articles"
+          title={topic.title}
+          direction="previous"
         />
       )}
       {next && (
-        <SeriesLink
+        <PagerLink
           href={topicModel.articleHref(topic, next)}
-          direction="Next"
+          label="Next article"
           title={next.title}
+          direction="next"
         />
       )}
     </nav>
   );
 }
 
-type SeriesLinkProps = {
+type PagerLinkProps = {
   href: string;
-  direction: 'Previous' | 'Next';
+  label: string;
   title: string;
+  direction: 'previous' | 'next';
 };
 
-function SeriesLink({ href, direction, title }: SeriesLinkProps) {
-  const isNext = direction === 'Next';
+function PagerLink({ href, label, title, direction }: PagerLinkProps) {
+  const isNext = direction === 'next';
   return (
     <Link
       href={href}
       className={cn(
-        'rounded-lg border p-4 transition-colors hover:bg-accent',
-        isNext && 'text-right sm:col-start-2',
+        'group flex flex-1 basis-55 flex-col gap-2 leading-snug',
+        isNext && 'items-end text-right',
       )}
     >
-      <span className="text-xs text-muted-foreground">{direction}</span>
-      <span className="mt-1 block font-header font-medium">{title}</span>
+      <span className="text-sm font-medium text-muted-foreground">{label}</span>
+      <span className="flex items-center gap-2.5 text-primary">
+        {!isNext && <Icon name="arrow-left" className="size-4.5" />}
+        <span className="font-header text-lg font-semibold text-foreground decoration-primary underline-offset-4 group-hover:underline">
+          {title}
+        </span>
+        {isNext && <Icon name="arrow-right" className="size-4.5" />}
+      </span>
     </Link>
   );
 }

@@ -39,6 +39,16 @@ export function findArticle(
   return topic && article ? { topic, article } : undefined;
 }
 
+export function keepReading(topic: Topic, article: Article) {
+  const { next } = neighboursOf(topic, article);
+  return {
+    upNext: next,
+    more: topic.articles.filter(
+      candidate => candidate !== article && candidate !== next,
+    ),
+  };
+}
+
 export function searchGroup(topic: Topic): SearchGroup {
   return {
     title: topic.title,

@@ -19,7 +19,11 @@ const withMDX = createMDX({
   options: {
     // Turbopack can only receive plugins by name, not as imported functions.
     remarkPlugins: ['remark-gfm'],
-    rehypePlugins: ['rehype-slug'],
+    rehypePlugins: [
+      'rehype-slug',
+      '@stefanprobst/rehype-extract-toc',
+      '@stefanprobst/rehype-extract-toc/mdx',
+    ],
   },
 });
 

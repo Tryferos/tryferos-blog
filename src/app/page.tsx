@@ -19,7 +19,7 @@ export default function Home() {
         >
           <h1 className="text-3xl font-semibold sm:text-4xl">Tryferos</h1>
           <p className="mt-3 text-lg leading-relaxed text-prose">
-            Writing on agentic development and the craft around it.
+            Writing on agentic development.
           </p>
         </m.header>
 

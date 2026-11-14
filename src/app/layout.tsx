@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     default: "Tryferos",
     template: "%s · Tryferos",
   },
-  description: "Notes, essays and experiments.",
+  description: "Writing on agentic development.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

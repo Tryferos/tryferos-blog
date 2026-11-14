@@ -29,6 +29,10 @@ Run `pnpm check`, then `pnpm build`. Fix findings in the code, never by disablin
 - Environment variables never get default values.
 - Animations take their values from `src/data/motion.tokens.ts`. Add a token there rather than an inline duration, delay or offset.
 
+### Model Convention
+
+In TypeScript, compute any result derived from two or more fields in a model, with the data as the first argument: `topicModel.articleHref(topic, article)`, not `` `/${topic.slug}/${article.slug}` ``.
+
 ## AGENTS.md files
 
 Write only what no check verifies. When a rule can be checked, add the check instead.

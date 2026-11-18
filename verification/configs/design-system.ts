@@ -14,7 +14,26 @@ export default defineConfig({
       files: ['src/**/*.{ts,tsx}'],
       jsPlugins: [shadcnPlugin],
       rules: {
-        'shadcn/no-restyle': ['error', { allow: ['layout'] }],
+        'shadcn/no-restyle': [
+          'error',
+          {
+            allow: ['layout'],
+            componentImports: [
+              '^@/components/ui(/|$)',
+              '^@/components/shared/(Row|Column)$',
+            ],
+            contracts: [
+              {
+                pattern: '^(Row|Column)$',
+                allow: ['layout'],
+                message: {
+                  spacing:
+                    'Set the space between children with the gap prop: none, xs (gap-1), sm (gap-2), md (gap-4), lg (gap-8), xl (gap-12) or 2xl (gap-16).',
+                },
+              },
+            ],
+          },
+        ],
         'shadcn/no-raw-colors': 'error',
         'shadcn/no-arbitrary-values': 'error',
         'shadcn/no-inline-styles': 'error',

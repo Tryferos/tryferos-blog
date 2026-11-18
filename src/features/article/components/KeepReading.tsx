@@ -1,7 +1,9 @@
 import { IconArrowRight } from '@tabler/icons-react';
 import Link from 'next/link';
 
+import { Column } from '@/components/shared/Column';
 import { Eyebrow } from '@/components/shared/Eyebrow';
+import { Row } from '@/components/shared/Row';
 import { Item } from '@/components/ui/Item';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
@@ -21,10 +23,12 @@ export function KeepReading({ topic, article }: Props) {
         <Item asChild variant="plain" size="flush">
           <Link href={topicModel.articleHref(topic, upNext)}>
             <Item.Header className="justify-start">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-link">
-                Up next in this series
-                <IconArrowRight className="size-3.5" />
-              </span>
+              <Row asChild align="center" gap="sm">
+                <span className="text-xs font-semibold text-link">
+                  Up next in this series
+                  <IconArrowRight className="size-3.5" />
+                </span>
+              </Row>
             </Item.Header>
             <Item.Content>
               <Item.Title size="md">{upNext.title}</Item.Title>
@@ -41,31 +45,35 @@ export function KeepReading({ topic, article }: Props) {
           <p className="mt-6 mb-1 text-sm font-medium text-prose">
             More in this series
           </p>
-          <ul className="flex flex-col">
-            {more.map(other => (
-              <li key={other.slug} className="border-b py-3">
-                <Item asChild variant="plain" size="flush">
-                  <Link href={topicModel.articleHref(topic, other)}>
-                    <Item.Content>
-                      <Item.Title size="sm">{other.title}</Item.Title>
-                      <span className="text-xs text-muted-foreground">
-                        Part {topicModel.partOf(topic, other)}
-                      </span>
-                    </Item.Content>
-                  </Link>
-                </Item>
-              </li>
-            ))}
-          </ul>
+          <Column asChild>
+            <ul>
+              {more.map(other => (
+                <li key={other.slug} className="border-b py-3">
+                  <Item asChild variant="plain" size="flush">
+                    <Link href={topicModel.articleHref(topic, other)}>
+                      <Item.Content>
+                        <Item.Title size="sm">{other.title}</Item.Title>
+                        <span className="text-xs text-muted-foreground">
+                          Part {topicModel.partOf(topic, other)}
+                        </span>
+                      </Item.Content>
+                    </Link>
+                  </Item>
+                </li>
+              ))}
+            </ul>
+          </Column>
         </>
       )}
-      <Link
-        href={topicModel.sectionHref(topic)}
-        className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-medium text-link hover:text-foreground"
-      >
-        View the whole series
-        <IconArrowRight className="size-3.5" />
-      </Link>
+      <Row asChild align="center" gap="sm" className="mt-3.5 w-fit">
+        <Link
+          href={topicModel.sectionHref(topic)}
+          className="text-sm font-medium text-link hover:text-foreground"
+        >
+          View the whole series
+          <IconArrowRight className="size-3.5" />
+        </Link>
+      </Row>
     </section>
   );
 }

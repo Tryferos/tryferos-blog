@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { ComponentProps } from 'react';
 
 import { CodeBlock } from '@/components/shared/CodeBlock';
+import { Column } from '@/components/shared/Column';
 import { Separator } from '@/components/ui/Separator';
 import { Table } from '@/components/ui/Table';
 import { nodeText } from '@/lib/node-text';
@@ -45,16 +46,14 @@ const components: MDXComponents = {
     <strong className="font-semibold text-foreground" {...props} />
   ),
   ul: (props: ComponentProps<'ul'>) => (
-    <ul
-      className="my-5 list-disc space-y-2 pl-6 marker:text-primary"
-      {...props}
-    />
+    <Column asChild gap="sm" className="my-5">
+      <ul className="list-disc pl-6 marker:text-primary" {...props} />
+    </Column>
   ),
   ol: (props: ComponentProps<'ol'>) => (
-    <ol
-      className="my-5 list-decimal space-y-2 pl-6 marker:text-primary"
-      {...props}
-    />
+    <Column asChild gap="sm" className="my-5">
+      <ol className="list-decimal pl-6 marker:text-primary" {...props} />
+    </Column>
   ),
   li: (props: ComponentProps<'li'>) => <li className="pl-1" {...props} />,
   blockquote: (props: ComponentProps<'blockquote'>) => (

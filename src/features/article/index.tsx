@@ -1,3 +1,4 @@
+import { Column } from '@/components/shared/Column';
 import * as articleModel from '@/models/article.model';
 import type { Article, Topic } from '@/types/content.types';
 
@@ -23,15 +24,18 @@ export async function ArticleScreen({ topic, article }: Props) {
           </article>
           <SeriesNavigation topic={topic} article={article} />
         </div>
-        <aside
-          aria-label="Article navigation"
-          className="flex shrink-0 flex-col gap-9 lg:sticky lg:top-8 lg:w-58"
+        <Column
+          asChild
+          gap="lg"
+          className="shrink-0 lg:sticky lg:top-8 lg:w-58"
         >
-          <TableOfContents
-            sections={articleModel.sectionsOf(tableOfContents)}
-          />
-          <KeepReading topic={topic} article={article} />
-        </aside>
+          <aside aria-label="Article navigation">
+            <TableOfContents
+              sections={articleModel.sectionsOf(tableOfContents)}
+            />
+            <KeepReading topic={topic} article={article} />
+          </aside>
+        </Column>
       </div>
     </main>
   );

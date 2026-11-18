@@ -1,5 +1,6 @@
 'use client';
 
+import { Column } from '@/components/shared/Column';
 import { Eyebrow } from '@/components/shared/Eyebrow';
 import type { Section } from '@/types/content.types';
 
@@ -16,19 +17,21 @@ export function TableOfContents({ sections }: Props) {
       <Eyebrow id="toc-title" className="mb-3.5">
         On this page
       </Eyebrow>
-      <ol className="flex flex-col border-l">
-        {sections.map(section => (
-          <li key={section.id} className="-ml-px">
-            <a
-              href={`#${section.id}`}
-              aria-current={section.id === activeId ? 'location' : undefined}
-              className="block border-l-2 border-transparent py-1.5 pl-3.5 text-sm text-muted-foreground hover:text-foreground current:border-primary current:font-medium current:text-foreground"
-            >
-              {section.title}
-            </a>
-          </li>
-        ))}
-      </ol>
+      <Column asChild>
+        <ol className="border-l">
+          {sections.map(section => (
+            <li key={section.id} className="-ml-px">
+              <a
+                href={`#${section.id}`}
+                aria-current={section.id === activeId ? 'location' : undefined}
+                className="block border-l-2 border-transparent py-1.5 pl-3.5 text-sm text-muted-foreground hover:text-foreground current:border-primary current:font-medium current:text-foreground"
+              >
+                {section.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </Column>
     </nav>
   );
 }

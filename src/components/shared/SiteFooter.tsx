@@ -1,7 +1,9 @@
 import Link from 'next/link';
 
 import { BrandMark } from '@/components/shared/BrandMark';
+import { Column } from '@/components/shared/Column';
 import { Eyebrow } from '@/components/shared/Eyebrow';
+import { Row } from '@/components/shared/Row';
 import { topics } from '@/data/content.topics';
 import { socialLinks } from '@/data/footer.links';
 import {
@@ -20,79 +22,89 @@ export function SiteFooter() {
   return (
     <footer className="border-t bg-sidebar">
       <div className="mx-auto w-full max-w-page px-6 pt-14 pb-8">
-        <div className="flex flex-wrap gap-x-16 gap-y-10">
-          <div className="flex flex-2 basis-70 flex-col gap-3.5">
-            <Link href="/" className="flex w-fit items-center gap-2.5">
-              <BrandMark className="size-7 rounded-md text-base" />
-              <span className="font-header font-semibold">
-                {siteHandle}
-                <span className="font-medium text-muted-foreground">
-                  {' '}
-                  / {siteSection}
+        <Row wrap gap="xl">
+          <Column gap="md" className="flex-2 basis-70">
+            <Row asChild align="center" gap="sm" className="w-fit">
+              <Link href="/">
+                <BrandMark className="size-7 rounded-md text-base" />
+                <span className="font-header font-semibold">
+                  {siteHandle}
+                  <span className="font-medium text-muted-foreground">
+                    {' '}
+                    / {siteSection}
+                  </span>
                 </span>
-              </span>
-            </Link>
+              </Link>
+            </Row>
             <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
               {siteDescription}
             </p>
-            <ul className="-ml-2.5 flex gap-1.5">
-              {socialLinks.map(link => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    aria-label={link.label}
-                    className="flex size-11 items-center justify-center rounded-lg text-secondary-foreground hover:bg-accent hover:text-foreground"
-                  >
-                    <link.icon aria-hidden className="size-5" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <Row asChild gap="xs" className="-ml-2.5">
+              <ul>
+                {socialLinks.map(link => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      aria-label={link.label}
+                      className="flex size-11 items-center justify-center rounded-lg text-secondary-foreground hover:bg-accent hover:text-foreground"
+                    >
+                      <link.icon aria-hidden className="size-5" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Row>
+          </Column>
           <nav aria-labelledby="footer-series" className="flex-1 basis-50">
             <Eyebrow id="footer-series" className="mb-3.5">
               Series
             </Eyebrow>
-            <ul className="flex flex-col gap-2.5 text-sm">
-              {topics.map(topic => (
-                <li key={topic.slug}>
-                  <Link
-                    href={topicModel.sectionHref(topic)}
-                    className={footerLinkClass}
-                  >
-                    {topic.title}
+            <Column asChild gap="sm">
+              <ul className="text-sm">
+                {topics.map(topic => (
+                  <li key={topic.slug}>
+                    <Link
+                      href={topicModel.sectionHref(topic)}
+                      className={footerLinkClass}
+                    >
+                      {topic.title}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href="/" className={footerLinkClass}>
+                    All articles
                   </Link>
                 </li>
-              ))}
-              <li>
-                <Link href="/" className={footerLinkClass}>
-                  All articles
-                </Link>
-              </li>
-            </ul>
+              </ul>
+            </Column>
           </nav>
           <nav aria-labelledby="footer-project" className="flex-1 basis-50">
             <Eyebrow id="footer-project" className="mb-3.5">
               Project
             </Eyebrow>
-            <ul className="flex flex-col gap-2.5 text-sm">
-              <li>
-                <a href={siteSourceUrl} className={footerLinkClass}>
-                  Source on GitHub
-                </a>
-              </li>
-            </ul>
+            <Column asChild gap="sm">
+              <ul className="text-sm">
+                <li>
+                  <a href={siteSourceUrl} className={footerLinkClass}>
+                    Source on GitHub
+                  </a>
+                </li>
+              </ul>
+            </Column>
           </nav>
-        </div>
-        <div className="mt-12 flex flex-wrap justify-between gap-x-6 gap-y-2 border-t pt-5 text-sm text-muted-foreground">
-          <span>© {siteName}</span>
-          <a
-            href="#top"
-            className="underline-offset-4 hover:text-foreground hover:underline"
-          >
-            Back to top
-          </a>
-        </div>
+        </Row>
+        <Row wrap justify="between" gap="md" asChild className="mt-12">
+          <div className="border-t pt-5 text-sm text-muted-foreground">
+            <span>© {siteName}</span>
+            <a
+              href="#top"
+              className="underline-offset-4 hover:text-foreground hover:underline"
+            >
+              Back to top
+            </a>
+          </div>
+        </Row>
       </div>
     </footer>
   );

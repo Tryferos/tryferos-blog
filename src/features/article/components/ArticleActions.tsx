@@ -3,6 +3,7 @@
 import { IconDownload, IconLink, IconTerminal } from '@tabler/icons-react';
 import { toast } from 'sonner';
 
+import { Row } from '@/components/shared/Row';
 import { Button } from '@/components/ui/Button';
 import { copyToClipboard } from '@/lib/copy-to-clipboard';
 
@@ -10,7 +11,7 @@ type Props = { prompt: string };
 
 export function ArticleActions({ prompt }: Props) {
   return (
-    <div className="mt-7 flex flex-wrap gap-2">
+    <Row wrap gap="sm" className="mt-7">
       <Button
         variant="outline"
         size="lg"
@@ -40,6 +41,6 @@ export function ArticleActions({ prompt }: Props) {
         <IconDownload data-icon="inline-start" />
         Install MCP
       </Button>
-    </div>
+    </Row>
   );
 }

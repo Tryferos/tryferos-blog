@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import { AppPreferences } from '@/components/shared/AppPreferences';
+import { Column } from '@/components/shared/Column';
 import { SiteFooter } from '@/components/shared/SiteFooter';
 import { SiteHeader } from '@/components/shared/SiteHeader';
 import { Toaster } from '@/components/ui/Toaster';
@@ -52,14 +53,16 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         'h-full antialiased',
       )}
     >
-      <body id="top" className="flex min-h-full flex-col">
-        <AppPreferences>
-          <SiteHeader />
-          {children}
-          <SiteFooter />
-          <Toaster />
-        </AppPreferences>
-      </body>
+      <Column asChild className="min-h-full">
+        <body id="top">
+          <AppPreferences>
+            <SiteHeader />
+            {children}
+            <SiteFooter />
+            <Toaster />
+          </AppPreferences>
+        </body>
+      </Column>
     </html>
   );
 }

@@ -1,6 +1,7 @@
 import * as m from 'motion/react-m';
 import { LazyMotion, domAnimation } from 'motion/react';
 
+import { Column } from '@/components/shared/Column';
 import { topics } from '@/data/content.topics';
 import { headerReveal } from '@/data/motion.tokens';
 import { siteDescription, siteName } from '@/data/site.config';
@@ -17,11 +18,11 @@ export function HomeScreen() {
             {siteDescription}
           </p>
         </m.header>
-        <div className="space-y-16">
+        <Column gap="2xl">
           {topics.map((topic, position) => (
             <TopicSection key={topic.slug} topic={topic} position={position} />
           ))}
-        </div>
+        </Column>
       </main>
     </LazyMotion>
   );

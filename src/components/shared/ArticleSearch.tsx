@@ -4,6 +4,7 @@ import { IconSearch } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
+import { Column } from '@/components/shared/Column';
 import { Button } from '@/components/ui/Button';
 import { Command } from '@/components/ui/Command';
 import { Kbd } from '@/components/ui/Kbd';
@@ -68,12 +69,12 @@ export function ArticleSearch({ groups }: Props) {
                     onSelect={goTo}
                     className="*:[svg]:hidden"
                   >
-                    <span className="flex flex-col gap-0.5">
+                    <Column gap="xs">
                       <span className="font-medium">{link.title}</span>
                       <span className="text-xs text-muted-foreground">
                         {link.description}
                       </span>
-                    </span>
+                    </Column>
                   </Command.Item>
                 ))}
               </Command.Group>

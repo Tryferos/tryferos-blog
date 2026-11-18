@@ -30,18 +30,19 @@ export function ArticleSearch({ groups }: Props) {
   return (
     <>
       <Button
-        variant="outline"
+        variant="field"
+        size="field"
         onClick={() => {
           setOpen(true);
         }}
-        className="ml-auto h-10.5 min-w-11 shrink basis-90 justify-start gap-2.5 bg-card pr-2 pl-3.5 font-normal text-muted-foreground shadow-xs hover:border-primary/40"
+        className="ml-auto min-w-11 shrink basis-90"
       >
         <SearchIcon />
         <span className="flex-1 truncate text-left max-sm:sr-only">
           Search articles…
         </span>
         {modLabel && (
-          <Kbd className="border max-sm:hidden">
+          <Kbd className="max-sm:hidden">
             {modLabel} {shortcutKey.toUpperCase()}
           </Kbd>
         )}
@@ -55,10 +56,8 @@ export function ArticleSearch({ groups }: Props) {
       >
         <Command>
           <Command.Input placeholder="Search articles…" />
-          <Command.List className="p-1">
-            <Command.Empty className="text-muted-foreground">
-              No articles found.
-            </Command.Empty>
+          <Command.List>
+            <Command.Empty>No articles found.</Command.Empty>
             {groups.map(group => (
               <Command.Group key={group.title} heading={group.title}>
                 {group.links.map(link => (
@@ -67,11 +66,13 @@ export function ArticleSearch({ groups }: Props) {
                     value={link.href}
                     keywords={[link.title, link.description]}
                     onSelect={goTo}
-                    className="flex-col items-start gap-0.5 *:[svg]:hidden"
+                    className="*:[svg]:hidden"
                   >
-                    <span className="font-medium">{link.title}</span>
-                    <span className="text-xs text-muted-foreground">
-                      {link.description}
+                    <span className="flex flex-col gap-0.5">
+                      <span className="font-medium">{link.title}</span>
+                      <span className="text-xs text-muted-foreground">
+                        {link.description}
+                      </span>
                     </span>
                   </Command.Item>
                 ))}

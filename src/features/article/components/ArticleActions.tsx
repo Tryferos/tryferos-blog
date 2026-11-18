@@ -45,7 +45,6 @@ function ActionButton({ primary, onClick, children }: ActionButtonProps) {
       variant={primary ? 'default' : 'outline'}
       size="lg"
       onClick={onClick}
-      className="h-9.5 gap-2 px-3.5"
     >
       {children}
     </Button>

@@ -13,13 +13,13 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="ghost"
+      variant="subtle"
       size="icon"
       aria-label="Toggle theme"
       onClick={() => {
         setTheme(next);
       }}
-      className="-mr-2.5 size-11 text-muted-foreground"
+      className="-mr-2.5 size-11"
     >
       <MoonIcon className="size-4.5 dark:hidden" />
       <SunIcon className="hidden size-4.5 dark:block" />

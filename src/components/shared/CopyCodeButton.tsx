@@ -10,19 +10,22 @@ type Props = { code: string; className?: string };
 
 export function CopyCodeButton({ code, className }: Props) {
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      aria-label="Copy code"
+    <div
       className={cn(
-        'text-muted-foreground group-hover:opacity-100 focus-visible:opacity-100 pointer-fine:opacity-0',
+        'group-hover:opacity-100 has-focus-visible:opacity-100 pointer-fine:opacity-0',
         className,
       )}
-      onClick={() => {
-        void copyToClipboard(code, 'Copied to clipboard');
-      }}
     >
-      <CopyIcon />
-    </Button>
+      <Button
+        variant="subtle"
+        size="icon"
+        aria-label="Copy code"
+        onClick={() => {
+          void copyToClipboard(code, 'Copied to clipboard');
+        }}
+      >
+        <CopyIcon />
+      </Button>
+    </div>
   );
 }

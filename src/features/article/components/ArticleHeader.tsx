@@ -12,7 +12,7 @@ export function ArticleHeader({ topic, article }: Props) {
   return (
     <header className="max-w-3xl">
       <Breadcrumb>
-        <Breadcrumb.List className="gap-2">
+        <Breadcrumb.List>
           <Breadcrumb.Item>
             <Breadcrumb.Link asChild>
               <Link href="/">Articles</Link>
@@ -20,10 +20,7 @@ export function ArticleHeader({ topic, article }: Props) {
           </Breadcrumb.Item>
           <Breadcrumb.Separator />
           <Breadcrumb.Item>
-            <Breadcrumb.Link
-              asChild
-              className="font-medium text-link underline-offset-4 hover:text-link hover:underline"
-            >
+            <Breadcrumb.Link asChild variant="accent">
               <Link href={topicModel.sectionHref(topic)}>{topic.title}</Link>
             </Breadcrumb.Link>
           </Breadcrumb.Item>

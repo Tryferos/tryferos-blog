@@ -1,4 +1,14 @@
-Agents comment everything: `// Added email validation`, `// Updated to use the new API`, `/* Fonts */`.
+Agents often add a paragraph to explain a simple check.
+
+```ts
+// Validate the email address before submitting the form.
+// If the address is invalid, show a validation error to the user
+// and return early to prevent the form from being submitted.
+if (!isValidEmail(email)) {
+  setError('Enter a valid email address.');
+  return;
+}
+```
 
 ## Why it hurts
 
@@ -30,6 +40,8 @@ Anything the code already says. Fix the code instead:
 
 ```ts
 // Before
+// Start each topic animation 50 ms after the previous one.
+// Add 1 to the zero-based index so the first topic also has a delay.
 const delay = 0.05 * (topicIndex + 1);
 
 // After

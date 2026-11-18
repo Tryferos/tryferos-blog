@@ -21,17 +21,28 @@ export function TableOfContents({ sections }: Props) {
         <ol className="border-l">
           {sections.map(section => (
             <li key={section.id} className="-ml-px">
-              <a
-                href={`#${section.id}`}
-                aria-current={section.id === activeId ? 'location' : undefined}
-                className="block border-l-2 border-transparent py-1.5 pl-3.5 text-sm text-muted-foreground hover:text-foreground current:border-primary current:font-medium current:text-foreground"
-              >
-                {section.title}
-              </a>
+              <SectionLink
+                section={section}
+                isActive={section.id === activeId}
+              />
             </li>
           ))}
         </ol>
       </Column>
     </nav>
+  );
+}
+
+type SectionLinkProps = { section: Section; isActive: boolean };
+
+function SectionLink({ section, isActive }: SectionLinkProps) {
+  return (
+    <a
+      href={`#${section.id}`}
+      aria-current={isActive ? 'location' : undefined}
+      className="block border-l-2 border-transparent py-1.5 pl-3.5 text-sm text-muted-foreground hover:text-foreground current:border-primary current:font-medium current:text-foreground"
+    >
+      {section.title}
+    </a>
   );
 }

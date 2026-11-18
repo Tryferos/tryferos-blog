@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { Command } from '@/components/ui/Command';
 import { Kbd } from '@/components/ui/Kbd';
 import { useModLabel, useModShortcut } from '@/lib/keyboard-shortcut';
-import type { SearchGroup } from '@/types/content.types';
+import type { ArticleLink, SearchGroup } from '@/types/content.types';
 
 const shortcutKey = 'k';
 
@@ -18,7 +18,6 @@ type Props = { groups: SearchGroup[] };
 export function ArticleSearch({ groups }: Props) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const modLabel = useModLabel();
   useModShortcut(shortcutKey, () => {
     setOpen(isOpen => !isOpen);
   });
@@ -30,24 +29,11 @@ export function ArticleSearch({ groups }: Props) {
 
   return (
     <>
-      <Button
-        variant="field"
-        size="field"
-        onClick={() => {
+      <SearchTrigger
+        onOpen={() => {
           setOpen(true);
         }}
-        className="ml-auto min-w-11 shrink basis-90"
-      >
-        <IconSearch />
-        <span className="flex-1 truncate text-left max-sm:sr-only">
-          Search articles…
-        </span>
-        {modLabel && (
-          <Kbd className="max-sm:hidden">
-            {modLabel} {shortcutKey.toUpperCase()}
-          </Kbd>
-        )}
-      </Button>
+      />
       <Command.Dialog
         open={open}
         onOpenChange={setOpen}
@@ -55,33 +41,78 @@ export function ArticleSearch({ groups }: Props) {
         description="Find an article by its title or description."
         className="max-w-xl sm:max-w-xl"
       >
-        <Command>
-          <Command.Input placeholder="Search articles…" />
-          <Command.List>
-            <Command.Empty>No articles found.</Command.Empty>
-            {groups.map(group => (
-              <Command.Group key={group.title} heading={group.title}>
-                {group.links.map(link => (
-                  <Command.Item
-                    key={link.href}
-                    value={link.href}
-                    keywords={[link.title, link.description]}
-                    onSelect={goTo}
-                    className="*:[svg]:hidden"
-                  >
-                    <Column gap="xs">
-                      <span className="font-medium">{link.title}</span>
-                      <span className="text-xs text-muted-foreground">
-                        {link.description}
-                      </span>
-                    </Column>
-                  </Command.Item>
-                ))}
-              </Command.Group>
-            ))}
-          </Command.List>
-        </Command>
+        <SearchResults groups={groups} onSelect={goTo} />
       </Command.Dialog>
     </>
+  );
+}
+
+type SearchTriggerProps = { onOpen: () => void };
+
+function SearchTrigger({ onOpen }: SearchTriggerProps) {
+  const modLabel = useModLabel();
+  return (
+    <Button
+      variant="field"
+      size="field"
+      onClick={onOpen}
+      className="ml-auto min-w-11 shrink basis-90"
+    >
+      <IconSearch />
+      <span className="flex-1 truncate text-left max-sm:sr-only">
+        Search articles…
+      </span>
+      {modLabel && (
+        <Kbd className="max-sm:hidden">
+          {modLabel} {shortcutKey.toUpperCase()}
+        </Kbd>
+      )}
+    </Button>
+  );
+}
+
+type SearchResultsProps = {
+  groups: SearchGroup[];
+  onSelect: (href: string) => void;
+};
+
+function SearchResults({ groups, onSelect }: SearchResultsProps) {
+  return (
+    <Command>
+      <Command.Input placeholder="Search articles…" />
+      <Command.List>
+        <Command.Empty>No articles found.</Command.Empty>
+        {groups.map(group => (
+          <Command.Group key={group.title} heading={group.title}>
+            {group.links.map(link => (
+              <SearchResult key={link.href} link={link} onSelect={onSelect} />
+            ))}
+          </Command.Group>
+        ))}
+      </Command.List>
+    </Command>
+  );
+}
+
+type SearchResultProps = {
+  link: ArticleLink;
+  onSelect: (href: string) => void;
+};
+
+function SearchResult({ link, onSelect }: SearchResultProps) {
+  return (
+    <Command.Item
+      value={link.href}
+      keywords={[link.title, link.description]}
+      onSelect={onSelect}
+      className="*:[svg]:hidden"
+    >
+      <Column gap="xs">
+        <span className="font-medium">{link.title}</span>
+        <span className="text-xs text-muted-foreground">
+          {link.description}
+        </span>
+      </Column>
+    </Command.Item>
   );
 }

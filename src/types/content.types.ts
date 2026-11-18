@@ -15,7 +15,7 @@ export type Article = {
   load: () => Promise<ArticleModule>;
 };
 
-type ArticleLink = {
+export type ArticleLink = {
   href: string;
   title: string;
   description: string;

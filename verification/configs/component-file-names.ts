@@ -16,7 +16,7 @@ const fileComposition = createFileComposition({
     {
       filePattern: [
         'src/**/components/!(*.shared).tsx',
-        'src/components/ui/*.tsx',
+        'src/components/shared/*.tsx',
       ],
       rules: [
         {

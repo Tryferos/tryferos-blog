@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 import { ArticleActions } from './ArticleActions';
-import { Icon } from '@/components/ui/Icon';
-import { PublishedDate } from '@/components/ui/PublishedDate';
+import { Icon } from '@/components/shared/Icon';
+import { PublishedDate } from '@/components/shared/PublishedDate';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
 

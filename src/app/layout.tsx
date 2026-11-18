@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
-import { AppPreferences } from '@/components/AppPreferences';
-import { SiteFooter } from '@/components/SiteFooter';
-import { SiteHeader } from '@/components/site-header/SiteHeader';
-import { Toaster } from '@/components/ui/Toaster';
+import { AppPreferences } from '@/components/shared/AppPreferences';
+import { SiteFooter } from '@/components/shared/SiteFooter';
+import { SiteHeader } from '@/components/shared/SiteHeader';
+import { Toaster } from '@/components/shared/Toaster';
 import { siteDescription, siteName } from '@/data/site.config';
 import { cn } from '@/lib/utils';
 

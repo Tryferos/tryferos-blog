@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { Eyebrow } from '@/components/ui/Eyebrow';
-import { Icon } from '@/components/ui/Icon';
+import { Eyebrow } from '@/components/shared/Eyebrow';
+import { Icon } from '@/components/shared/Icon';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
 

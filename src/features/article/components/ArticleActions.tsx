@@ -4,7 +4,7 @@ import { Button } from '@ui-sdk/react/button';
 import { toast } from '@ui-sdk/react/toast';
 import type { ReactNode } from 'react';
 
-import { Icon } from '@/components/ui/Icon';
+import { Icon } from '@/components/shared/Icon';
 import { copyToClipboard } from '@/lib/copy-to-clipboard';
 import { cn } from '@/lib/utils';
 

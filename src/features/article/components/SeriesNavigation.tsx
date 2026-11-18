@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Icon } from '@/components/ui/Icon';
+import { Icon } from '@/components/shared/Icon';
 import { cn } from '@/lib/utils';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';

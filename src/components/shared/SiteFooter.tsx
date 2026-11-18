@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { BrandMark } from '@/components/BrandMark';
-import { Eyebrow } from '@/components/ui/Eyebrow';
-import { Icon } from '@/components/ui/Icon';
+import { BrandMark } from '@/components/shared/BrandMark';
+import { Eyebrow } from '@/components/shared/Eyebrow';
+import { Icon } from '@/components/shared/Icon';
 import { topics } from '@/data/content.topics';
 import { socialLinks } from '@/data/footer.links';
 import {

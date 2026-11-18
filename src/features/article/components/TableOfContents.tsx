@@ -1,6 +1,6 @@
 'use client';
 
-import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Eyebrow } from '@/components/shared/Eyebrow';
 import type { Section } from '@/types/content.types';
 
 import { useActiveSection } from '../hooks/useActiveSection';

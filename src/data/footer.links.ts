@@ -1,4 +1,4 @@
-import type { IconName } from '@/components/ui/Icon';
+import type { IconName } from '@/components/shared/Icon';
 
 type SocialLink = { label: string; href: string; icon: IconName };
 

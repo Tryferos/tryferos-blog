@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { CopyCodeButton } from '@/components/ui/CopyCodeButton';
+import { CopyCodeButton } from '@/components/shared/CopyCodeButton';
 import { nodeText } from '@/lib/node-text';
 
 type Props = ComponentProps<'pre'>;

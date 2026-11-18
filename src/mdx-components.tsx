@@ -2,7 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import type { ComponentProps } from 'react';
 
-import { CodeBlock } from '@/components/ui/CodeBlock';
+import { CodeBlock } from '@/components/shared/CodeBlock';
 import { cn } from '@/lib/utils';
 
 const linkClasses =

@@ -37,6 +37,7 @@ export default defineConfig({
         'components/no-utility-types': 'off',
         'components/props-above-component': 'off',
         'naming/identifier-casing': 'off',
+        'shadcn/no-restyle': 'off',
         'shadcn/no-arbitrary-values': 'off',
         'shadcn/no-inline-styles': 'off',
         'shadcn/require-static-classes': 'off',

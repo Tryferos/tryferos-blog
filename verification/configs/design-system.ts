@@ -1,5 +1,5 @@
 // WHY: Pages that pick their own colors, sizes and one-off values drift away from the theme in globals.css.
-// SOLVES: Allows only Tailwind classes built from theme tokens, written so the linter can read them.
+// SOLVES: Lets components/ui own the look of its components, so app code may only place them, and allows only Tailwind classes built from theme tokens, written so the linter can read them.
 import path from 'node:path';
 import { defineConfig } from 'oxlint';
 
@@ -14,6 +14,7 @@ export default defineConfig({
       files: ['src/**/*.{ts,tsx}'],
       jsPlugins: [shadcnPlugin],
       rules: {
+        'shadcn/no-restyle': ['error', { allow: ['layout'] }],
         'shadcn/no-raw-colors': 'error',
         'shadcn/no-arbitrary-values': 'error',
         'shadcn/no-inline-styles': 'error',

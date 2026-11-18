@@ -3,10 +3,15 @@ import Link from 'next/link';
 import type { ComponentProps } from 'react';
 
 import { CodeBlock } from '@/components/shared/CodeBlock';
+import { Separator } from '@/components/ui/Separator';
+import { Table } from '@/components/ui/Table';
+import { nodeText } from '@/lib/node-text';
 import { cn } from '@/lib/utils';
 
 const linkClasses =
   'text-link underline decoration-link/40 underline-offset-4 transition-colors hover:decoration-link';
+
+const trailingNewline = /\n$/;
 
 const components: MDXComponents = {
   h2: ({ children, ...props }: ComponentProps<'h2'>) => (
@@ -58,7 +63,7 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  hr: (props: ComponentProps<'hr'>) => <hr className="my-12" {...props} />,
+  hr: () => <Separator className="my-12" />,
   code: ({ className, ...props }: ComponentProps<'code'>) => (
     <code
       className={cn(
@@ -68,21 +73,19 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  pre: CodeBlock,
+  pre: ({ children }: ComponentProps<'pre'>) => (
+    <CodeBlock code={nodeText(children).replace(trailingNewline, '')} />
+  ),
   table: (props: ComponentProps<'table'>) => (
-    <div className="my-6 overflow-x-auto">
-      <table className="w-full text-left text-base" {...props} />
+    <div className="my-6">
+      <Table {...props} />
     </div>
   ),
-  th: (props: ComponentProps<'th'>) => (
-    <th
-      className="border-b px-3 py-2 font-semibold text-foreground"
-      {...props}
-    />
-  ),
-  td: (props: ComponentProps<'td'>) => (
-    <td className="border-b px-3 py-2" {...props} />
-  ),
+  thead: Table.Header,
+  tbody: Table.Body,
+  tr: Table.Row,
+  th: Table.Head,
+  td: Table.Cell,
 };
 
 export function useMDXComponents(): MDXComponents {

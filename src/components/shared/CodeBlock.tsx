@@ -1,23 +1,16 @@
-import type { ComponentProps } from 'react';
+'use client';
 
-import { CopyCodeButton } from '@/components/shared/CopyCodeButton';
-import { nodeText } from '@/lib/node-text';
+import { CodeBlock as CodeBlockFrame } from '@/components/ui/CodeBlock';
 
-type Props = ComponentProps<'pre'>;
+type Props = { code: string };
 
-export function CodeBlock({ children, ...props }: Props) {
+export function CodeBlock({ code }: Props) {
   return (
-    <div className="group relative my-6">
-      <pre
-        className="overflow-x-auto rounded-lg border bg-code p-4 pr-14 font-mono text-sm leading-relaxed text-code-foreground [&>code]:bg-transparent [&>code]:p-0 [&>code]:text-inherit"
-        {...props}
-      >
-        {children}
-      </pre>
-      <CopyCodeButton
-        code={nodeText(children)}
-        className="absolute top-2 right-2"
-      />
-    </div>
+    <CodeBlockFrame variant="prose" className="my-6">
+      <CodeBlockFrame.Actions>
+        <CodeBlockFrame.CopyButton value={code} />
+      </CodeBlockFrame.Actions>
+      <CodeBlockFrame.Content>{code}</CodeBlockFrame.Content>
+    </CodeBlockFrame>
   );
 }

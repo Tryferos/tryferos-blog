@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { PublishedDate } from '@/components/shared/PublishedDate';
+import { Item } from '@/components/ui/Item';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
 
@@ -8,22 +9,23 @@ type Props = { topic: Topic; article: Article };
 
 export function ArticleListItem({ topic, article }: Props) {
   return (
-    <li>
-      <Link
-        href={topicModel.articleHref(topic, article)}
-        className="group flex gap-4 py-5 outline-none focus-visible:ring-3 focus-visible:ring-ring"
-      >
-        <span className="w-6 shrink-0 pt-0.5 font-mono text-sm text-primary tabular-nums">
-          {topicModel.partLabel(topic, article)}
-        </span>
-        <span className="flex flex-col gap-1">
-          <span className="font-header text-lg font-medium underline-offset-4 group-hover:underline">
-            {article.title}
-          </span>
-          <span className="text-prose">{article.description}</span>
-          <PublishedDate date={article.publishedAt} />
-        </span>
-      </Link>
+    <li className="py-5">
+      <Item asChild variant="plain" size="flush">
+        <Link href={topicModel.articleHref(topic, article)}>
+          <Item.Media>
+            <span className="w-6 font-mono text-sm text-primary tabular-nums">
+              {topicModel.partLabel(topic, article)}
+            </span>
+          </Item.Media>
+          <Item.Content>
+            <Item.Title size="lg">{article.title}</Item.Title>
+            <Item.Description variant="prose">
+              {article.description}
+            </Item.Description>
+            <PublishedDate date={article.publishedAt} />
+          </Item.Content>
+        </Link>
+      </Item>
     </li>
   );
 }

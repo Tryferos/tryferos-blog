@@ -1,9 +1,8 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { DownloadIcon, LinkIcon, TerminalIcon } from 'lucide-react';
 import { toast } from 'sonner';
 
-import { Icon } from '@/components/shared/Icon';
 import { Button } from '@/components/ui/Button';
 import { copyToClipboard } from '@/lib/copy-to-clipboard';
 
@@ -12,41 +11,35 @@ type Props = { prompt: string };
 export function ArticleActions({ prompt }: Props) {
   return (
     <div className="mt-7 flex flex-wrap gap-2">
-      <ActionButton
-        onClick={() => copyToClipboard(window.location.href, 'Link copied')}
+      <Button
+        variant="outline"
+        size="lg"
+        onClick={() => {
+          void copyToClipboard(window.location.href, 'Link copied');
+        }}
       >
-        <Icon name="link" />
+        <LinkIcon data-icon="inline-start" />
         Copy link
-      </ActionButton>
-      <ActionButton onClick={() => copyToClipboard(prompt, 'Prompt copied')}>
-        <Icon name="terminal" />
-        Copy prompt
-      </ActionButton>
-      <ActionButton
-        primary
-        onClick={() => toast.error('The MCP server isn’t available yet')}
+      </Button>
+      <Button
+        variant="outline"
+        size="lg"
+        onClick={() => {
+          void copyToClipboard(prompt, 'Prompt copied');
+        }}
       >
-        <Icon name="download" />
+        <TerminalIcon data-icon="inline-start" />
+        Copy prompt
+      </Button>
+      <Button
+        size="lg"
+        onClick={() => {
+          toast.error('The MCP server isn’t available yet');
+        }}
+      >
+        <DownloadIcon data-icon="inline-start" />
         Install MCP
-      </ActionButton>
+      </Button>
     </div>
-  );
-}
-
-type ActionButtonProps = {
-  primary?: boolean;
-  onClick: () => unknown;
-  children: ReactNode;
-};
-
-function ActionButton({ primary, onClick, children }: ActionButtonProps) {
-  return (
-    <Button
-      variant={primary ? 'default' : 'outline'}
-      size="lg"
-      onClick={onClick}
-    >
-      {children}
-    </Button>
   );
 }

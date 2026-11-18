@@ -1,7 +1,8 @@
+import { ArrowRightIcon } from 'lucide-react';
 import Link from 'next/link';
 
 import { Eyebrow } from '@/components/shared/Eyebrow';
-import { Icon } from '@/components/shared/Icon';
+import { Item } from '@/components/ui/Item';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
 
@@ -17,24 +18,23 @@ export function KeepReading({ topic, article }: Props) {
         Keep reading
       </Eyebrow>
       {upNext && (
-        <Link
-          href={topicModel.articleHref(topic, upNext)}
-          className="group flex flex-col gap-1.5"
-        >
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-link">
-            Up next in this series
-            <Icon name="arrow-right" className="size-3.5" />
-          </span>
-          <span className="font-header leading-snug font-medium underline-offset-4 group-hover:underline">
-            {upNext.title}
-          </span>
-          <span className="text-sm text-muted-foreground">
-            {upNext.description}
-          </span>
-          <span className="text-xs text-muted-foreground">
-            Part {topicModel.partOf(topic, upNext)}
-          </span>
-        </Link>
+        <Item asChild variant="plain" size="flush">
+          <Link href={topicModel.articleHref(topic, upNext)}>
+            <Item.Header className="justify-start">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-link">
+                Up next in this series
+                <ArrowRightIcon className="size-3.5" />
+              </span>
+            </Item.Header>
+            <Item.Content>
+              <Item.Title size="md">{upNext.title}</Item.Title>
+              <Item.Description>{upNext.description}</Item.Description>
+              <span className="text-xs text-muted-foreground">
+                Part {topicModel.partOf(topic, upNext)}
+              </span>
+            </Item.Content>
+          </Link>
+        </Item>
       )}
       {more.length > 0 && (
         <>
@@ -43,18 +43,17 @@ export function KeepReading({ topic, article }: Props) {
           </p>
           <ul className="flex flex-col">
             {more.map(other => (
-              <li key={other.slug} className="border-b">
-                <Link
-                  href={topicModel.articleHref(topic, other)}
-                  className="group flex flex-col gap-1 py-3"
-                >
-                  <span className="font-header text-sm leading-snug font-medium text-prose underline-offset-4 group-hover:underline">
-                    {other.title}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    Part {topicModel.partOf(topic, other)}
-                  </span>
-                </Link>
+              <li key={other.slug} className="border-b py-3">
+                <Item asChild variant="plain" size="flush">
+                  <Link href={topicModel.articleHref(topic, other)}>
+                    <Item.Content>
+                      <Item.Title size="sm">{other.title}</Item.Title>
+                      <span className="text-xs text-muted-foreground">
+                        Part {topicModel.partOf(topic, other)}
+                      </span>
+                    </Item.Content>
+                  </Link>
+                </Item>
               </li>
             ))}
           </ul>
@@ -65,7 +64,7 @@ export function KeepReading({ topic, article }: Props) {
         className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-medium text-link hover:text-foreground"
       >
         View the whole series
-        <Icon name="arrow-right" className="size-3.5" />
+        <ArrowRightIcon className="size-3.5" />
       </Link>
     </section>
   );

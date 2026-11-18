@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { DropdownMenu as DropdownMenuPrimitive } from 'radix-ui';
-import { CheckIcon, ChevronRightIcon } from 'lucide-react';
+import { IconCheck, IconChevronRight } from '@tabler/icons-react';
 
 function DropdownMenuRoot({
   ...props
@@ -108,7 +108,7 @@ function DropdownMenuCheckboxItem({
         data-slot="dropdown-menu-checkbox-item-indicator"
       >
         <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon />
+          <IconCheck />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -150,7 +150,7 @@ function DropdownMenuRadioItem({
         data-slot="dropdown-menu-radio-item-indicator"
       >
         <DropdownMenuPrimitive.ItemIndicator>
-          <CheckIcon />
+          <IconCheck />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -232,7 +232,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto" />
+      <IconChevronRight className="ml-auto" />
     </DropdownMenuPrimitive.SubTrigger>
   );
 }

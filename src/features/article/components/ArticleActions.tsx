@@ -1,6 +1,6 @@
 'use client';
 
-import { DownloadIcon, LinkIcon, TerminalIcon } from 'lucide-react';
+import { IconDownload, IconLink, IconTerminal } from '@tabler/icons-react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/Button';
@@ -18,7 +18,7 @@ export function ArticleActions({ prompt }: Props) {
           void copyToClipboard(window.location.href, 'Link copied');
         }}
       >
-        <LinkIcon data-icon="inline-start" />
+        <IconLink data-icon="inline-start" />
         Copy link
       </Button>
       <Button
@@ -28,7 +28,7 @@ export function ArticleActions({ prompt }: Props) {
           void copyToClipboard(prompt, 'Prompt copied');
         }}
       >
-        <TerminalIcon data-icon="inline-start" />
+        <IconTerminal data-icon="inline-start" />
         Copy prompt
       </Button>
       <Button
@@ -37,7 +37,7 @@ export function ArticleActions({ prompt }: Props) {
           toast.error('The MCP server isn’t available yet');
         }}
       >
-        <DownloadIcon data-icon="inline-start" />
+        <IconDownload data-icon="inline-start" />
         Install MCP
       </Button>
     </div>

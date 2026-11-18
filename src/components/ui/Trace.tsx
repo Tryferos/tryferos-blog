@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 import { Collapsible } from '@/components/ui/Collapsible';
-import { ChevronRightIcon } from 'lucide-react';
+import { IconChevronRight } from '@tabler/icons-react';
 
 function TraceRoot({ className, ...props }: React.ComponentProps<'div'>) {
   return (
@@ -115,7 +115,7 @@ function TraceCollapsibleTrigger({
     >
       {children}
       <TraceIcon className="transition-transform group-aria-expanded/trace-collapsible-trigger:rotate-90">
-        <ChevronRightIcon />
+        <IconChevronRight />
       </TraceIcon>
     </Collapsible.Trigger>
   );

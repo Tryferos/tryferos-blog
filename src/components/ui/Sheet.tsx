@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { Dialog as SheetPrimitive } from 'radix-ui';
 
 import { Button } from '@/components/ui/Button';
-import { XIcon } from 'lucide-react';
+import { IconX } from '@tabler/icons-react';
 
 function SheetRoot({
   ...props
@@ -77,7 +77,7 @@ function SheetContent({
               className="absolute top-3 right-3"
               size="icon-sm"
             >
-              <XIcon />
+              <IconX />
               <span className="sr-only">Close</span>
             </Button>
           </SheetPrimitive.Close>

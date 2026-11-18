@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { Slot } from 'radix-ui';
-import { ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react';
+import { IconChevronRight, IconDots } from '@tabler/icons-react';
 
 function BreadcrumbRoot({ className, ...props }: React.ComponentProps<'nav'>) {
   return (
@@ -94,7 +94,7 @@ function BreadcrumbSeparator({
       className={cn('[&>svg]:size-3.5', className)}
       {...props}
     >
-      {children ?? <ChevronRightIcon />}
+      {children ?? <IconChevronRight />}
     </li>
   );
 }
@@ -114,7 +114,7 @@ function BreadcrumbEllipsis({
       )}
       {...props}
     >
-      <MoreHorizontalIcon />
+      <IconDots />
       <span className="sr-only">More</span>
     </span>
   );

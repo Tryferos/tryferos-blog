@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from 'lucide-react';
+import { IconArrowRight } from '@tabler/icons-react';
 import Link from 'next/link';
 
 import { Eyebrow } from '@/components/shared/Eyebrow';
@@ -23,7 +23,7 @@ export function KeepReading({ topic, article }: Props) {
             <Item.Header className="justify-start">
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-link">
                 Up next in this series
-                <ArrowRightIcon className="size-3.5" />
+                <IconArrowRight className="size-3.5" />
               </span>
             </Item.Header>
             <Item.Content>
@@ -64,7 +64,7 @@ export function KeepReading({ topic, article }: Props) {
         className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-medium text-link hover:text-foreground"
       >
         View the whole series
-        <ArrowRightIcon className="size-3.5" />
+        <IconArrowRight className="size-3.5" />
       </Link>
     </section>
   );

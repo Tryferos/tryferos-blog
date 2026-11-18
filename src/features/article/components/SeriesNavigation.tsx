@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import Link from 'next/link';
 
 import { Item } from '@/components/ui/Item';
@@ -65,9 +65,9 @@ function PagerLink({ href, label, title, direction }: PagerLinkProps) {
           </span>
         </Item.Header>
         <Item.Title size="lg">
-          {!isNext && <ArrowLeftIcon className="size-4.5 text-primary" />}
+          {!isNext && <IconArrowLeft className="size-4.5 text-primary" />}
           {title}
-          {isNext && <ArrowRightIcon className="size-4.5 text-primary" />}
+          {isNext && <IconArrowRight className="size-4.5 text-primary" />}
         </Item.Title>
       </Link>
     </Item>

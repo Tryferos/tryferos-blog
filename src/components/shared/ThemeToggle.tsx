@@ -1,6 +1,6 @@
 'use client';
 
-import { MoonIcon, SunIcon } from 'lucide-react';
+import { IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from 'next-themes';
 
 import { Button } from '@/components/ui/Button';
@@ -21,8 +21,8 @@ export function ThemeToggle() {
       }}
       className="-mr-2.5 size-11"
     >
-      <MoonIcon className="size-4.5 dark:hidden" />
-      <SunIcon className="hidden size-4.5 dark:block" />
+      <IconMoon className="size-4.5 dark:hidden" />
+      <IconSun className="hidden size-4.5 dark:block" />
     </Button>
   );
 }

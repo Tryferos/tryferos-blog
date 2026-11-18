@@ -1,6 +1,6 @@
 'use client';
 
-import { SearchIcon } from 'lucide-react';
+import { IconSearch } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -37,7 +37,7 @@ export function ArticleSearch({ groups }: Props) {
         }}
         className="ml-auto min-w-11 shrink basis-90"
       >
-        <SearchIcon />
+        <IconSearch />
         <span className="flex-1 truncate text-left max-sm:sr-only">
           Search articles…
         </span>

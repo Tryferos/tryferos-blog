@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 import { Dialog } from '@/components/ui/Dialog';
 import { InputGroup } from '@/components/ui/InputGroup';
-import { SearchIcon, CheckIcon } from 'lucide-react';
+import { IconCheck, IconSearch } from '@tabler/icons-react';
 
 function CommandRoot({
   className,
@@ -72,7 +72,7 @@ function CommandInput({
           {...props}
         />
         <InputGroup.Addon>
-          <SearchIcon className="size-4 shrink-0 opacity-50" />
+          <IconSearch className="size-4 shrink-0 opacity-50" />
         </InputGroup.Addon>
       </InputGroup>
     </div>
@@ -152,7 +152,7 @@ function CommandItem({
       {...props}
     >
       {children}
-      <CheckIcon className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
+      <IconCheck className="ml-auto opacity-0 group-has-data-[slot=command-shortcut]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
     </CommandPrimitive.Item>
   );
 }

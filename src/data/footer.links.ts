@@ -1,13 +1,22 @@
-import type { IconName } from '@/components/shared/Icon';
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+  type Icon,
+} from '@tabler/icons-react';
 
-type SocialLink = { label: string; href: string; icon: IconName };
+type SocialLink = { label: string; href: string; icon: Icon };
 
 export const socialLinks: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com/Tryferos', icon: 'github' },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/Tryferos',
+    icon: IconBrandGithub,
+  },
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/tryferos',
-    icon: 'linkedin',
+    icon: IconBrandLinkedin,
   },
-  { label: 'X', href: 'https://x.com/tryferos', icon: 'x' },
+  { label: 'X', href: 'https://x.com/tryferos', icon: IconBrandX },
 ];

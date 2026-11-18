@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import { BrandMark } from '@/components/shared/BrandMark';
 import { Eyebrow } from '@/components/shared/Eyebrow';
-import { Icon } from '@/components/shared/Icon';
 import { topics } from '@/data/content.topics';
 import { socialLinks } from '@/data/footer.links';
 import {
@@ -44,7 +43,7 @@ export function SiteFooter() {
                     aria-label={link.label}
                     className="flex size-11 items-center justify-center rounded-lg text-secondary-foreground hover:bg-accent hover:text-foreground"
                   >
-                    <Icon name={link.icon} className="size-5" />
+                    <link.icon aria-hidden className="size-5" />
                   </a>
                 </li>
               ))}

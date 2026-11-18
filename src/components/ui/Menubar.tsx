@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { Menubar as MenubarPrimitive } from 'radix-ui';
-import { CheckIcon, ChevronRightIcon } from 'lucide-react';
+import { IconCheck, IconChevronRight } from '@tabler/icons-react';
 
 function MenubarRoot({
   className,
@@ -132,7 +132,7 @@ function MenubarCheckboxItem({
     >
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenubarPrimitive.ItemIndicator>
-          <CheckIcon />
+          <IconCheck />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -160,7 +160,7 @@ function MenubarRadioItem({
     >
       <span className="pointer-events-none absolute left-1.5 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4">
         <MenubarPrimitive.ItemIndicator>
-          <CheckIcon />
+          <IconCheck />
         </MenubarPrimitive.ItemIndicator>
       </span>
       {children}
@@ -242,7 +242,7 @@ function MenubarSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto size-4" />
+      <IconChevronRight className="ml-auto size-4" />
     </MenubarPrimitive.SubTrigger>
   );
 }

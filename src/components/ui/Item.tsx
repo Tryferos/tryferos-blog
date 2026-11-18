@@ -41,11 +41,13 @@ const itemVariants = cva(
         default: 'border-transparent',
         outline: 'border-border',
         muted: 'border-transparent bg-muted/50',
+        plain: 'border-transparent [a]:hover:bg-transparent',
       },
       size: {
         default: 'gap-2.5 px-3 py-2.5',
         sm: 'gap-2.5 px-3 py-2.5',
         xs: 'gap-2 px-2.5 py-2 in-data-[slot=dropdown-menu-content]:p-0',
+        flush: 'gap-x-4 gap-y-1.5 p-0',
       },
     },
     defaultVariants: {
@@ -120,27 +122,62 @@ function ItemContent({ className, ...props }: React.ComponentProps<'div'>) {
   );
 }
 
-function ItemTitle({ className, ...props }: React.ComponentProps<'div'>) {
+const itemTitleVariants = cva(
+  'flex w-fit items-center gap-2 leading-snug font-medium underline-offset-4',
+  {
+    variants: {
+      size: {
+        default: 'line-clamp-1 text-sm',
+        sm: 'font-header text-sm group-hover/item:underline',
+        md: 'font-header text-base group-hover/item:underline',
+        lg: 'font-header text-lg group-hover/item:underline',
+      },
+    },
+    defaultVariants: {
+      size: 'default',
+    },
+  },
+);
+
+function ItemTitle({
+  className,
+  size = 'default',
+  ...props
+}: React.ComponentProps<'div'> & VariantProps<typeof itemTitleVariants>) {
   return (
     <div
       data-slot="item-title"
-      className={cn(
-        'line-clamp-1 flex w-fit items-center gap-2 text-sm leading-snug font-medium underline-offset-4',
-        className,
-      )}
+      className={cn(itemTitleVariants({ size, className }))}
       {...props}
     />
   );
 }
 
-function ItemDescription({ className, ...props }: React.ComponentProps<'p'>) {
+const itemDescriptionVariants = cva(
+  'text-left font-normal [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary',
+  {
+    variants: {
+      variant: {
+        default:
+          'line-clamp-2 text-sm leading-normal text-muted-foreground group-data-[size=xs]/item:text-xs',
+        prose: 'text-base leading-relaxed text-prose',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
+function ItemDescription({
+  className,
+  variant = 'default',
+  ...props
+}: React.ComponentProps<'p'> & VariantProps<typeof itemDescriptionVariants>) {
   return (
     <p
       data-slot="item-description"
-      className={cn(
-        'line-clamp-2 text-left text-sm leading-normal font-normal text-muted-foreground group-data-[size=xs]/item:text-xs [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary',
-        className,
-      )}
+      className={cn(itemDescriptionVariants({ variant, className }))}
       {...props}
     />
   );

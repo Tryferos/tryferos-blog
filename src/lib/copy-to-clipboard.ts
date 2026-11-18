@@ -1,4 +1,4 @@
-import { toast } from '@ui-sdk/react/toast';
+import { toast } from 'sonner';
 
 export function copyToClipboard(text: string, confirmation: string) {
   return navigator.clipboard.writeText(text).then(

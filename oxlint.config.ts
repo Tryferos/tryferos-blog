@@ -7,6 +7,7 @@ import modelConventions from './verification/configs/model-conventions.ts';
 import modularCode from './verification/configs/modular-code.ts';
 import reactCompiler from './verification/configs/react-compiler.ts';
 import strictTypes from './verification/configs/strict-types.ts';
+import uiComponents from './verification/configs/ui-components.ts';
 
 export default defineConfig({
   plugins: ['typescript', 'react', 'nextjs', 'jsx-a11y', 'import', 'unicorn'],
@@ -27,5 +28,6 @@ export default defineConfig({
     reactCompiler,
     modelConventions,
     moduleBoundaries,
+    uiComponents,
   ],
 });

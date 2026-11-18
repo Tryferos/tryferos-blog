@@ -1,7 +1,8 @@
 'use client';
 
-import { Button } from '@ui-sdk/react/button';
+import { CopyIcon } from 'lucide-react';
 
+import { Button } from '@/components/ui/Button';
 import { copyToClipboard } from '@/lib/copy-to-clipboard';
 import { cn } from '@/lib/utils';
 
@@ -10,25 +11,18 @@ type Props = { code: string; className?: string };
 export function CopyCodeButton({ code, className }: Props) {
   return (
     <Button
+      variant="ghost"
+      size="icon"
       aria-label="Copy code"
       className={cn(
-        'border-transparent bg-transparent text-muted-foreground group-hover:opacity-100 hover:bg-accent hover:text-foreground focus-visible:opacity-100 pointer-fine:opacity-0',
+        'text-muted-foreground group-hover:opacity-100 focus-visible:opacity-100 pointer-fine:opacity-0',
         className,
       )}
-      onClick={() => copyToClipboard(code, 'Copied to clipboard')}
+      onClick={() => {
+        void copyToClipboard(code, 'Copied to clipboard');
+      }}
     >
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect width="14" height="14" x="8" y="8" rx="2" />
-        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-      </svg>
+      <CopyIcon />
     </Button>
   );
 }

@@ -15,7 +15,6 @@ const paths = {
       <path d="m13 6 6 6-6 6" />
     </>
   ),
-  'chevron-right': <path d="m9 18 6-6-6-6" />,
   download: (
     <>
       <path d="M12 3v12" />

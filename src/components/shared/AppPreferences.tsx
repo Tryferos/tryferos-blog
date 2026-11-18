@@ -1,12 +1,21 @@
 'use client';
 
-import { Preferences } from '@ui-sdk/react/preferences';
+import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
 
-import { colorScheme } from '@/lib/color-scheme';
+import { Tooltip } from '@/components/ui/Tooltip';
 
 type Props = { children: ReactNode };
 
 export function AppPreferences({ children }: Props) {
-  return <Preferences preferences={[colorScheme]}>{children}</Preferences>;
+  return (
+    <ThemeProvider
+      attribute="data-color-scheme"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <Tooltip.Provider>{children}</Tooltip.Provider>
+    </ThemeProvider>
+  );
 }

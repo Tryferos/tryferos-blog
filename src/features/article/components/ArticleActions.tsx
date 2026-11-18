@@ -1,12 +1,11 @@
 'use client';
 
-import { Button } from '@ui-sdk/react/button';
-import { toast } from '@ui-sdk/react/toast';
 import type { ReactNode } from 'react';
+import { toast } from 'sonner';
 
 import { Icon } from '@/components/shared/Icon';
+import { Button } from '@/components/ui/Button';
 import { copyToClipboard } from '@/lib/copy-to-clipboard';
-import { cn } from '@/lib/utils';
 
 type Props = { prompt: string };
 
@@ -43,13 +42,10 @@ type ActionButtonProps = {
 function ActionButton({ primary, onClick, children }: ActionButtonProps) {
   return (
     <Button
+      variant={primary ? 'default' : 'outline'}
+      size="lg"
       onClick={onClick}
-      className={cn(
-        'h-9.5 gap-2 px-3.5 text-sm font-medium',
-        primary
-          ? 'border-primary bg-primary text-primary-foreground hover:bg-primary/90'
-          : 'border-border bg-card text-prose hover:bg-accent',
-      )}
+      className="h-9.5 gap-2 px-3.5"
     >
       {children}
     </Button>

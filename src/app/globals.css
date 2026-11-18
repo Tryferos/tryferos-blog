@@ -1,6 +1,6 @@
-@layer ui-sdk;
 @import 'tailwindcss';
-@import '@ui-sdk/core/web.css' layer(components);
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark {
   &:where([data-color-scheme='dark'], [data-color-scheme='dark'] *) {
@@ -117,21 +117,6 @@
   --code: oklch(0.955 0.008 80);
   --code-foreground: oklch(0.36 0.06 40);
 
-  --ui-background: var(--background);
-  --ui-foreground: var(--foreground);
-  --ui-muted: var(--muted);
-  --ui-muted-foreground: var(--muted-foreground);
-  --ui-border: var(--border);
-  --ui-input: var(--input);
-  --ui-primary: var(--primary);
-  --ui-primary-foreground: var(--primary-foreground);
-  --ui-destructive: var(--destructive);
-  --ui-ring: var(--ring);
-  --ui-ring-border: var(--ring);
-  --ui-radius: var(--radius);
-  --ui-font-sans: var(--font-poppins);
-  --ui-font-mono: var(--font-geist-mono);
-
   color-scheme: light;
 }
 
@@ -201,14 +186,6 @@
   }
   ::selection {
     @apply bg-highlight text-foreground;
-  }
-}
-
-/* web.css underlines every link from inside components; links here style their own. */
-@layer components {
-  a {
-    color: inherit;
-    text-decoration-line: none;
   }
 }
 

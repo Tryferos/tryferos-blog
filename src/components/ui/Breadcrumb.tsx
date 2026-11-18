@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { Slot } from 'radix-ui';
 import { ChevronRightIcon, MoreHorizontalIcon } from 'lucide-react';
@@ -37,19 +38,31 @@ function BreadcrumbItem({ className, ...props }: React.ComponentProps<'li'>) {
   );
 }
 
+const breadcrumbLinkVariants = cva('transition-colors', {
+  variants: {
+    variant: {
+      default: 'hover:text-foreground',
+      accent: 'font-medium text-link underline-offset-4 hover:underline',
+    },
+  },
+  defaultVariants: { variant: 'default' },
+});
+
 function BreadcrumbLink({
   asChild,
+  variant,
   className,
   ...props
-}: React.ComponentProps<'a'> & {
-  asChild?: boolean;
-}) {
+}: React.ComponentProps<'a'> &
+  VariantProps<typeof breadcrumbLinkVariants> & {
+    asChild?: boolean;
+  }) {
   const Comp = asChild ? Slot.Root : 'a';
 
   return (
     <Comp
       data-slot="breadcrumb-link"
-      className={cn('transition-colors hover:text-foreground', className)}
+      className={cn(breadcrumbLinkVariants({ variant, className }))}
       {...props}
     />
   );

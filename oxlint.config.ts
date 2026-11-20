@@ -5,6 +5,7 @@ import designSystem from './verification/configs/design-system.ts';
 import moduleBoundaries from './verification/configs/module-boundaries.ts';
 import modelConventions from './verification/configs/model-conventions.ts';
 import modularCode from './verification/configs/modular-code.ts';
+import namedValues from './verification/configs/named-values.ts';
 import reactCompiler from './verification/configs/react-compiler.ts';
 import strictTypes from './verification/configs/strict-types.ts';
 import uiComponents from './verification/configs/ui-components.ts';
@@ -29,5 +30,6 @@ export default defineConfig({
     modelConventions,
     moduleBoundaries,
     uiComponents,
+    namedValues,
   ],
 });

@@ -1,42 +1,81 @@
 import { Column } from '@/components/shared/Column';
+import { Separator } from '@/components/ui/Separator';
 import * as articleModel from '@/models/article.model';
 import type { Article, Topic } from '@/types/content.types';
 
+import { ArticleCodeBlock } from './components/ArticleCodeBlock';
 import { ArticleHeader } from './components/ArticleHeader';
+import { ComparisonCodeSection } from './components/comparison-code-section/ComparisonCodeSection';
+import { IntendedAudience } from './components/IntendedAudience';
 import { KeepReading } from './components/KeepReading';
 import { ReadingProgress } from './components/ReadingProgress';
+import { SectionHeading } from './components/SectionHeading';
 import { SeriesNavigation } from './components/SeriesNavigation';
 import { TableOfContents } from './components/TableOfContents';
 
 type Props = { topic: Topic; article: Article };
 
+type LoadedArticle = Awaited<ReturnType<Article['load']>>;
+
+const articleComponents = {
+  h2: SectionHeading,
+  pre: ArticleCodeBlock,
+  IntendedAudience,
+  ComparisonCodeSection,
+};
+
 export async function ArticleScreen({ topic, article }: Props) {
   const { default: Content, tableOfContents } = await article.load();
 
   return (
-    <main className="mx-auto w-full max-w-page flex-1 px-6 pt-14 pb-24">
-      <ReadingProgress />
-      <ArticleHeader topic={topic} article={article} />
-      <div className="mt-10 flex flex-col gap-12 border-t pt-10 lg:flex-row lg:items-start lg:gap-24">
-        <div className="min-w-0 max-w-article flex-1">
-          <article className="text-body text-prose">
-            <Content />
-          </article>
-          <SeriesNavigation topic={topic} article={article} />
+    <Column asChild gap="xl">
+      <main className="mx-auto w-full max-w-page flex-1 px-6 pt-14 pb-24">
+        <ReadingProgress />
+        <ArticleHeader topic={topic} article={article} />
+        <Separator />
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-24">
+          <ArticleBody topic={topic} article={article} Content={Content} />
+          <ArticleSidebar
+            topic={topic}
+            article={article}
+            tableOfContents={tableOfContents}
+          />
         </div>
-        <Column
-          asChild
-          gap="lg"
-          className="shrink-0 lg:sticky lg:top-8 lg:w-58"
-        >
-          <aside aria-label="Article navigation">
-            <TableOfContents
-              sections={articleModel.sectionsOf(tableOfContents)}
-            />
-            <KeepReading topic={topic} article={article} />
-          </aside>
-        </Column>
-      </div>
-    </main>
+      </main>
+    </Column>
+  );
+}
+
+function ArticleBody({
+  topic,
+  article,
+  Content,
+}: Props & { Content: LoadedArticle['default'] }) {
+  return (
+    <div className="min-w-0 max-w-article flex-1">
+      <article className="text-body text-prose">
+        <Content components={articleComponents} />
+      </article>
+      <SeriesNavigation topic={topic} article={article} />
+    </div>
+  );
+}
+
+function ArticleSidebar({
+  topic,
+  article,
+  tableOfContents,
+}: Props & { tableOfContents: LoadedArticle['tableOfContents'] }) {
+  return (
+    <Column
+      asChild
+      gap="lg"
+      className="shrink-0 lg:sticky lg:top-8 lg:w-fit lg:max-w-58"
+    >
+      <aside aria-label="Article navigation">
+        <TableOfContents sections={articleModel.sectionsOf(tableOfContents)} />
+        <KeepReading topic={topic} article={article} />
+      </aside>
+    </Column>
   );
 }

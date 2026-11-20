@@ -24,8 +24,8 @@
   --text-body: 1.125rem;
   --text-body--line-height: 1.8;
   --text-inline-code: 0.875em;
-  --container-article: 68ch;
-  --container-page: 75rem;
+  --container-article: 76ch;
+  --container-page: 68rem;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

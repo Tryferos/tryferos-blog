@@ -1,4 +1,5 @@
 import type { Toc } from '@stefanprobst/rehype-extract-toc';
+import type { Icon } from '@tabler/icons-react';
 import type { MDXContent } from 'mdx/types';
 
 type ArticleModule = {
@@ -10,6 +11,7 @@ export type Article = {
   slug: string;
   title: string;
   description: string;
+  icon: Icon;
   publishedAt: string;
   prompt: string;
   load: () => Promise<ArticleModule>;

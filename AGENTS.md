@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Commits
 
-Commit on `main` as `<type>: <Imperative summary>`, one concern per commit, never "and" in the message. Types: `feat`, `fix`, `refactor` (no behaviour change), `deps`, `chore` (docs, config, tooling).
+Commit on `main` as `<type>: <Imperative summary>`, one concern per commit, never "and" in the message. Types: `feat`, `fix`, `refactor` (no behaviour change), `deps`, `chore` (docs, config, tooling). If you need to use "and" for the commit summary, split it between more commits.
 
 ## Checks
 
@@ -23,6 +23,7 @@ Run `pnpm check`, then `pnpm build`. Fix findings in the code, never by disablin
 
 ## Code
 
+- When building new components, always try to use components/ui first, if they do not fit the style extend them (size, variants). Then look at components/shared, if it can be used. If you are building something new, build it at the place you are working on (e.g. feature) if this component will be shared across many features make it shared.
 - No comments unless necessary. Make the code clearer instead.
 - Inside a kind folder such as `components/` or `lib/`, group files by what the reader sees, such as the article page: two or more files for the same one go in a kebab-case subfolder named after it, like `components/series/`. A file used by several of them, or the only file for its own, stays in the kind folder. A component used by several is named `<Component>.shared.tsx`.
 - `src/components/ui/` holds only shadcn components, in PascalCase files that each export one compound component built with `Object.assign` (`<Dialog.Content>`, `<Command.Item>`). Rewrite what `shadcn add` generates into that shape. Every other app-wide component goes in `src/components/shared/`.
@@ -30,6 +31,7 @@ Run `pnpm check`, then `pnpm build`. Fix findings in the code, never by disablin
 - Name conditions and compared strings: `const isDraft = article.status === statuses.draft`, not `article.status === 'draft'` inline.
 - Environment variables never get default values.
 - Animations take their values from `src/data/motion.tokens.ts`. Add a token there rather than an inline duration, delay or offset.
+- Do not use border-b or border-t as a means of separating sections, use Separator.tsx instead,
 
 ### Model Convention
 

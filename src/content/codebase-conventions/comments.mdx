@@ -1,31 +1,47 @@
-Agents often add a paragraph to explain a simple check.
+Coding agents explain every line they write. Those comments cost tokens on every read, go stale and make bad patterns look intended.
+
+This article gives you one rule for `AGENTS.md`, shows which comments survive it, and how to clean up the ones already in your codebase.
+
+<IntendedAudience>
+  For developers whose code needs subtitles. And the AI writing them.
+</IntendedAudience>
+
+## The problem
+
+Agents add a paragraph to explain a simple check:
 
 ```ts
-// Validate the email address before submitting the form.
-// If the address is invalid, show a validation error to the user
-// and return early to prevent the form from being submitted.
-if (!isValidEmail(email)) {
-  setError('Enter a valid email address.');
-  return;
+/*
+ * Validate the email address before submitting the form.
+ * If the address is invalid, show a validation error to the user
+ * and return early to prevent the form from being submitted.
+ */
+function handle(e: string) {
+  if (!isValidEmail(e)) {
+    setError('Enter a valid email address.');
+    return;
+  }
+  submit(e);
 }
 ```
 
 ## Why it hurts
 
-- **Tokens.** Every comment is read again each time an agent loads the file.
-- **Justification.** A comment explaining a bad pattern makes it look intended, and the agent copies it elsewhere.
+- **Tokens.** The comment is longer than the function, and the agent reads it again each time it loads the file.
+- **Hidden bad names.** The comment explains what `handle(e)` does, so nobody renames it. The name stays vague everywhere it is called.
+- **False intent.** A comment that explains a bad pattern makes it look intended, and the agent copies it.
 - **Staleness.** Code changes, comments don't. The next agent trusts the comment over the code.
 - **Noise.** The one comment that matters gets buried.
 
-## AGENTS.md
+## The fix
+
+Add one rule to `AGENTS.md`:
 
 ```md
 - No comments unless necessary. Make the code clearer instead.
 ```
 
-## What stays
-
-A reason the code can't express, like a workaround or a platform quirk:
+Comments that stay explain a **reason the code can't express**, like a workaround or a platform quirk:
 
 ```ts
 // The backend returns 200 with an empty body on expired sessions instead of 401.
@@ -34,20 +50,51 @@ if (response.ok && !(await response.text())) {
 }
 ```
 
-## What goes
+Then ask the agent to apply the rule to the codebase. It removes every comment that doesn't carry a reason, and makes the code clearer where a comment was explaining it.
 
-Anything the code already says. Fix the code instead:
+## Before & after
 
-```ts
-// Before
-// Start each topic animation 50 ms after the previous one.
-// Add 1 to the zero-based index so the first topic also has a delay.
-const delay = 0.05 * (topicIndex + 1);
+A stagger delay from this blog's home page.
 
-// After
-const delay = firstSectionDelaySeconds + sectionStaggerSeconds * topicIndex;
-```
+<ComparisonCodeSection
+  file="home/TopicSection.tsx"
+  language="ts"
+  before={`/*
+ * Returns the animation delay for a topic.
+ * Starts each topic 50 ms after the previous one and adds 1
+ * to the zero-based index so the first topic also has a delay.
+ */
+function calc(i: number) {
+  return 0.05 * (i + 1);
+}`}
+  after={`const firstSectionDelaySeconds = 0.05;
+const sectionStaggerSeconds = 0.05;
+function topicRevealDelaySeconds(topicIndex: number) {
+  return (
+    firstSectionDelaySeconds +
+    sectionStaggerSeconds * topicIndex
+  );
+}`}
+  changes={[
+    {
+      before: 'A comment explains what the code does',
+      after: 'The names explain it',
+    },
+    {
+      before: 'A vague function name like `calc(i)`',
+      after: 'A name that says what it returns',
+    },
+    {
+      before: 'Magic numbers like `0.05`',
+      after: 'Named constants',
+    },
+    {
+      before: 'Hidden logic like `+ 1`',
+      after: 'A constant that names its purpose',
+    },
+  ]}
+/>
 
-## Existing code
+## Sum up
 
-Ask the agent to apply the rule to the codebase. It removes every comment that doesn't carry a reason.
+By making the code clearer and declaring intent through names, you remove the need for most comments. The agent reads fewer tokens, copies clearer patterns and has nothing stale to trust. The comments that remain explain a reason the code can't, so they get read.

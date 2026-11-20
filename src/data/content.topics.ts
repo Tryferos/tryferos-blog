@@ -11,7 +11,8 @@ export const topics: Topic[] = [
       {
         slug: 'comments',
         title: "Comments are for what the code can't say",
-        description: "Don't let your agent spam comments",
+        description:
+          'Stop using comments as a justification for bad naming conventions',
         icon: IconMessageOff,
         publishedAt: '2026-11-14',
         prompt:

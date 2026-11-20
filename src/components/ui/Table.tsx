@@ -1,7 +1,23 @@
+import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-function TableRoot({ className, ...props }: React.ComponentProps<'table'>) {
+const tableVariants = cva('w-full caption-bottom text-sm', {
+  variants: {
+    columns: {
+      plain: '',
+      divided:
+        '[&_td:not(:last-child)]:border-e [&_th:not(:last-child)]:border-e',
+    },
+  },
+  defaultVariants: { columns: 'plain' },
+});
+
+function TableRoot({
+  className,
+  columns,
+  ...props
+}: React.ComponentProps<'table'> & VariantProps<typeof tableVariants>) {
   return (
     <div
       data-slot="table-container"
@@ -9,7 +25,7 @@ function TableRoot({ className, ...props }: React.ComponentProps<'table'>) {
     >
       <table
         data-slot="table"
-        className={cn('w-full caption-bottom text-sm', className)}
+        className={cn(tableVariants({ columns }), className)}
         {...props}
       />
     </div>

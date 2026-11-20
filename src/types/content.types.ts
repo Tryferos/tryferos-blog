@@ -28,6 +28,11 @@ export type SearchGroup = {
   links: ArticleLink[];
 };
 
+export type ComparisonChange = {
+  before: string;
+  after: string;
+};
+
 export type Section = {
   id: string;
   title: string;

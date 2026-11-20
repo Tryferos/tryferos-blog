@@ -64,6 +64,10 @@
   --color-highlight: var(--highlight);
   --color-code: var(--code);
   --color-code-foreground: var(--code-foreground);
+  --color-before: var(--before);
+  --color-before-surface: var(--before-surface);
+  --color-after: var(--after);
+  --color-after-surface: var(--after-surface);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -116,6 +120,10 @@
   --highlight: oklch(0.92 0.09 85);
   --code: oklch(0.955 0.008 80);
   --code-foreground: oklch(0.38 0.08 5);
+  --before: oklch(0.52 0.12 35);
+  --before-surface: oklch(0.975 0.01 45);
+  --after: oklch(0.45 0.1 240);
+  --after-surface: oklch(0.975 0.01 240);
 
   color-scheme: light;
 }
@@ -163,6 +171,10 @@
     --highlight: oklch(0.42 0.07 75);
     --code: oklch(0.23 0.008 60);
     --code-foreground: oklch(0.85 0.07 5);
+    --before: oklch(0.74 0.14 40);
+    --before-surface: oklch(0.25 0.03 40);
+    --after: oklch(0.78 0.1 240);
+    --after-surface: oklch(0.25 0.03 240);
   }
 }
 
@@ -193,6 +205,16 @@
   from {
     scale: 0 1;
   }
+}
+
+@supports not (animation-timeline: scroll()) {
+  [data-slot='code-block-content'] {
+    mask-image: none;
+  }
+}
+
+@utility reveal-from-start {
+  clip-path: inset(0 0 0 var(--reveal));
 }
 
 @utility reading-progress {

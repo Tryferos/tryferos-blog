@@ -32,7 +32,7 @@ type UpNextProps = { topic: Topic; article: Article };
 function UpNext({ topic, article }: UpNextProps) {
   return (
     <Item asChild variant="plain" size="flush">
-      <Link href={topicModel.articleHref(topic, article)}>
+      <Link href={topicModel.articleHref(topic, article)} prefetch>
         <Item.Header className="justify-start">
           <Row asChild align="center" gap="sm">
             <span className="text-xs font-semibold text-link">
@@ -77,7 +77,7 @@ type SeriesArticleLinkProps = { topic: Topic; article: Article };
 function SeriesArticleLink({ topic, article }: SeriesArticleLinkProps) {
   return (
     <Item asChild variant="plain" size="flush">
-      <Link href={topicModel.articleHref(topic, article)}>
+      <Link href={topicModel.articleHref(topic, article)} prefetch>
         <Item.Content>
           <Item.Title size="sm">{article.title}</Item.Title>
           <PartLabel topic={topic} article={article} />

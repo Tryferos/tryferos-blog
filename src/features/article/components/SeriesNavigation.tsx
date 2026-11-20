@@ -58,7 +58,7 @@ function PagerLink({ href, label, title, direction }: PagerLinkProps) {
       size="flush"
       className={isNext ? 'flex-1 basis-55 justify-end' : 'flex-1 basis-55'}
     >
-      <Link href={href}>
+      <Link href={href} prefetch>
         <Item.Header className={isNext ? 'justify-end' : 'justify-start'}>
           <span className="text-sm font-medium text-muted-foreground">
             {label}

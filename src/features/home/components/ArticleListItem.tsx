@@ -11,7 +11,7 @@ export function ArticleListItem({ topic, article }: Props) {
   return (
     <li className="py-5">
       <Item asChild variant="plain" size="flush">
-        <Link href={topicModel.articleHref(topic, article)}>
+        <Link href={topicModel.articleHref(topic, article)} prefetch>
           <Item.Media>
             <span className="w-6 font-mono text-sm text-primary tabular-nums">
               {topicModel.partLabel(topic, article)}

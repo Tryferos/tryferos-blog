@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import type { Section } from '@/types/content.types';
 
 const readingLineRatio = 0.3;
-const belowReadingLine = `0px 0px -${String((1 - readingLineRatio) * 100)}% 0px`;
+const percent = 100;
+const belowReadingLine = `0px 0px -${String((1 - readingLineRatio) * percent)}% 0px`;
 
 export function useActiveSection(sections: Section[]) {
   const [activeId, setActiveId] = useState(sections[0]?.id);

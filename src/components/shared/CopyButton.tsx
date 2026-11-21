@@ -13,6 +13,7 @@ import {
   copyIconShown,
   copyIconTransition,
 } from '@/data/motion.tokens';
+import { playCopiedSound } from '@/lib/copy-to-clipboard';
 
 type Props = { value: string };
 
@@ -32,6 +33,7 @@ export function CopyButton({ value }: Props) {
       .writeText(value)
       .then(() => {
         setIsCopied(true);
+        playCopiedSound();
         clearTimeout(resetTimeout.current);
         resetTimeout.current = setTimeout(() => {
           setIsCopied(false);

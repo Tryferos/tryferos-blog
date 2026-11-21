@@ -6,7 +6,7 @@ const sounds = {
 } as const;
 
 function play(sound: (typeof sounds)[keyof typeof sounds]) {
-  playSound(sound).catch(() => null);
+  playSound(sound, { volume: 0.15 }).catch(() => null);
 }
 
 export function playThemeChangedSound() {

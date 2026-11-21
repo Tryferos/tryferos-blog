@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 
+import { CopyButton } from '@/components/shared/CopyButton';
 import { CodeBlock as CodeBlockFrame } from '@/components/ui/CodeBlock';
 
 type Props = { code: string; lines: ReactNode[] };
@@ -10,7 +11,7 @@ export function CodeBlock({ code, lines }: Props) {
   return (
     <CodeBlockFrame variant="prose" className="my-6">
       <CodeBlockFrame.Actions>
-        <CodeBlockFrame.CopyButton value={code} />
+        <CopyButton value={code} />
       </CodeBlockFrame.Actions>
       <CodeBlockFrame.Content>
         {lines.map((line, index) => (

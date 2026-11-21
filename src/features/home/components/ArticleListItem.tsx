@@ -2,7 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { PublishedDate } from '@/components/shared/PublishedDate';
+import { Badge } from '@/components/ui/Badge';
 import { Item } from '@/components/ui/Item';
+import * as articleModel from '@/models/article.model';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
 
@@ -10,26 +12,40 @@ type Props = { topic: Topic; article: Article };
 
 export function ArticleListItem({ topic, article }: Props) {
   return (
-    <li className="py-5">
-      <Item asChild variant="plain" size="flush">
+    <li>
+      <Item asChild variant="plain" size="flush" className="items-start">
         <Link href={topicModel.articleHref(topic, article)} prefetch>
-          <Item.Header className="mb-2">
-            <Image
-              src={article.illustration.src}
-              alt={article.illustration.alt}
-              sizes="(max-width: 42rem) calc(100vw - 3rem), 39rem"
-              className="h-auto w-full rounded-lg"
-            />
+          <Item.Header className="mb-2.5">
+            <div className="w-full overflow-hidden rounded-lg">
+              <Image
+                src={article.illustration.src}
+                alt={article.illustration.alt}
+                sizes="(max-width: 40rem) calc(100vw - 3rem), (max-width: 64rem) 50vw, 21rem"
+                className="h-auto w-full transition-transform duration-300 group-hover/item:scale-102"
+              />
+            </div>
           </Item.Header>
           <Item.Content>
+            <span className="text-xs font-semibold tracking-widest text-link uppercase">
+              {topic.title}
+            </span>
             <Item.Title size="lg">{article.title}</Item.Title>
             <Item.Description variant="prose">
               {article.description}
             </Item.Description>
-            <PublishedDate date={article.publishedAt} />
+            <ArticleAvailability article={article} />
           </Item.Content>
         </Link>
       </Item>
     </li>
   );
+}
+
+type ArticleAvailabilityProps = { article: Article };
+
+function ArticleAvailability({ article }: ArticleAvailabilityProps) {
+  if (articleModel.isPublished(article)) {
+    return <PublishedDate date={article.publishedAt} />;
+  }
+  return <Badge variant="secondary">Coming soon</Badge>;
 }

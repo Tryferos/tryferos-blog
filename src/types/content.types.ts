@@ -1,6 +1,6 @@
 import type { Toc } from '@stefanprobst/rehype-extract-toc';
-import type { Icon } from '@tabler/icons-react';
 import type { MDXContent } from 'mdx/types';
+import type { StaticImageData } from 'next/image';
 
 type ArticleModule = {
   default: MDXContent;
@@ -11,7 +11,7 @@ export type Article = {
   slug: string;
   title: string;
   description: string;
-  icon: Icon;
+  illustration: { src: StaticImageData; alt: string };
   publishedAt: string;
   prompt: string;
   load: () => Promise<ArticleModule>;

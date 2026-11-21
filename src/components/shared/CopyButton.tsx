@@ -13,7 +13,7 @@ import {
   copyIconShown,
   copyIconTransition,
 } from '@/data/motion.tokens';
-import { playCopiedSound } from '@/lib/copy-to-clipboard';
+import { playCopiedSound } from '@/lib/sounds';
 
 type Props = { value: string };
 

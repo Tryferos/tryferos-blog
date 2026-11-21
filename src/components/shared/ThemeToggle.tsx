@@ -2,15 +2,14 @@
 
 import { IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from 'next-themes';
-import { useSound } from 'react-sounds';
 
 import { Button } from '@/components/ui/Button';
+import { playThemeChangedSound } from '@/lib/sounds';
 
 const themes = { light: 'light', dark: 'dark' } as const;
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const { play: playThemeSound } = useSound('notification/popup');
   const next = resolvedTheme === themes.dark ? themes.light : themes.dark;
 
   return (
@@ -20,7 +19,7 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
       onClick={() => {
         setTheme(next);
-        playThemeSound().catch(() => null);
+        playThemeChangedSound();
       }}
       className="-mr-2.5 size-11"
     >

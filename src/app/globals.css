@@ -169,7 +169,7 @@
     --prose: oklch(0.84 0.01 80);
     --link: oklch(0.76 0.13 5);
     --highlight: oklch(0.42 0.07 75);
-    --code: oklch(0.23 0.008 60);
+    --code: oklch(0.04 0.14 5);
     --code-foreground: oklch(0.85 0.07 5);
     --before: oklch(0.74 0.14 40);
     --before-surface: oklch(0.25 0.03 40);

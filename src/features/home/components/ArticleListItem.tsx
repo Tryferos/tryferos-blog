@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { PublishedDate } from '@/components/shared/PublishedDate';
@@ -12,6 +13,14 @@ export function ArticleListItem({ topic, article }: Props) {
     <li className="py-5">
       <Item asChild variant="plain" size="flush">
         <Link href={topicModel.articleHref(topic, article)} prefetch>
+          <Item.Header className="mb-2">
+            <Image
+              src={article.illustration.src}
+              alt={article.illustration.alt}
+              sizes="(max-width: 42rem) calc(100vw - 3rem), 39rem"
+              className="h-auto w-full rounded-lg"
+            />
+          </Item.Header>
           <Item.Media>
             <span className="w-6 font-mono text-sm text-primary tabular-nums">
               {topicModel.partLabel(topic, article)}

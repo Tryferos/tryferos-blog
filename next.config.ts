@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   cacheComponents: true,
   partialPrefetching: true,
+  async redirects() {
+    return [
+      {
+        source: '/codebase-conventions/comments',
+        destination: '/understand-better/comments',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({

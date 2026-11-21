@@ -1,4 +1,4 @@
-import { IconArrowsLeftRight, IconFileCode } from '@tabler/icons-react';
+import { IconFileCode } from '@tabler/icons-react';
 
 import { Separator } from '@/components/ui/Separator';
 import { highlightedLines } from '@/lib/highlighted-lines';
@@ -6,7 +6,7 @@ import type { ComparisonChange } from '@/types/content.types';
 
 import { ChangeTable } from './ChangeTable';
 import { CodePane } from './CodePane';
-import { RevealSlider } from './RevealSlider';
+import { VersionSwitch } from './VersionSwitch';
 
 type Props = {
   file: string;
@@ -30,30 +30,27 @@ export async function ComparisonCodeSection({
 
   return (
     <figure className="my-6 overflow-hidden rounded-xl border bg-card">
-      <figcaption className="flex items-center gap-2 px-4 py-2.5 text-sm text-muted-foreground">
-        <IconFileCode aria-hidden className="size-4" />
-        <span className="font-mono text-foreground">{file}</span>
-        <span className="ms-auto flex items-center gap-1">
-          <IconArrowsLeftRight aria-hidden className="size-4" />
-          Drag to compare
-        </span>
-      </figcaption>
-      <Separator />
-      <RevealSlider
+      <VersionSwitch
+        caption={
+          <>
+            <IconFileCode aria-hidden className="size-4" />
+            <span className="font-mono text-foreground">{file}</span>
+          </>
+        }
         before={
           <CodePane
             lines={beforeLines}
             label="Before"
             className="bg-before-surface"
-            labelClassName="start-4 bg-before"
+            labelClassName="bg-before"
           />
         }
         after={
           <CodePane
             lines={afterLines}
             label="After"
-            className="reveal-from-start bg-after-surface"
-            labelClassName="end-4 bg-after"
+            className="bg-after-surface"
+            labelClassName="bg-after"
           />
         }
       />

@@ -16,15 +16,10 @@ type Props = {
 
 export function CodePane({ lines, label, className, labelClassName }: Props) {
   return (
-    <div
-      className={cn(
-        'relative col-start-1 row-start-1 px-3 pt-11 pb-3 text-sm',
-        className,
-      )}
-    >
+    <div className={cn('relative px-3 pt-11 pb-3 text-sm', className)}>
       <span
         className={cn(
-          'absolute top-4 rounded-full px-2.5 py-0.5 font-sans text-xs font-semibold tracking-widest text-background uppercase',
+          'absolute start-4 top-4 rounded-full px-2.5 py-0.5 font-sans text-xs font-semibold tracking-widest text-background uppercase',
           labelClassName,
         )}
       >

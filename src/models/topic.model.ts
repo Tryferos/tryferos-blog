@@ -1,4 +1,10 @@
-import type { Article, SearchGroup, Topic } from '@/types/content.types';
+import * as articleModel from '@/models/article.model';
+import type {
+  Article,
+  PublishedArticle,
+  SearchGroup,
+  Topic,
+} from '@/types/content.types';
 
 const firstPart = 1;
 
@@ -14,11 +20,16 @@ export function partOf(topic: Topic, article: Article) {
   return topic.articles.indexOf(article) + firstPart;
 }
 
-export function neighboursOf(topic: Topic, article: Article) {
-  const index = topic.articles.indexOf(article);
+function publishedArticles(topic: Topic) {
+  return topic.articles.filter(articleModel.isPublished);
+}
+
+export function neighboursOf(topic: Topic, article: PublishedArticle) {
+  const published = publishedArticles(topic);
+  const index = published.indexOf(article);
   return {
-    previous: topic.articles[index - 1],
-    next: topic.articles[index + 1],
+    previous: published[index - 1],
+    next: published[index + 1],
   };
 }
 
@@ -34,11 +45,11 @@ export function findArticle(
   return topic && article ? { topic, article } : undefined;
 }
 
-export function keepReading(topic: Topic, article: Article) {
+export function keepReading(topic: Topic, article: PublishedArticle) {
   const { next } = neighboursOf(topic, article);
   return {
     upNext: next,
-    more: topic.articles.filter(
+    more: publishedArticles(topic).filter(
       candidate => candidate !== article && candidate !== next,
     ),
   };

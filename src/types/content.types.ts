@@ -2,20 +2,32 @@ import type { Toc } from '@stefanprobst/rehype-extract-toc';
 import type { MDXContent } from 'mdx/types';
 import type { StaticImageData } from 'next/image';
 
+import type { articleStatuses } from '@/data/article.statuses';
+
 type ArticleModule = {
   default: MDXContent;
   tableOfContents: Toc;
 };
 
-export type Article = {
+type ArticleSummary = {
   slug: string;
   title: string;
   description: string;
   illustration: { src: StaticImageData; alt: string };
+};
+
+export type PublishedArticle = ArticleSummary & {
+  status: typeof articleStatuses.published;
   publishedAt: string;
   prompt: string;
   load: () => Promise<ArticleModule>;
 };
+
+export type UpcomingArticle = ArticleSummary & {
+  status: typeof articleStatuses.upcoming;
+};
+
+export type Article = PublishedArticle | UpcomingArticle;
 
 export type ArticleLink = {
   href: string;
@@ -41,6 +53,5 @@ export type Section = {
 export type Topic = {
   slug: string;
   title: string;
-  description: string;
   articles: Article[];
 };

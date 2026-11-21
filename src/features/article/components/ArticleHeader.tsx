@@ -1,13 +1,11 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { ArticleActions } from './ArticleActions';
+import { ArticleBreadcrumb } from '@/components/shared/ArticleBreadcrumb';
 import { PublishedDate } from '@/components/shared/PublishedDate';
-import { Breadcrumb } from '@/components/ui/Breadcrumb';
-import * as topicModel from '@/models/topic.model';
-import type { Article, Topic } from '@/types/content.types';
+import type { PublishedArticle, Topic } from '@/types/content.types';
 
-type Props = { topic: Topic; article: Article };
+type Props = { topic: Topic; article: PublishedArticle };
 
 export function ArticleHeader({ topic, article }: Props) {
   return (
@@ -29,27 +27,5 @@ export function ArticleHeader({ topic, article }: Props) {
       <ArticleActions prompt={article.prompt} />
       <PublishedDate date={article.publishedAt} className="mt-4 block" />
     </header>
-  );
-}
-
-type ArticleBreadcrumbProps = { topic: Topic };
-
-function ArticleBreadcrumb({ topic }: ArticleBreadcrumbProps) {
-  return (
-    <Breadcrumb>
-      <Breadcrumb.List>
-        <Breadcrumb.Item>
-          <Breadcrumb.Link asChild>
-            <Link href="/">Articles</Link>
-          </Breadcrumb.Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Separator />
-        <Breadcrumb.Item>
-          <Breadcrumb.Link asChild variant="accent">
-            <Link href={topicModel.sectionHref(topic)}>{topic.title}</Link>
-          </Breadcrumb.Link>
-        </Breadcrumb.Item>
-      </Breadcrumb.List>
-    </Breadcrumb>
   );
 }

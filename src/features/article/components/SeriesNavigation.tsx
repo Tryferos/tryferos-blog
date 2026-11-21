@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { Row } from '@/components/shared/Row';
 import { Item } from '@/components/ui/Item';
 import * as topicModel from '@/models/topic.model';
-import type { Article, Topic } from '@/types/content.types';
+import type { PublishedArticle, Topic } from '@/types/content.types';
 
-type Props = { topic: Topic; article: Article };
+type Props = { topic: Topic; article: PublishedArticle };
 
 export function SeriesNavigation({ topic, article }: Props) {
   const { previous, next } = topicModel.neighboursOf(topic, article);

@@ -1,6 +1,11 @@
 import type { Toc } from '@stefanprobst/rehype-extract-toc';
 
-import type { Section } from '@/types/content.types';
+import { articleStatuses } from '@/data/article.statuses';
+import type { Article, PublishedArticle, Section } from '@/types/content.types';
+
+export function isPublished(article: Article): article is PublishedArticle {
+  return article.status === articleStatuses.published;
+}
 
 export function sectionsOf(tableOfContents: Toc): Section[] {
   return tableOfContents.flatMap(entry =>

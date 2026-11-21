@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 
 import { topics } from '@/data/content.topics';
 import { ArticleScreen } from '@/features/article';
+import { ComingSoonScreen } from '@/features/coming-soon';
+import * as articleModel from '@/models/article.model';
 import * as topicModel from '@/models/topic.model';
 
 export function generateStaticParams() {
@@ -19,6 +21,7 @@ export async function generateMetadata({
   return {
     title: entry.article.title,
     description: entry.article.description,
+    robots: { index: articleModel.isPublished(entry.article) },
   };
 }
 
@@ -29,5 +32,9 @@ export default async function ArticlePage({
   const entry = topicModel.findArticle(topics, topicSlug, articleSlug);
   if (!entry) notFound();
 
-  return <ArticleScreen topic={entry.topic} article={entry.article} />;
+  const { topic, article } = entry;
+  if (!articleModel.isPublished(article)) {
+    return <ComingSoonScreen topic={topic} article={article} />;
+  }
+  return <ArticleScreen topic={topic} article={article} />;
 }

@@ -6,9 +6,9 @@ import { Eyebrow } from '@/components/shared/Eyebrow';
 import { Row } from '@/components/shared/Row';
 import { Item } from '@/components/ui/Item';
 import * as topicModel from '@/models/topic.model';
-import type { Article, Topic } from '@/types/content.types';
+import type { PublishedArticle, Topic } from '@/types/content.types';
 
-type Props = { topic: Topic; article: Article };
+type Props = { topic: Topic; article: PublishedArticle };
 
 export function KeepReading({ topic, article }: Props) {
   const { upNext, more } = topicModel.keepReading(topic, article);
@@ -27,7 +27,7 @@ export function KeepReading({ topic, article }: Props) {
   );
 }
 
-type UpNextProps = { topic: Topic; article: Article };
+type UpNextProps = { topic: Topic; article: PublishedArticle };
 
 function UpNext({ topic, article }: UpNextProps) {
   return (
@@ -51,7 +51,7 @@ function UpNext({ topic, article }: UpNextProps) {
   );
 }
 
-type MoreInSeriesProps = { topic: Topic; articles: Article[] };
+type MoreInSeriesProps = { topic: Topic; articles: PublishedArticle[] };
 
 function MoreInSeries({ topic, articles }: MoreInSeriesProps) {
   return (
@@ -72,7 +72,7 @@ function MoreInSeries({ topic, articles }: MoreInSeriesProps) {
   );
 }
 
-type SeriesArticleLinkProps = { topic: Topic; article: Article };
+type SeriesArticleLinkProps = { topic: Topic; article: PublishedArticle };
 
 function SeriesArticleLink({ topic, article }: SeriesArticleLinkProps) {
   return (
@@ -87,7 +87,7 @@ function SeriesArticleLink({ topic, article }: SeriesArticleLinkProps) {
   );
 }
 
-type PartLabelProps = { topic: Topic; article: Article };
+type PartLabelProps = { topic: Topic; article: PublishedArticle };
 
 function PartLabel({ topic, article }: PartLabelProps) {
   return (

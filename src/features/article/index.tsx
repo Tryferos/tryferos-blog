@@ -1,7 +1,7 @@
 import { Column } from '@/components/shared/Column';
 import { Separator } from '@/components/ui/Separator';
 import * as articleModel from '@/models/article.model';
-import type { Article, Topic } from '@/types/content.types';
+import type { PublishedArticle, Topic } from '@/types/content.types';
 
 import { ArticleCodeBlock } from './components/ArticleCodeBlock';
 import { ArticleHeader } from './components/ArticleHeader';
@@ -13,9 +13,9 @@ import { SectionHeading } from './components/SectionHeading';
 import { SeriesNavigation } from './components/SeriesNavigation';
 import { TableOfContents } from './components/TableOfContents';
 
-type Props = { topic: Topic; article: Article };
+type Props = { topic: Topic; article: PublishedArticle };
 
-type LoadedArticle = Awaited<ReturnType<Article['load']>>;
+type LoadedArticle = Awaited<ReturnType<PublishedArticle['load']>>;
 
 const articleComponents = {
   h2: SectionHeading,

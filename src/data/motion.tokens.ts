@@ -17,3 +17,8 @@ export const sectionStaggerSeconds = 0.05;
 export const codeVersionShown = { opacity: 1, filter: 'blur(0px)' };
 export const codeVersionHidden = { opacity: 0, filter: 'blur(6px)' };
 export const codeVersionSwitchSeconds = 0.3;
+export const selectedSegmentTransition = {
+  type: 'spring',
+  bounce: 0.15,
+  duration: 0.3,
+} as const;

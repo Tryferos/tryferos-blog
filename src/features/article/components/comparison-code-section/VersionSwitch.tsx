@@ -1,8 +1,8 @@
 'use client';
 
-import { LazyMotion, domAnimation } from 'motion/react';
+import { LayoutGroup, LazyMotion, domMax } from 'motion/react';
 import * as m from 'motion/react-m';
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useId, useState } from 'react';
 
 import { Separator } from '@/components/ui/Separator';
 import { ToggleGroup } from '@/components/ui/ToggleGroup';
@@ -10,6 +10,7 @@ import {
   codeVersionHidden,
   codeVersionShown,
   codeVersionSwitchSeconds,
+  selectedSegmentTransition,
 } from '@/data/motion.tokens';
 
 const versions = { before: 'before', after: 'after' } as const;
@@ -21,15 +22,17 @@ type Props = { caption: ReactNode; before: ReactNode; after: ReactNode };
 export function VersionSwitch({ caption, before, after }: Props) {
   const [shownVersion, setShownVersion] = useState<Version>(versions.before);
   const isBeforeShown = shownVersion === versions.before;
+  const switchId = useId();
 
   return (
-    <LazyMotion features={domAnimation} strict>
+    <LazyMotion features={domMax} strict>
       <figcaption className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground">
         {caption}
         <ToggleGroup
           type="single"
+          variant="segmented"
           size="sm"
-          spacing={1}
+          spacing={0.5}
           value={shownVersion}
           onValueChange={value => {
             if (isVersion(value)) setShownVersion(value);
@@ -37,8 +40,14 @@ export function VersionSwitch({ caption, before, after }: Props) {
           aria-label="Show the code before or after the change"
           className="ms-auto"
         >
-          <ToggleGroup.Item value={versions.before}>Before</ToggleGroup.Item>
-          <ToggleGroup.Item value={versions.after}>After</ToggleGroup.Item>
+          <LayoutGroup id={switchId}>
+            <VersionTrigger value={versions.before} isSelected={isBeforeShown}>
+              Before
+            </VersionTrigger>
+            <VersionTrigger value={versions.after} isSelected={!isBeforeShown}>
+              After
+            </VersionTrigger>
+          </LayoutGroup>
         </ToggleGroup>
       </figcaption>
       <Separator />
@@ -52,6 +61,27 @@ export function VersionSwitch({ caption, before, after }: Props) {
 
 function isVersion(value: string): value is Version {
   return value === versions.before || value === versions.after;
+}
+
+type VersionTriggerProps = {
+  value: Version;
+  isSelected: boolean;
+  children: string;
+};
+
+function VersionTrigger({ value, isSelected, children }: VersionTriggerProps) {
+  return (
+    <ToggleGroup.Item value={value}>
+      {isSelected && (
+        <m.span
+          layoutId="selected-version"
+          transition={selectedSegmentTransition}
+          className="absolute inset-0 -z-10 rounded-md border bg-background shadow-sm"
+        />
+      )}
+      {children}
+    </ToggleGroup.Item>
+  );
 }
 
 type VersionPaneProps = { isShown: boolean; children: ReactNode };

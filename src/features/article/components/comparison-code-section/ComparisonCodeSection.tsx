@@ -37,22 +37,8 @@ export async function ComparisonCodeSection({
             <span className="font-mono text-foreground">{file}</span>
           </>
         }
-        before={
-          <CodePane
-            lines={beforeLines}
-            label="Before"
-            className="bg-before-surface"
-            labelClassName="bg-before"
-          />
-        }
-        after={
-          <CodePane
-            lines={afterLines}
-            label="After"
-            className="bg-after-surface"
-            labelClassName="bg-after"
-          />
-        }
+        before={<CodePane lines={beforeLines} className="bg-before-surface" />}
+        after={<CodePane lines={afterLines} className="bg-after-surface" />}
       />
       <Separator />
       <ChangeTable changes={changes} />

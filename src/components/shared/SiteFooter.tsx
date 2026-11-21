@@ -85,13 +85,14 @@ function SocialLinks() {
       <ul>
         {socialLinks.map(link => (
           <li key={link.href}>
-            <a
+            <Link
               href={link.href}
               aria-label={link.label}
+              target="_blank"
               className="flex size-11 items-center justify-center rounded-lg text-secondary-foreground hover:bg-accent hover:text-foreground"
             >
               <link.icon aria-hidden className="size-5" />
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

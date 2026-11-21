@@ -15,8 +15,8 @@ export const socialLinks: SocialLink[] = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/tryferos',
+    href: 'https://www.linkedin.com/in/tryfon-mazarakis/',
     icon: IconBrandLinkedin,
   },
-  { label: 'X', href: 'https://x.com/tryferos', icon: IconBrandX },
+  { label: 'X', href: 'https://x.com/tryferos1', icon: IconBrandX },
 ];

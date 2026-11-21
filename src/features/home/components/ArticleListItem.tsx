@@ -21,11 +21,6 @@ export function ArticleListItem({ topic, article }: Props) {
               className="h-auto w-full rounded-lg"
             />
           </Item.Header>
-          <Item.Media>
-            <span className="w-6 font-mono text-sm text-primary tabular-nums">
-              {topicModel.partLabel(topic, article)}
-            </span>
-          </Item.Media>
           <Item.Content>
             <Item.Title size="lg">{article.title}</Item.Title>
             <Item.Description variant="prose">

@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'react';
 
 import { CodeBlock } from '@/components/shared/code-block/CodeBlock';
-import { codeLanguage } from '@/lib/code-language';
-import { highlightedLines } from '@/lib/highlighted-lines';
-import { nodeText } from '@/lib/node-text';
+import { codeLanguage } from '@/lib/code-block/code-language';
+import { highlightedLines } from '@/lib/code-block/highlighted-lines';
+import { nodeText } from '@/lib/code-block/node-text';
 
 const trailingNewline = /\n$/;
 

@@ -2,7 +2,7 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "entry": [
     "src/components/ui/*.tsx",
-    "src/lib/highlighter.tsx",
-    "src/lib/use-highlighted-code.ts"
+    "src/lib/code-block/highlighter.tsx",
+    "src/lib/code-block/use-highlighted-code.ts"
   ]
 }

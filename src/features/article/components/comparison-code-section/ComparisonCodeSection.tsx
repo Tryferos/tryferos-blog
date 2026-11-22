@@ -1,7 +1,7 @@
 import { IconFileCode } from '@tabler/icons-react';
 
 import { Separator } from '@/components/ui/Separator';
-import { highlightedLines } from '@/lib/highlighted-lines';
+import { highlightedLines } from '@/lib/code-block/highlighted-lines';
 import type { ComparisonChange } from '@/types/content.types';
 
 import { ChangeTable } from './ChangeTable';

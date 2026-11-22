@@ -8,8 +8,8 @@ const pluginsDir = path.join(import.meta.dirname, '../plugins');
 
 const shadcnFiles = [
   'src/components/ui/**',
-  'src/lib/highlighter.tsx',
-  'src/lib/use-highlighted-code.ts',
+  'src/lib/code-block/highlighter.tsx',
+  'src/lib/code-block/use-highlighted-code.ts',
   'src/lib/use-mobile.ts',
 ];
 

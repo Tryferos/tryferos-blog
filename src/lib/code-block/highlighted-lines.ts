@@ -1,4 +1,4 @@
-import { highlightCode } from '@/lib/highlighter';
+import { highlightCode } from '@/lib/code-block/highlighter';
 
 export async function highlightedLines(code: string, language: string) {
   'use cache';

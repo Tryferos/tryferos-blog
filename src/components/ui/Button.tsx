@@ -36,7 +36,7 @@ const buttonVariants = cva(
         'icon-sm':
           'size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg',
         'icon-lg': 'size-9',
-        field: 'h-10.5 justify-start gap-2.5 pr-2 pl-3.5',
+        field: 'h-10.5 justify-start gap-2.5 rounded-xl pr-2 pl-3.5',
         chip: 'h-11 rounded-full px-4 md:h-8',
         pill: 'h-10 gap-1.5 rounded-full px-4 has-data-[icon=inline-end]:pr-3.5 has-data-[icon=inline-start]:pl-3.5',
       },

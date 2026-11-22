@@ -26,9 +26,7 @@ export function ArticleListItem({ topic, article }: Props) {
                 className="h-auto w-full rounded-lg"
               />
               {!isPublished && (
-                <Badge variant="secondary" className="absolute -top-1 -right-1">
-                  Coming soon
-                </Badge>
+                <Badge className="absolute -top-1 -right-1">Coming soon</Badge>
               )}
             </div>
           </Item.Header>

@@ -4,7 +4,7 @@ import { IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from 'next-themes';
 
 import { Button } from '@/components/ui/Button';
-import { playThemeChangedSound } from '@/lib/sounds';
+import { playSound } from '@/lib/sounds';
 
 const themes = { light: 'light', dark: 'dark' } as const;
 
@@ -19,7 +19,7 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
       onClick={() => {
         setTheme(next);
-        playThemeChangedSound();
+        playSound('themeChanged');
       }}
       className="-mr-2.5 size-11"
     >

@@ -1,18 +1,12 @@
-import { playSound } from 'react-sounds';
+import { playSound as playLibrarySound } from 'react-sounds';
 
 const sounds = {
   themeChanged: 'notification/popup',
   copied: 'notification/success',
 } as const;
 
-function play(sound: (typeof sounds)[keyof typeof sounds]) {
-  playSound(sound, { volume: 0.15 }).catch(() => null);
-}
+const volume = 0.15;
 
-export function playThemeChangedSound() {
-  play(sounds.themeChanged);
-}
-
-export function playCopiedSound() {
-  play(sounds.copied);
+export function playSound(sound: keyof typeof sounds) {
+  playLibrarySound(sounds[sound], { volume }).catch(() => null);
 }

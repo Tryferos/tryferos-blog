@@ -14,7 +14,7 @@ export function ArticleHeader({ topic, article }: Props) {
     <ArticleLayout topic={topic} article={article}>
       <Row wrap align="center" justify="between" gap="md">
         <ArticleActions prompt={article.prompt} />
-        <Row align="center" gap="xl" className="h-10">
+        <Row align="center" gap="lg" className="h-8">
           <Separator
             orientation="vertical"
             variant="strong"

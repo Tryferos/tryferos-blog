@@ -11,7 +11,7 @@ const separatorVariants = cva(
     variants: {
       variant: {
         default: 'bg-border',
-        strong: 'bg-foreground/50',
+        strong: 'bg-foreground/25',
       },
     },
     defaultVariants: {

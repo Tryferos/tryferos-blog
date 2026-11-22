@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
-import { BrandMark } from '@/components/shared/BrandMark';
+import { BrandMark } from './BrandMark.shared';
 import { Column } from '@/components/shared/Column';
 import { Eyebrow } from '@/components/shared/Eyebrow';
 import { Row } from '@/components/shared/Row';

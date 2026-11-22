@@ -3,10 +3,9 @@ import { Geist_Mono, Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import { AppPreferences } from '@/components/shared/AppPreferences';
 import { Column } from '@/components/shared/Column';
-import { SiteFooter } from '@/components/shared/SiteFooter';
-import { SiteHeader } from '@/components/shared/site-header/SiteHeader';
 import { Toaster } from '@/components/ui/Toaster';
 import { siteDescription, siteName } from '@/data/site.config';
+import { SiteLayout } from '@/features/site-layout';
 import { cn } from '@/lib/utils';
 
 import './globals.css';
@@ -56,9 +55,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <Column asChild className="min-h-full">
         <body id="top">
           <AppPreferences>
-            <SiteHeader />
-            {children}
-            <SiteFooter />
+            <SiteLayout>{children}</SiteLayout>
             <Toaster />
           </AppPreferences>
         </body>

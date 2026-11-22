@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { ArticleSearch } from './ArticleSearch';
 import { ThemeToggle } from './ThemeToggle';
-import { BrandMark } from '@/components/shared/BrandMark';
+import { BrandMark } from '../BrandMark.shared';
 import { Row } from '@/components/shared/Row';
 import { topics } from '@/data/topics/content.topics';
 import { siteHandle } from '@/data/site.config';

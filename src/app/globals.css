@@ -26,8 +26,8 @@
   --text-inline-code: 0.875em;
   --container-article: 76ch;
   --container-page: 68rem;
-  --spacing-hero-overlap: 2.5%;
-  --spacing-hero-band: 11%;
+  --spacing-hero-title: 22%;
+  --spacing-hero-title-tall: 44%;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

@@ -2,13 +2,13 @@ import Image from 'next/image';
 import type { ReactNode } from 'react';
 
 import { ArticleBreadcrumb } from './components/ArticleBreadcrumb';
-import { headerExtension } from '@/data/article-header.illustrations';
+import { headerPaper } from '@/data/article-header.paper';
 import * as articleModel from '@/models/article.model';
 import type { Article, Topic } from '@/types/content.types';
 
 type Props = { topic: Topic; article: Article; children: ReactNode };
 
-const illustrationSizes =
+const cardSizes =
   '(min-width: 80rem) 73rem, (min-width: 48rem) calc(100vw - 1rem), calc(100vw - 3rem)';
 
 export function ArticleLayout({ topic, article, children }: Props) {
@@ -17,39 +17,43 @@ export function ArticleLayout({ topic, article, children }: Props) {
   return (
     <header>
       <ArticleBreadcrumb topic={topic} />
-      <div className="mt-6 rounded-2xl bg-hero-paper p-2 md:-mx-4 xl:-mx-16">
-        <div className="overflow-hidden rounded-xl bg-hero-paper">
+      <div className="relative isolate mt-6 overflow-hidden rounded-2xl bg-hero-paper md:-mx-4 xl:-mx-16">
+        <Image
+          src={headerPaper.light}
+          alt=""
+          fill
+          sizes={cardSizes}
+          className="-z-10 object-cover object-bottom dark:hidden"
+        />
+        <Image
+          src={headerPaper.dark}
+          alt=""
+          fill
+          sizes={cardSizes}
+          className="-z-10 hidden object-cover object-bottom dark:block"
+        />
+        <div className="absolute inset-x-0 top-0 -z-10 overflow-hidden mask-b-from-45% mask-b-to-100%">
           <Image
             src={article.illustration.src}
             alt={article.illustration.alt}
-            sizes={illustrationSizes}
+            sizes={cardSizes}
             loading="eager"
-            className="aspect-2/1 w-full object-cover object-right lg:aspect-3/1 dark:origin-bottom dark:scale-105 dark:mask-t-from-85%"
+            className="aspect-2/1 w-full scale-110 object-cover object-right lg:aspect-3/1"
           />
-          <div className="relative isolate -mt-hero-overlap">
-            <Image
-              src={headerExtension.light}
-              alt=""
-              sizes={illustrationSizes}
-              className="absolute inset-x-0 top-0 -z-10 w-full mask-b-from-70% dark:hidden"
-            />
-            <Image
-              src={headerExtension.dark}
-              alt=""
-              sizes={illustrationSizes}
-              className="absolute inset-x-0 top-0 -z-10 hidden w-full mask-b-from-70% dark:block"
-            />
-            <div className="flex flex-col px-6 pt-hero-band pb-6 md:px-10 md:pb-8">
-              <h1 className="max-w-2xl border-l-4 border-primary pl-4 font-sans text-3xl/tight font-bold tracking-tight text-balance text-foreground sm:text-4xl/tight lg:text-5xl/tight">
-                {headline.lead}{' '}
-                <span className="text-primary">{headline.emphasis}</span>
-              </h1>
-              <p className="mt-4 max-w-xl text-lg/relaxed text-muted-foreground">
-                {article.description}
-              </p>
-              <div className="mt-8">{children}</div>
-            </div>
-          </div>
+        </div>
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-linear-to-tr from-hero-paper from-20% via-hero-paper/50 via-35% to-transparent to-50%"
+        />
+        <div className="flex flex-col px-6 pt-hero-title-tall pb-6 md:px-10 md:pb-8 lg:pt-hero-title">
+          <h1 className="max-w-2xl border-l-4 border-primary pl-4 font-sans text-3xl/tight font-bold tracking-tight text-balance text-foreground sm:text-4xl/tight lg:text-5xl/tight">
+            {headline.lead}{' '}
+            <span className="text-primary">{headline.emphasis}</span>
+          </h1>
+          <p className="mt-4 max-w-xl text-lg/relaxed text-muted-foreground">
+            {article.description}
+          </p>
+          <div className="mt-8">{children}</div>
         </div>
       </div>
     </header>

@@ -38,7 +38,8 @@ export function ArticleLayout({ topic, article, children }: Props) {
             alt={article.illustration.alt}
             sizes={cardSizes}
             loading="eager"
-            className="aspect-2/1 w-full scale-110 object-cover object-right lg:aspect-3/1"
+            placeholder="blur"
+            className="aspect-2/1 w-full scale-110 bg-right! object-cover object-right lg:aspect-3/1"
           />
         </div>
         <Image

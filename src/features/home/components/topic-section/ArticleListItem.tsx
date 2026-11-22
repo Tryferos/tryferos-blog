@@ -21,7 +21,7 @@ export function ArticleListItem({ topic, article }: Props) {
                 src={article.illustration.src}
                 alt={article.illustration.alt}
                 sizes="(max-width: 40rem) calc(100vw - 3rem), (max-width: 64rem) 50vw, 21rem"
-                className="h-auto w-full transition-transform duration-300 group-hover/item:scale-102"
+                className="h-auto w-full"
               />
             </div>
           </Item.Header>

@@ -1,14 +1,14 @@
 import Link from 'next/link';
 
-import { ArticleSearch } from './ArticleSearch';
-import { ThemeToggle } from './ThemeToggle';
-import { BrandMark } from '../BrandMark.shared';
+import { ArticleSearch } from './components/ArticleSearch';
+import { ThemeToggle } from './components/ThemeToggle';
+import { BrandMark } from '../components/BrandMark.shared';
 import { Row } from '@/components/shared/Row';
 import { topics } from '@/data/topics/content.topics';
 import { siteHandle } from '@/data/site.config';
 import * as topicModel from '@/models/topic.model';
 
-export function SiteHeader() {
+export function SiteLayoutHeader() {
   return (
     <header className="border-b">
       <Row

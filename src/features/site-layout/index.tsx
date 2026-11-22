@@ -1,16 +1,16 @@
 import type { ReactNode } from 'react';
 
-import { SiteFooter } from './components/SiteFooter';
-import { SiteHeader } from './components/site-header/SiteHeader';
+import { SiteLayoutFooter } from './site-layout.footer';
+import { SiteLayoutHeader } from './site-layout.header';
 
 type Props = { children: ReactNode };
 
 export function SiteLayout({ children }: Props) {
   return (
     <>
-      <SiteHeader />
+      <SiteLayoutHeader />
       {children}
-      <SiteFooter />
+      <SiteLayoutFooter />
     </>
   );
 }

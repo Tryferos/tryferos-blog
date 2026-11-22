@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
-import { BrandMark } from './BrandMark.shared';
+import { BrandMark } from '../components/BrandMark.shared';
 import { Column } from '@/components/shared/Column';
 import { Eyebrow } from '@/components/shared/Eyebrow';
 import { Row } from '@/components/shared/Row';
@@ -19,7 +19,7 @@ import * as topicModel from '@/models/topic.model';
 const footerLinkClass =
   'text-secondary-foreground underline-offset-4 hover:text-foreground hover:underline';
 
-export function SiteFooter() {
+export function SiteLayoutFooter() {
   return (
     <footer className="border-t bg-sidebar">
       <div className="mx-auto w-full max-w-page px-6 pt-14 pb-8">

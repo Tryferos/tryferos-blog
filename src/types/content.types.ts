@@ -4,7 +4,7 @@ import type { StaticImageData } from 'next/image';
 
 import type { articleStatuses } from '@/data/article.statuses';
 
-type ArticleModule = {
+export type ArticleModule = {
   default: MDXContent;
   tableOfContents: Toc;
 };

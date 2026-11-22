@@ -1,29 +1,14 @@
 import { Column } from '@/components/shared/Column';
-import { Separator } from '@/components/ui/Separator';
 import { PageMain } from '@/components/shared/PageMain';
-import * as articleModel from '@/models/article.model';
+import { Separator } from '@/components/ui/Separator';
 import type { PublishedArticle, Topic } from '@/types/content.types';
 
-import { ArticleCodeBlock } from './components/ArticleCodeBlock';
+import { ArticleBody } from './article.body';
+import { ArticleSidebar } from './article.sidebar';
 import { ArticleHeader } from './components/article-header/ArticleHeader';
-import { ComparisonCodeSection } from './components/comparison-code-section/ComparisonCodeSection';
-import { IntendedAudience } from './components/IntendedAudience';
-import { KeepReading } from './components/KeepReading';
 import { ReadingProgress } from './components/ReadingProgress';
-import { SectionHeading } from './components/SectionHeading';
-import { SeriesNavigation } from './components/SeriesNavigation';
-import { TableOfContents } from './components/TableOfContents';
 
 type Props = { topic: Topic; article: PublishedArticle };
-
-type LoadedArticle = Awaited<ReturnType<PublishedArticle['load']>>;
-
-const articleComponents = {
-  h2: SectionHeading,
-  pre: ArticleCodeBlock,
-  IntendedAudience,
-  ComparisonCodeSection,
-};
 
 export async function ArticleScreen({ topic, article }: Props) {
   const { default: Content, tableOfContents } = await article.load();
@@ -43,40 +28,6 @@ export async function ArticleScreen({ topic, article }: Props) {
           />
         </div>
       </PageMain>
-    </Column>
-  );
-}
-
-function ArticleBody({
-  topic,
-  article,
-  Content,
-}: Props & { Content: LoadedArticle['default'] }) {
-  return (
-    <div className="min-w-0 max-w-article flex-1">
-      <article className="text-body text-prose">
-        <Content components={articleComponents} />
-      </article>
-      <SeriesNavigation topic={topic} article={article} />
-    </div>
-  );
-}
-
-function ArticleSidebar({
-  topic,
-  article,
-  tableOfContents,
-}: Props & { tableOfContents: LoadedArticle['tableOfContents'] }) {
-  return (
-    <Column
-      asChild
-      gap="lg"
-      className="shrink-0 lg:sticky lg:top-8 lg:w-fit lg:max-w-58"
-    >
-      <aside aria-label="Article navigation">
-        <TableOfContents sections={articleModel.sectionsOf(tableOfContents)} />
-        <KeepReading topic={topic} article={article} />
-      </aside>
     </Column>
   );
 }

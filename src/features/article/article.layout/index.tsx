@@ -46,13 +46,19 @@ export function ArticleLayout({ topic, article, children }: Props) {
           className="absolute inset-0 -z-10 bg-linear-to-tr from-hero-paper from-20% via-hero-paper/50 via-35% to-transparent to-50%"
         />
         <div className="flex flex-col px-6 pt-hero-title-tall pb-6 md:px-10 md:pb-8 lg:pt-hero-title">
-          <h1 className="max-w-2xl border-l-4 border-primary pl-4 font-sans text-3xl/tight font-bold tracking-tight text-balance text-foreground sm:text-4xl/tight lg:text-5xl/tight">
-            {headline.lead}{' '}
-            <span className="text-primary">{headline.emphasis}</span>
-          </h1>
-          <p className="mt-4 max-w-xl text-lg/relaxed text-muted-foreground">
-            {article.description}
-          </p>
+          <div className="relative">
+            <div
+              aria-hidden
+              className="absolute -inset-x-10 -inset-y-8 -z-10 max-w-3xl rounded-full bg-hero-paper/80 blur-2xl"
+            />
+            <h1 className="max-w-2xl border-l-4 border-primary pl-4 font-sans text-3xl/tight font-bold tracking-tight text-balance text-foreground sm:text-4xl/tight lg:text-5xl/tight">
+              {headline.lead}{' '}
+              <span className="text-primary">{headline.emphasis}</span>
+            </h1>
+            <p className="mt-4 max-w-xl text-lg/relaxed text-muted-foreground">
+              {article.description}
+            </p>
+          </div>
           <div className="mt-8">{children}</div>
         </div>
       </div>

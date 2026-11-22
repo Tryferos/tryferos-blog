@@ -7,6 +7,7 @@ import modelConventions from './verification/configs/model-conventions.ts';
 import modularCode from './verification/configs/modular-code.ts';
 import namedValues from './verification/configs/named-values.ts';
 import reactCompiler from './verification/configs/react-compiler.ts';
+import scrollAreas from './verification/configs/scroll-areas.ts';
 import strictTypes from './verification/configs/strict-types.ts';
 import uiComponents from './verification/configs/ui-components.ts';
 
@@ -31,5 +32,6 @@ export default defineConfig({
     moduleBoundaries,
     uiComponents,
     namedValues,
+    scrollAreas,
   ],
 });

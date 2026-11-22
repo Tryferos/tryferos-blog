@@ -1,5 +1,6 @@
 import { Column } from '@/components/shared/Column';
 import { Separator } from '@/components/ui/Separator';
+import { PageMain } from '@/components/shared/PageMain';
 import * as articleModel from '@/models/article.model';
 import type { PublishedArticle, Topic } from '@/types/content.types';
 
@@ -29,7 +30,7 @@ export async function ArticleScreen({ topic, article }: Props) {
 
   return (
     <Column asChild gap="xl">
-      <main className="mx-auto w-full max-w-page flex-1 px-6 pt-14 pb-24">
+      <PageMain>
         <ReadingProgress />
         <ArticleHeader topic={topic} article={article} />
         <Separator />
@@ -41,7 +42,7 @@ export async function ArticleScreen({ topic, article }: Props) {
             tableOfContents={tableOfContents}
           />
         </div>
-      </main>
+      </PageMain>
     </Column>
   );
 }

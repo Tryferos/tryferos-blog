@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArticleHeaderLayout } from '@/components/shared/article-header/ArticleHeaderLayout.shared';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { PageMain } from '@/components/shared/PageMain';
 import * as topicModel from '@/models/topic.model';
 import type { Topic, UpcomingArticle } from '@/types/content.types';
 
@@ -11,7 +12,7 @@ type Props = { topic: Topic; article: UpcomingArticle };
 
 export function ComingSoon({ topic, article }: Props) {
   return (
-    <main className="mx-auto w-full max-w-page flex-1 px-6 pt-14 pb-24">
+    <PageMain>
       <ArticleHeaderLayout topic={topic} article={article}>
         <Badge variant="secondary">Coming soon</Badge>
         <h1 className="mt-3 text-4xl/tight font-semibold text-balance sm:text-5xl/tight">
@@ -31,6 +32,6 @@ export function ComingSoon({ topic, article }: Props) {
           </Link>
         </Button>
       </ArticleHeaderLayout>
-    </main>
+    </PageMain>
   );
 }

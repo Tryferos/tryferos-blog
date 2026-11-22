@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 
-import { ArticleBreadcrumb } from './ArticleBreadcrumb';
+import { ArticleBreadcrumb } from './components/ArticleBreadcrumb';
 import * as articleModel from '@/models/article.model';
 import type { Article, Topic } from '@/types/content.types';
 
 type Props = { topic: Topic; article: Article; children: ReactNode };
 
-export function ArticleHeaderLayout({ topic, article, children }: Props) {
+export function ArticleLayout({ topic, article, children }: Props) {
   const headline = articleModel.headlineParts(article);
 
   return (

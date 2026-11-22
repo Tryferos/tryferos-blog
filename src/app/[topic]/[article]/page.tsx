@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 
 import { topics } from '@/data/topics/content.topics';
 import { ArticleScreen } from '@/features/article';
-import { ComingSoon } from '@/components/shared/ComingSoon';
 import * as articleModel from '@/models/article.model';
 import * as topicModel from '@/models/topic.model';
 
@@ -32,9 +31,5 @@ export default async function ArticlePage({
   const entry = topicModel.findArticle(topics, topicSlug, articleSlug);
   if (!entry) notFound();
 
-  const { topic, article } = entry;
-  if (!articleModel.isPublished(article)) {
-    return <ComingSoon topic={topic} article={article} />;
-  }
-  return <ArticleScreen topic={topic} article={article} />;
+  return <ArticleScreen topic={entry.topic} article={entry.article} />;
 }

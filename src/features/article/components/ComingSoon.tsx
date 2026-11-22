@@ -1,7 +1,7 @@
 import { IconArrowLeft } from '@tabler/icons-react';
 import Link from 'next/link';
 
-import { ArticleHeaderLayout } from '@/components/shared/article-header/ArticleHeaderLayout.shared';
+import { ArticleLayout } from '../article.layout';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { PageMain } from '@/components/shared/PageMain';
@@ -13,7 +13,7 @@ type Props = { topic: Topic; article: UpcomingArticle };
 export function ComingSoon({ topic, article }: Props) {
   return (
     <PageMain>
-      <ArticleHeaderLayout topic={topic} article={article}>
+      <ArticleLayout topic={topic} article={article}>
         <Badge variant="secondary">Coming soon</Badge>
         <p className="mt-4 text-xl/relaxed text-muted-foreground">
           {article.description}
@@ -28,7 +28,7 @@ export function ComingSoon({ topic, article }: Props) {
             Back to all articles
           </Link>
         </Button>
-      </ArticleHeaderLayout>
+      </ArticleLayout>
     </PageMain>
   );
 }

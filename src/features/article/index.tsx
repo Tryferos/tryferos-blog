@@ -1,16 +1,30 @@
 import { Column } from '@/components/shared/Column';
 import { PageMain } from '@/components/shared/PageMain';
 import { Separator } from '@/components/ui/Separator';
-import type { PublishedArticle, Topic } from '@/types/content.types';
+import * as articleModel from '@/models/article.model';
+import type { Article, PublishedArticle, Topic } from '@/types/content.types';
 
 import { ArticleBody } from './article.body';
 import { ArticleSidebar } from './article.sidebar';
 import { ArticleHeader } from './components/article-header/ArticleHeader';
+import { ComingSoon } from './components/ComingSoon';
 import { ReadingProgress } from './components/ReadingProgress';
 
-type Props = { topic: Topic; article: PublishedArticle };
+type Props = { topic: Topic; article: Article };
 
-export async function ArticleScreen({ topic, article }: Props) {
+export function ArticleScreen({ topic, article }: Props) {
+  if (!articleModel.isPublished(article)) {
+    return <ComingSoon topic={topic} article={article} />;
+  }
+  return <PublishedArticleScreen topic={topic} article={article} />;
+}
+
+type PublishedArticleScreenProps = { topic: Topic; article: PublishedArticle };
+
+async function PublishedArticleScreen({
+  topic,
+  article,
+}: PublishedArticleScreenProps) {
   const { default: Content, tableOfContents } = await article.load();
 
   return (

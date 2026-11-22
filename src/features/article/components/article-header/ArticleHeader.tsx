@@ -15,7 +15,11 @@ export function ArticleHeader({ topic, article }: Props) {
       <Row wrap align="center" justify="between" gap="md">
         <ArticleActions prompt={article.prompt} />
         <Row align="center" gap="md" className="h-10">
-          <Separator orientation="vertical" className="hidden md:block" />
+          <Separator
+            orientation="vertical"
+            variant="strong"
+            className="hidden md:block"
+          />
           <Row align="center" gap="sm">
             <IconCalendar className="size-4 text-muted-foreground" />
             <PublishedDate date={article.publishedAt} />

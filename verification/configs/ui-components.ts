@@ -9,8 +9,8 @@ const pluginsDir = path.join(import.meta.dirname, '../plugins');
 const shadcnFiles = [
   'src/components/ui/**',
   'src/lib/code-block/highlighter.tsx',
-  'src/lib/code-block/use-highlighted-code.ts',
-  'src/lib/use-mobile.ts',
+  'src/hooks/useHighlightedCode.ts',
+  'src/hooks/useIsMobile.ts',
 ];
 
 const strictTypesOff = Object.fromEntries(

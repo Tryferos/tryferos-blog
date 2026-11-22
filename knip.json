@@ -3,6 +3,6 @@
   "entry": [
     "src/components/ui/*.tsx",
     "src/lib/code-block/highlighter.tsx",
-    "src/lib/code-block/use-highlighted-code.ts"
+    "src/hooks/useHighlightedCode.ts"
   ]
 }

@@ -4,7 +4,7 @@ import { createIndependentModules } from 'eslint-plugin-project-structure';
 import { defineConfig } from 'oxlint';
 import tsconfig from '../../tsconfig.json' with { type: 'json' };
 
-const sharedFolders = ['components', 'data', 'lib', 'models', 'types'];
+const sharedFolders = ['components', 'data', 'hooks', 'lib', 'models', 'types'];
 
 const independentModules = createIndependentModules({
   pathAliases: { baseUrl: '.', paths: tsconfig.compilerOptions.paths },
@@ -18,16 +18,22 @@ const independentModules = createIndependentModules({
     {
       name: 'UI components',
       pattern: 'src/components/ui/**',
-      allowImportsFrom: ['{ui}', 'src/lib/**', 'src/data/**', 'src/types/**'],
+      allowImportsFrom: [
+        '{ui}',
+        'src/hooks/**',
+        'src/lib/**',
+        'src/data/**',
+        'src/types/**',
+      ],
       errorMessage:
-        'UI components import only other UI components, lib, data and types. Pass app data in through props.',
+        'UI components import only other UI components, hooks, lib, data and types. Pass app data in through props.',
     },
     {
       name: 'Shared code',
       pattern: sharedFolders.map(folder => `src/${folder}/**`),
       allowImportsFrom: ['{shared}', '{content}'],
       errorMessage:
-        'Shared code in components, data, lib, models and types imports only shared code and content. It never imports a feature.',
+        'Shared code in components, data, hooks, lib, models and types imports only shared code and content. It never imports a feature.',
     },
     {
       name: 'Features',

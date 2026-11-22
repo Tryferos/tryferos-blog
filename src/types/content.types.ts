@@ -34,6 +34,7 @@ export type ArticleLink = {
   title: string;
   description: string;
   illustration: ArticleSummary['illustration'];
+  part: number;
   publishedAt?: string;
 };
 

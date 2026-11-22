@@ -71,6 +71,7 @@ export function searchGroup(topic: Topic): SearchGroup {
       title: article.title,
       description: article.description,
       illustration: article.illustration,
+      part: partOf(topic, article),
       publishedAt: articleModel.isPublished(article)
         ? article.publishedAt
         : undefined,

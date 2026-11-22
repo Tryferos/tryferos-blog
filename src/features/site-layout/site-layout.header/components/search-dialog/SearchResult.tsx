@@ -39,7 +39,7 @@ export function SearchResult({ topic, link, search, onSelect }: Props) {
             <span className="truncate text-base font-medium md:text-sm">
               <HighlightedText text={link.title} search={search} />
             </span>
-            <ResultSubtitle topic={topic} publishedAt={link.publishedAt} />
+            <ResultSubtitle part={link.part} publishedAt={link.publishedAt} />
             <span className="text-sm leading-relaxed text-muted-foreground md:hidden">
               {link.description}
             </span>
@@ -59,17 +59,16 @@ export function SearchResult({ topic, link, search, onSelect }: Props) {
   );
 }
 
-type ResultSubtitleProps = { topic: string; publishedAt?: string };
+type ResultSubtitleProps = { part: number; publishedAt?: string };
 
-function ResultSubtitle({ topic, publishedAt }: ResultSubtitleProps) {
+function ResultSubtitle({ part, publishedAt }: ResultSubtitleProps) {
   return (
     <span className="truncate text-xs text-muted-foreground max-md:hidden">
-      {topic}
-      {publishedAt && (
-        <>
-          {' · '}
-          <PublishedDate date={publishedAt} className="text-xs" />
-        </>
+      Part {part} ·{' '}
+      {publishedAt ? (
+        <PublishedDate date={publishedAt} className="text-xs" />
+      ) : (
+        'Coming soon'
       )}
     </span>
   );

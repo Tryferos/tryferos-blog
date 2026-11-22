@@ -8,10 +8,7 @@ type Props = { topic: Topic; article: PublishedArticle };
 export function ArticleHeader({ topic, article }: Props) {
   return (
     <ArticleHeaderLayout topic={topic} article={article}>
-      <h1 className="text-4xl/tight font-semibold text-balance sm:text-5xl/tight">
-        {article.title}
-      </h1>
-      <p className="mt-4.5 text-xl/relaxed text-muted-foreground">
+      <p className="text-xl/relaxed text-muted-foreground">
         {article.description}
       </p>
       <ArticleActions prompt={article.prompt} />

@@ -15,10 +15,7 @@ export function ComingSoon({ topic, article }: Props) {
     <PageMain>
       <ArticleHeaderLayout topic={topic} article={article}>
         <Badge variant="secondary">Coming soon</Badge>
-        <h1 className="mt-3 text-4xl/tight font-semibold text-balance sm:text-5xl/tight">
-          {article.title}
-        </h1>
-        <p className="mt-4.5 text-xl/relaxed text-muted-foreground">
+        <p className="mt-4 text-xl/relaxed text-muted-foreground">
           {article.description}
         </p>
         <p className="mt-6 text-body text-prose">

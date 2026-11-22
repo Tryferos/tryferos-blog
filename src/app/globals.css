@@ -59,6 +59,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --color-paper: oklch(0.915 0.068 77);
+  --color-ink-red: oklch(0.56 0.19 28);
   --color-prose: var(--prose);
   --color-link: var(--link);
   --color-highlight: var(--highlight);

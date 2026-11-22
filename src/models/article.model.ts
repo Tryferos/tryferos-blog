@@ -12,3 +12,11 @@ export function sectionsOf(tableOfContents: Toc): Section[] {
     entry.id ? [{ id: entry.id, title: entry.value }] : [],
   );
 }
+
+export function headlineParts(article: Article) {
+  const lastSpace = article.title.lastIndexOf(' ');
+  return {
+    lead: article.title.slice(0, lastSpace),
+    emphasis: article.title.slice(lastSpace + 1),
+  };
+}

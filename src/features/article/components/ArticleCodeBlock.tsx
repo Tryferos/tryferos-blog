@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
 
-import { CodeBlock } from '@/components/shared/CodeBlock';
+import { CodeBlock } from '@/components/shared/code-block/CodeBlock';
 import { codeLanguage } from '@/lib/code-language';
 import { highlightedLines } from '@/lib/highlighted-lines';
 import { nodeText } from '@/lib/node-text';

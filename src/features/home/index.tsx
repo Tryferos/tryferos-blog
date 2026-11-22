@@ -6,7 +6,7 @@ import { PageMain } from '@/components/shared/PageMain';
 import { topics } from '@/data/content.topics';
 import { headerReveal } from '@/data/motion.tokens';
 
-import { TopicSection } from './components/TopicSection';
+import { TopicSection } from './components/topic-section/TopicSection';
 
 export function HomeScreen() {
   return (

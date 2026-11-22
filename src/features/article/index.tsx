@@ -5,7 +5,7 @@ import * as articleModel from '@/models/article.model';
 import type { PublishedArticle, Topic } from '@/types/content.types';
 
 import { ArticleCodeBlock } from './components/ArticleCodeBlock';
-import { ArticleHeader } from './components/ArticleHeader';
+import { ArticleHeader } from './components/article-header/ArticleHeader';
 import { ComparisonCodeSection } from './components/comparison-code-section/ComparisonCodeSection';
 import { IntendedAudience } from './components/IntendedAudience';
 import { KeepReading } from './components/KeepReading';

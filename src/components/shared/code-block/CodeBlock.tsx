@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 
-import { CopyButton } from '@/components/shared/CopyButton';
+import { CopyButton } from './CopyButton';
 import { CodeBlock as CodeBlockFrame } from '@/components/ui/CodeBlock';
 
 type Props = { code: string; lines: ReactNode[] };

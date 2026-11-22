@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 import { AppPreferences } from '@/components/shared/AppPreferences';
 import { Column } from '@/components/shared/Column';
 import { SiteFooter } from '@/components/shared/SiteFooter';
-import { SiteHeader } from '@/components/shared/SiteHeader';
+import { SiteHeader } from '@/components/shared/site-header/SiteHeader';
 import { Toaster } from '@/components/ui/Toaster';
 import { siteDescription, siteName } from '@/data/site.config';
 import { cn } from '@/lib/utils';

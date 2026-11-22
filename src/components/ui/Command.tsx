@@ -202,7 +202,7 @@ function CommandItem({
         !isCard &&
           'items-center gap-2 px-2 py-1.5 data-selected:bg-muted data-selected:text-foreground data-selected:*:[svg]:text-foreground',
         isCard &&
-          'flex-col items-stretch overflow-hidden data-selected:bg-accent data-selected:text-accent-foreground max-md:mb-2.5 max-md:rounded-xl! max-md:border md:px-2.5 md:py-2',
+          'flex-col items-stretch overflow-hidden data-selected:bg-muted data-selected:text-foreground max-md:mb-2.5 max-md:rounded-xl! max-md:border md:px-2.5 md:py-2',
         className,
       )}
       {...props}

@@ -5,14 +5,14 @@ function KbdRoot({
   variant = 'default',
   ...props
 }: React.ComponentProps<'kbd'> & {
-  variant?: 'default' | 'inverted' | 'tinted';
+  variant?: 'default' | 'inverted' | 'raised';
 }) {
   return (
     <kbd
       data-slot="kbd"
       className={cn(
         variant === 'default' && 'bg-muted text-muted-foreground',
-        variant === 'tinted' && 'bg-foreground/5 text-current',
+        variant === 'raised' && 'bg-background text-muted-foreground',
         variant === 'inverted' &&
           'bg-primary-foreground/20 text-primary-foreground',
         "pointer-events-none inline-flex h-5 w-fit min-w-5 items-center justify-center gap-1 rounded-sm px-1 font-sans text-xs font-medium select-none in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10 [&_svg:not([class*='size-'])]:size-3",

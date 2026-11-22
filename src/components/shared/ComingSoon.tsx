@@ -9,7 +9,7 @@ import type { Topic, UpcomingArticle } from '@/types/content.types';
 
 type Props = { topic: Topic; article: UpcomingArticle };
 
-export function ComingSoonScreen({ topic, article }: Props) {
+export function ComingSoon({ topic, article }: Props) {
   return (
     <main className="mx-auto w-full max-w-page flex-1 px-6 pt-14 pb-24">
       <ArticleHeaderLayout topic={topic} article={article}>

@@ -32,3 +32,10 @@ export const copyIconTransition = {
   ease: [easeOutQuint.x1, easeOutQuint.y1, easeOutQuint.x2, easeOutQuint.y2],
 } as const;
 export const copiedConfirmationMilliseconds = 3000;
+
+export const illustrationHidden = { opacity: 0 };
+export const illustrationShown = { opacity: 1 };
+export const illustrationRevealTransition = {
+  duration: 0.4,
+  ease: [easeOutQuint.x1, easeOutQuint.y1, easeOutQuint.x2, easeOutQuint.y2],
+} as const;

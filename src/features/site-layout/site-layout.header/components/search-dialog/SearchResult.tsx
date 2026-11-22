@@ -1,7 +1,10 @@
+import { IconCornerDownLeft, IconFileText } from '@tabler/icons-react';
 import Image from 'next/image';
 
 import { Column } from '@/components/shared/Column';
+import { PublishedDate } from '@/components/shared/PublishedDate';
 import { Command } from '@/components/ui/Command';
+import { Kbd } from '@/components/ui/Kbd';
 import type { ArticleLink } from '@/types/content.types';
 
 import { ArticleAvailability } from './ArticleAvailability.shared';
@@ -27,21 +30,48 @@ export function SearchResult({ topic, link, search, onSelect }: Props) {
         sizes="calc(100vw - 2rem)"
         className="h-auto w-full md:hidden"
       />
-      <div className="max-md:p-3.5">
-        <Column gap="xs">
-          <span className="text-base font-medium md:text-sm">
-            <HighlightedText text={link.title} search={search} />
-          </span>
-          <span className="text-sm leading-relaxed text-muted-foreground md:hidden">
-            {link.description}
-          </span>
-          <ArticleAvailability
-            publishedAt={link.publishedAt}
-            className="mt-1 md:hidden"
-          />
-        </Column>
+      <div className="md:flex md:items-center md:gap-3">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted text-muted-foreground group-data-selected/command-item:bg-background group-data-selected/command-item:text-primary max-md:hidden">
+          <IconFileText />
+        </span>
+        <div className="min-w-0 flex-1 max-md:p-3.5">
+          <Column gap="xs">
+            <span className="truncate text-base font-medium md:text-sm">
+              <HighlightedText text={link.title} search={search} />
+            </span>
+            <ResultSubtitle topic={topic} publishedAt={link.publishedAt} />
+            <span className="text-sm leading-relaxed text-muted-foreground md:hidden">
+              {link.description}
+            </span>
+            <ArticleAvailability
+              publishedAt={link.publishedAt}
+              className="mt-1 md:hidden"
+            />
+          </Column>
+        </div>
+        <span className="invisible group-data-selected/command-item:visible max-md:hidden">
+          <Kbd>
+            <IconCornerDownLeft />
+          </Kbd>
+        </span>
       </div>
     </Command.Item>
+  );
+}
+
+type ResultSubtitleProps = { topic: string; publishedAt?: string };
+
+function ResultSubtitle({ topic, publishedAt }: ResultSubtitleProps) {
+  return (
+    <span className="truncate text-xs text-muted-foreground max-md:hidden">
+      {topic}
+      {publishedAt && (
+        <>
+          {' · '}
+          <PublishedDate date={publishedAt} className="text-xs" />
+        </>
+      )}
+    </span>
   );
 }
 

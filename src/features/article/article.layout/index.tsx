@@ -61,7 +61,7 @@ export function ArticleLayout({ topic, article, children }: Props) {
               aria-hidden
               className="absolute -inset-x-10 -inset-y-8 -z-10 max-w-3xl rounded-full bg-hero-paper/80 blur-2xl lg:hidden"
             />
-            <h1 className="max-w-2xl border-l-4 border-ink-red pl-4 font-sans text-3xl/tight font-bold tracking-tight text-balance text-foreground sm:text-4xl/tight lg:text-5xl/tight">
+            <h1 className="relative max-w-2xl pl-5 before:absolute before:inset-y-2 before:left-0 before:w-1 before:rounded-full before:bg-ink-red font-sans text-3xl/tight font-bold tracking-tight text-balance text-foreground sm:text-4xl/tight lg:text-5xl/tight">
               {headline.lead}{' '}
               <span className="text-ink-red">{headline.emphasis}</span>
             </h1>

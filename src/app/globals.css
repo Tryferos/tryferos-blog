@@ -65,6 +65,7 @@
   --color-prose: var(--prose);
   --color-link: var(--link);
   --color-highlight: var(--highlight);
+  --color-scrollbar: var(--scrollbar);
   --color-code: var(--code);
   --color-code-foreground: var(--code-foreground);
   --color-before: var(--before);
@@ -121,6 +122,7 @@
   --prose: oklch(0.32 0.012 60);
   --link: oklch(0.52 0.15 5);
   --highlight: oklch(0.92 0.09 85);
+  --scrollbar: oklch(0.62 0.008 80 / 55%);
   --code: oklch(0.955 0.008 80);
   --code-foreground: oklch(0.38 0.08 5);
   --before: oklch(0.52 0.12 35);
@@ -173,6 +175,7 @@
     --prose: oklch(0.84 0.01 80);
     --link: oklch(0.76 0.13 5);
     --highlight: oklch(0.42 0.07 75);
+    --scrollbar: oklch(1 0 0 / 28%);
     --code: oklch(0.04 0.14 5);
     --code-foreground: oklch(0.85 0.07 5);
     --before: oklch(0.74 0.14 40);
@@ -186,6 +189,8 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-scrollbar) transparent;
   }
   html {
     @apply font-sans;

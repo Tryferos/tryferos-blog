@@ -21,8 +21,11 @@ export function ArticleHeader({ topic, article }: Props) {
             className="hidden md:block"
           />
           <Row align="center" gap="sm">
-            <IconCalendar className="size-4 text-muted-foreground" />
-            <PublishedDate date={article.publishedAt} />
+            <IconCalendar className="size-4 text-foreground" />
+            <PublishedDate
+              date={article.publishedAt}
+              className="text-foreground"
+            />
           </Row>
         </Row>
       </Row>

@@ -18,18 +18,15 @@ export function ArticleListItem({ topic, article }: Props) {
       <Item asChild variant="plain" size="flush" className="items-start">
         <Link href={topicModel.articleHref(topic, article)} prefetch>
           <Item.Header className="mb-2.5">
-            <div className="relative w-full overflow-hidden rounded-lg">
+            <div className="relative w-full">
               <Image
                 src={article.illustration.src}
                 alt={article.illustration.alt}
                 sizes="(max-width: 40rem) calc(100vw - 3rem), (max-width: 64rem) 50vw, 21rem"
-                className="h-auto w-full"
+                className="h-auto w-full rounded-lg"
               />
               {!isPublished && (
-                <Badge
-                  variant="secondary"
-                  className="absolute top-1.5 right-1.5"
-                >
+                <Badge variant="secondary" className="absolute -top-1 -right-1">
                   Coming soon
                 </Badge>
               )}

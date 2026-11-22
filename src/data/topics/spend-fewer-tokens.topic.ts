@@ -1,8 +1,8 @@
-import avoidDuplicationIllustration from '@/content/codebase-conventions/avoid-duplication.webp';
-import errorsNameTheFixIllustration from '@/content/codebase-conventions/errors-name-the-fix.webp';
-import ignoreGeneratedFilesIllustration from '@/content/codebase-conventions/ignore-generated-files.webp';
-import keepAgentsMdShortIllustration from '@/content/codebase-conventions/keep-agents-md-short.webp';
-import oneVerificationCommandIllustration from '@/content/codebase-conventions/one-verification-command.webp';
+import avoidDuplicationIllustration from '@/content/illustrations/avoid-duplication.webp';
+import errorsNameTheFixIllustration from '@/content/illustrations/errors-name-the-fix.webp';
+import ignoreGeneratedFilesIllustration from '@/content/illustrations/ignore-generated-files.webp';
+import keepAgentsMdShortIllustration from '@/content/illustrations/keep-agents-md-short.webp';
+import oneVerificationCommandIllustration from '@/content/illustrations/one-verification-command.webp';
 import { articleStatuses } from '@/data/article.statuses';
 import type { Topic } from '@/types/content.types';
 

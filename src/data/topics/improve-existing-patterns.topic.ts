@@ -1,8 +1,8 @@
-import pruneRulesIllustration from '@/content/codebase-conventions/prune-rules.webp';
-import repeatedInstructionsIllustration from '@/content/codebase-conventions/repeated-instructions.webp';
-import smallCommitsIllustration from '@/content/codebase-conventions/small-commits.webp';
-import stateTheReasonIllustration from '@/content/codebase-conventions/state-the-reason.webp';
-import welcomeDeviationIllustration from '@/content/codebase-conventions/welcome-deviation.webp';
+import pruneRulesIllustration from '@/content/illustrations/prune-rules.webp';
+import repeatedInstructionsIllustration from '@/content/illustrations/repeated-instructions.webp';
+import smallCommitsIllustration from '@/content/illustrations/small-commits.webp';
+import stateTheReasonIllustration from '@/content/illustrations/state-the-reason.webp';
+import welcomeDeviationIllustration from '@/content/illustrations/welcome-deviation.webp';
 import { articleStatuses } from '@/data/article.statuses';
 import type { Topic } from '@/types/content.types';
 

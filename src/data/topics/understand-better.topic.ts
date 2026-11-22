@@ -1,8 +1,8 @@
-import commentsIllustration from '@/content/codebase-conventions/comments.webp';
-import explicitDataFlowIllustration from '@/content/codebase-conventions/explicit-data-flow.webp';
-import nameConditionsIllustration from '@/content/codebase-conventions/name-conditions.webp';
-import smallFilesIllustration from '@/content/codebase-conventions/small-files.webp';
-import typesAsDocumentationIllustration from '@/content/codebase-conventions/types-as-documentation.webp';
+import commentsIllustration from '@/content/illustrations/comments.webp';
+import explicitDataFlowIllustration from '@/content/illustrations/explicit-data-flow.webp';
+import nameConditionsIllustration from '@/content/illustrations/name-conditions.webp';
+import smallFilesIllustration from '@/content/illustrations/small-files.webp';
+import typesAsDocumentationIllustration from '@/content/illustrations/types-as-documentation.webp';
 import { articleStatuses } from '@/data/article.statuses';
 import type { Topic } from '@/types/content.types';
 
@@ -69,7 +69,7 @@ export const understandBetter: Topic = {
       publishedAt: '2026-11-14',
       prompt:
         'Add this rule to AGENTS.md: "No comments unless necessary. Make the code clearer instead." Then apply it to the codebase: remove every comment that doesn\'t carry a reason the code can\'t express, like a workaround or a platform quirk, and make the code clearer where a comment was explaining it.',
-      load: () => import('@/content/codebase-conventions/comments.mdx'),
+      load: () => import('@/content/articles/comments.mdx'),
     },
   ],
 };

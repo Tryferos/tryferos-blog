@@ -1,7 +1,7 @@
-import canonicalExampleIllustration from '@/content/codebase-conventions/canonical-example.webp';
-import colocateIllustration from '@/content/codebase-conventions/colocate.webp';
-import enforceWithChecksIllustration from '@/content/codebase-conventions/enforce-with-checks.webp';
-import oneWayPerThingIllustration from '@/content/codebase-conventions/one-way-per-thing.webp';
+import canonicalExampleIllustration from '@/content/illustrations/canonical-example.webp';
+import colocateIllustration from '@/content/illustrations/colocate.webp';
+import enforceWithChecksIllustration from '@/content/illustrations/enforce-with-checks.webp';
+import oneWayPerThingIllustration from '@/content/illustrations/one-way-per-thing.webp';
 import { articleStatuses } from '@/data/article.statuses';
 import type { Topic } from '@/types/content.types';
 

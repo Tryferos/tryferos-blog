@@ -1,8 +1,8 @@
-import avoidDynamicIndirectionIllustration from '@/content/codebase-conventions/avoid-dynamic-indirection.webp';
-import nameFilesAfterContentsIllustration from '@/content/codebase-conventions/name-files-after-contents.webp';
-import oneEntryPointIllustration from '@/content/codebase-conventions/one-entry-point.webp';
-import predictablePathsIllustration from '@/content/codebase-conventions/predictable-paths.webp';
-import searchableNamesIllustration from '@/content/codebase-conventions/searchable-names.webp';
+import avoidDynamicIndirectionIllustration from '@/content/illustrations/avoid-dynamic-indirection.webp';
+import nameFilesAfterContentsIllustration from '@/content/illustrations/name-files-after-contents.webp';
+import oneEntryPointIllustration from '@/content/illustrations/one-entry-point.webp';
+import predictablePathsIllustration from '@/content/illustrations/predictable-paths.webp';
+import searchableNamesIllustration from '@/content/illustrations/searchable-names.webp';
 import { articleStatuses } from '@/data/article.statuses';
 import type { Topic } from '@/types/content.types';
 

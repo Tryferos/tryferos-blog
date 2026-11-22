@@ -31,7 +31,7 @@ export function SearchResult({ topic, link, search, onSelect }: Props) {
         className="h-auto w-full md:hidden"
       />
       <div className="md:flex md:items-center md:gap-3">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted text-muted-foreground group-data-selected/command-item:bg-background group-data-selected/command-item:text-primary max-md:hidden">
+        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border bg-muted text-muted-foreground group-data-selected/command-item:text-primary max-md:hidden">
           <IconFileText />
         </span>
         <div className="min-w-0 flex-1 max-md:p-3.5">

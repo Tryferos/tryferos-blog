@@ -22,7 +22,7 @@ const buttonVariants = cva(
         subtle:
           'text-muted-foreground hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50',
         field:
-          'border-border bg-card font-normal text-muted-foreground shadow-xs hover:border-foreground/20 dark:border-input dark:bg-input/30',
+          'border-foreground/10 bg-card font-normal text-muted-foreground shadow-xs hover:border-foreground/20',
       },
       size: {
         default:

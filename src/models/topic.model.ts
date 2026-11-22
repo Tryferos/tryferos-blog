@@ -70,6 +70,10 @@ export function searchGroup(topic: Topic): SearchGroup {
       href: articleHref(topic, article),
       title: article.title,
       description: article.description,
+      illustration: article.illustration,
+      publishedAt: articleModel.isPublished(article)
+        ? article.publishedAt
+        : undefined,
     })),
   };
 }

@@ -33,6 +33,8 @@ export type ArticleLink = {
   href: string;
   title: string;
   description: string;
+  illustration: ArticleSummary['illustration'];
+  publishedAt?: string;
 };
 
 export type SearchGroup = {

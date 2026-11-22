@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import { loadHighlighter } from '@/lib/code-block/highlighter';
 
+const newline = '\n';
+
 export function useHighlightedCode(value: string, language: string) {
-  // A trailing newline would render as an extra empty line.
-  const code = value.endsWith('\n') ? value.slice(0, -1) : value;
+  const code = withoutTrailingNewline(value);
   const [loaded, setLoaded] = React.useState<{
     language: string;
     highlighter: Awaited<ReturnType<typeof loadHighlighter>>;
@@ -27,22 +28,20 @@ export function useHighlightedCode(value: string, language: string) {
     };
   }, [language]);
 
-  // The complete lines, highlighted. While the code streams, only the new
-  // lines are tokenized, starting from the grammar state of the last one.
-  const [done, setDone] = React.useState<{
+  const [completeLines, setCompleteLines] = React.useState<{
     highlighter: typeof highlighter;
     text: string;
     lines: React.ReactNode[];
     state?: Parameters<NonNullable<typeof highlighter>['highlight']>[1];
   }>({ highlighter: null, text: '', lines: [] });
 
-  let next = done;
+  let next = completeLines;
 
   if (next.highlighter !== highlighter || !code.startsWith(next.text)) {
     next = { highlighter, text: '', lines: [] };
   }
 
-  const end = code.lastIndexOf('\n') + 1;
+  const end = code.lastIndexOf(newline) + 1;
 
   if (highlighter && end > next.text.length) {
     const result = highlighter.highlight(
@@ -58,18 +57,24 @@ export function useHighlightedCode(value: string, language: string) {
     };
   }
 
-  if (next !== done) {
-    setDone(next);
+  if (next !== completeLines) {
+    setCompleteLines(next);
   }
 
-  // The last line is still being written, so it is tokenized on every render.
-  const tail = code.slice(end);
+  const lineBeingWritten = code.slice(end);
 
   return React.useMemo(() => {
     if (!highlighter) {
-      return code.split('\n');
+      return code.split(newline);
     }
 
-    return [...next.lines, highlighter.highlight(tail, next.state).lines[0]];
-  }, [code, highlighter, next, tail]);
+    return [
+      ...next.lines,
+      highlighter.highlight(lineBeingWritten, next.state).lines[0],
+    ];
+  }, [code, highlighter, next, lineBeingWritten]);
+}
+
+function withoutTrailingNewline(value: string) {
+  return value.endsWith(newline) ? value.slice(0, -newline.length) : value;
 }

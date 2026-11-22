@@ -39,7 +39,11 @@ export const sharedComponentNames: Rule = {
     if (!isOptions(options)) return {};
     const file = context.filename;
     const folder = path.relative(projectRoot, path.dirname(file));
-    if (options.flatFolders.includes(folder)) return {};
+    const isInFlatFolder = options.flatFolders.some(
+      flatFolder =>
+        folder === flatFolder || folder.startsWith(`${flatFolder}/`),
+    );
+    if (isInFlatFolder) return {};
     const fileName = path.basename(file);
     const isMarkedShared = fileName.endsWith(sharedSuffix);
     const name = fileName.replace(sharedSuffix, '').replace('.tsx', '');

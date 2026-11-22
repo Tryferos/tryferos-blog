@@ -3,7 +3,7 @@ import { LazyMotion, domAnimation } from 'motion/react';
 
 import { Column } from '@/components/shared/Column';
 import { PageMain } from '@/components/shared/PageMain';
-import { topics } from '@/data/content.topics';
+import { topics } from '@/data/topics/content.topics';
 import { headerReveal } from '@/data/motion.tokens';
 
 import { TopicSection } from './components/topic-section/TopicSection';

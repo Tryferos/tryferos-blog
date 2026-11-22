@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { topics } from '@/data/content.topics';
+import { topics } from '@/data/topics/content.topics';
 import { ArticleScreen } from '@/features/article';
 import { ComingSoon } from '@/components/shared/ComingSoon';
 import * as articleModel from '@/models/article.model';

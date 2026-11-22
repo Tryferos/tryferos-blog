@@ -5,7 +5,7 @@ import { BrandMark } from '@/components/shared/BrandMark';
 import { Column } from '@/components/shared/Column';
 import { Eyebrow } from '@/components/shared/Eyebrow';
 import { Row } from '@/components/shared/Row';
-import { topics } from '@/data/content.topics';
+import { topics } from '@/data/topics/content.topics';
 import { socialLinks } from '@/data/footer.links';
 import {
   siteDescription,

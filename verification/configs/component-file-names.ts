@@ -1,5 +1,5 @@
 // WHY: A component file whose name differs from its component, or that opens with something else, is hard to find and read from the JSX that uses it.
-// SOLVES: Requires each file in a components/ folder to export a component named after the file, start with it, keep its helpers small, leave utility types to src/types and type each component's destructured props right above it: Props for the main component, <Name>Props for others.
+// SOLVES: Requires each file in a components/ folder to export a component named after the file, start with it, keep its helpers small, leave utility types to src/types and type each component's destructured props right above it: Props for the main component, <Name>Props for others. A component used by two or more files is named <Name>.shared.tsx, and only then.
 import path from 'node:path';
 import { createFileComposition } from 'eslint-plugin-project-structure';
 import { defineConfig } from 'oxlint';
@@ -45,6 +45,10 @@ export default defineConfig({
         'components/main-component-first': 'error',
         'components/no-utility-types': 'error',
         'components/props-above-component': 'error',
+        'components/shared-component-names': [
+          'error',
+          { flatFolders: ['src/components/ui', 'src/components/shared'] },
+        ],
       },
     },
   ],

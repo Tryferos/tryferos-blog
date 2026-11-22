@@ -25,7 +25,7 @@ Run `pnpm check`, then `pnpm build`. Fix findings in the code, never by disablin
 
 - When building new components, always try to use components/ui first, if they do not fit the style extend them (size, variants). Then look at components/shared, if it can be used. If you are building something new, build it at the place you are working on (e.g. feature) if this component will be shared across many features make it shared.
 - No comments unless necessary. Make the code clearer instead.
-- Name a concern subfolder inside a kind folder after what the reader sees, like `components/site-header/`. Files for the same thing the reader sees belong in it even when they do not import each other. A component used by several is named `<Component>.shared.tsx`.
+- Name a concern subfolder inside a kind folder after what the reader sees, like `components/site-header/`. Files for the same thing the reader sees belong in it even when they do not import each other.
 - `src/components/ui/` holds only shadcn components, in PascalCase files that each export one compound component built with `Object.assign` (`<Dialog.Content>`, `<Command.Item>`). Rewrite what `shadcn add` generates into that shape. Every other app-wide component goes in `src/components/shared/`.
 - Each screen lives in `src/features/<name>/`, whose `index.tsx` exports only `<Name>Screen`. A part of a screen with its own components can be a sub-feature in `src/features/<name>/<name>.<part>/`, whose `index.tsx` exports only `<Name><Part>`, like `article.sidebar/` exporting `ArticleSidebar`. Routes in `src/app/` handle params and metadata, then render the screen.
 - Name conditions and compared strings: `const isDraft = article.status === statuses.draft`, not `article.status === 'draft'` inline.

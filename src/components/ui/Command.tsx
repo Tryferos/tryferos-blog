@@ -54,7 +54,7 @@ function CommandDialog({
         className={cn(
           'top-1/3 translate-y-0 overflow-hidden rounded-xl! p-0',
           variant === 'search' &&
-            'top-16 flex h-140 max-h-[calc(100dvh-8rem)] flex-col gap-0 sm:max-w-4xl max-md:top-12 max-md:bottom-0 max-md:h-auto max-md:max-h-none max-md:max-w-full max-md:rounded-b-none!',
+            'flex h-140 md:top-1/2 md:-translate-y-1/2 max-h-[calc(100dvh-8rem)] flex-col gap-0 sm:max-w-4xl max-md:top-12 max-md:bottom-0 max-md:h-auto max-md:max-h-none max-md:max-w-full max-md:rounded-b-none!',
           className,
         )}
         showCloseButton={showCloseButton}

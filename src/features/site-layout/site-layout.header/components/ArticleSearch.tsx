@@ -6,7 +6,8 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/Button';
 import { Kbd } from '@/components/ui/Kbd';
-import { useModLabel, useModShortcut } from '@/lib/keyboard-shortcut';
+import { useModLabel } from '@/hooks/useModLabel';
+import { useModShortcut } from '@/hooks/useModShortcut';
 import type { SearchGroup } from '@/types/content.types';
 
 import { SearchDialog } from './search-dialog/SearchDialog';

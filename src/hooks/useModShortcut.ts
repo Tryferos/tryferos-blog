@@ -1,7 +1,4 @@
-import { useEffect, useSyncExternalStore } from 'react';
-
-const applePlatform = /Mac|iPhone|iPad/;
-const labels = { apple: '⌘', other: 'Ctrl' } as const;
+import { useEffect } from 'react';
 
 export function useModShortcut(key: string, onTrigger: () => void) {
   useEffect(() => {
@@ -16,16 +13,4 @@ export function useModShortcut(key: string, onTrigger: () => void) {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [key, onTrigger]);
-}
-
-export function useModLabel() {
-  return useSyncExternalStore(subscribeToNothing, clientModLabel, () => null);
-}
-
-function subscribeToNothing() {
-  return () => undefined;
-}
-
-function clientModLabel() {
-  return applePlatform.test(navigator.userAgent) ? labels.apple : labels.other;
 }

@@ -123,7 +123,7 @@
 
   --prose: oklch(0.32 0.012 60);
   --link: oklch(0.52 0.15 5);
-  --highlight: oklch(0.92 0.09 85);
+  --highlight: oklch(0.89 0.08 76);
   --scrollbar: oklch(0.62 0.008 80 / 55%);
   --code: oklch(0.955 0.008 80);
   --code-foreground: oklch(0.38 0.08 5);
@@ -177,7 +177,7 @@
 
     --prose: oklch(0.84 0.01 80);
     --link: oklch(0.76 0.13 5);
-    --highlight: oklch(0.42 0.07 75);
+    --highlight: oklch(0.4 0.06 45);
     --scrollbar: oklch(1 0 0 / 28%);
     --code: oklch(0.04 0.14 5);
     --code-foreground: oklch(0.85 0.07 5);

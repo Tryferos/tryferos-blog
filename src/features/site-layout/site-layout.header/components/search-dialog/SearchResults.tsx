@@ -34,7 +34,7 @@ export function SearchResults({
         />
       </Command.Empty>
       {groups.map(group => (
-        <Command.Group key={group.title} heading={group.title}>
+        <Command.Group key={group.title} heading={group.title} variant="strong">
           {group.links.map(link => (
             <SearchResult
               key={link.href}

@@ -24,6 +24,14 @@ function publishedArticles(topic: Topic) {
   return topic.articles.filter(articleModel.isPublished);
 }
 
+export function articlesByReleaseStatus(topic: Topic) {
+  return topic.articles.toSorted((first, second) => {
+    const firstIsPublished = articleModel.isPublished(first);
+    const secondIsPublished = articleModel.isPublished(second);
+    return Number(secondIsPublished) - Number(firstIsPublished);
+  });
+}
+
 export function neighboursOf(topic: Topic, article: PublishedArticle) {
   const published = publishedArticles(topic);
   const index = published.indexOf(article);

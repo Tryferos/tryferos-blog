@@ -8,6 +8,7 @@ import {
   sectionReveal,
   sectionStaggerSeconds,
 } from '@/data/motion.tokens';
+import * as topicModel from '@/models/topic.model';
 import type { Topic } from '@/types/content.types';
 
 type Props = { topic: Topic; position: number };
@@ -34,7 +35,7 @@ export function TopicSection({ topic, position }: Props) {
         </span>
       </Row>
       <ol className="mt-8 grid gap-x-9 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-        {topic.articles.map(article => (
+        {topicModel.articlesByReleaseStatus(topic).map(article => (
           <ArticleListItem key={article.slug} topic={topic} article={article} />
         ))}
       </ol>

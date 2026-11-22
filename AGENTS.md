@@ -25,7 +25,7 @@ Run `pnpm check`, then `pnpm build`. Fix findings in the code, never by disablin
 
 - When building new components, always try to use components/ui first, if they do not fit the style extend them (size, variants). Then look at components/shared, if it can be used. If you are building something new, build it at the place you are working on (e.g. feature) if this component will be shared across many features make it shared.
 - No comments unless necessary. Make the code clearer instead.
-- Inside a kind folder such as `components/` or `lib/`, group files by what the reader sees, such as the article page: two or more files for the same one go in a kebab-case subfolder named after it, like `components/series/`. A file used by several of them, or the only file for its own, stays in the kind folder. A component used by several is named `<Component>.shared.tsx`.
+- Name a concern subfolder inside a kind folder after what the reader sees, like `components/site-header/`. Files for the same thing the reader sees belong in it even when they do not import each other. A component used by several is named `<Component>.shared.tsx`.
 - `src/components/ui/` holds only shadcn components, in PascalCase files that each export one compound component built with `Object.assign` (`<Dialog.Content>`, `<Command.Item>`). Rewrite what `shadcn add` generates into that shape. Every other app-wide component goes in `src/components/shared/`.
 - Each screen lives in `src/features/<name>/`, whose `index.tsx` exports only `<Name>Screen`. Routes in `src/app/` handle params and metadata, then render the screen.
 - Name conditions and compared strings: `const isDraft = article.status === statuses.draft`, not `article.status === 'draft'` inline.

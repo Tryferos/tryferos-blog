@@ -13,32 +13,29 @@ export function ArticleLayout({ topic, article, children }: Props) {
   return (
     <header>
       <ArticleBreadcrumb topic={topic} />
-      <div className="mt-6 rounded-xl bg-paper p-2 md:-mx-4 xl:-mx-16">
-        <div className="relative overflow-hidden rounded-lg">
-          <Image
-            src={article.illustration.src}
-            alt={article.illustration.alt}
-            sizes="(min-width: 80rem) 73rem, (min-width: 48rem) calc(100vw - 1rem), calc(100vw - 3rem)"
-            loading="eager"
-            className="aspect-3/2 w-full object-cover object-right sm:aspect-2/1 lg:aspect-3/1"
-          />
-          <div className="absolute inset-x-4 bottom-4 md:inset-x-6 md:bottom-6">
-            <div className="relative max-w-3xl">
-              <div
-                aria-hidden
-                className="absolute -inset-x-6 -inset-y-4 rounded-full bg-black/60 blur-2xl"
-              />
-              <h1 className="relative font-sans text-3xl/none font-bold tracking-tight text-balance text-white sm:text-5xl/none lg:text-7xl/none">
-                {headline.lead}{' '}
-                <span className="inline-block rounded-md bg-ink-red px-2 pb-1 lg:px-3 lg:pb-2">
-                  {headline.emphasis}
-                </span>
-              </h1>
-            </div>
-          </div>
+      <div className="relative isolate mt-6 overflow-hidden rounded-2xl md:-mx-4 xl:-mx-16">
+        <Image
+          src={article.illustration.src}
+          alt={article.illustration.alt}
+          sizes="(min-width: 80rem) 73rem, (min-width: 48rem) calc(100vw - 1rem), calc(100vw - 3rem)"
+          loading="eager"
+          className="absolute inset-0 -z-10 size-full object-cover object-right"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-linear-to-t from-hero-fade from-45% via-hero-fade/85 via-65% to-transparent md:bg-linear-to-tr md:from-35% md:via-55% md:to-80%"
+        />
+        <div className="flex flex-col px-6 pt-40 pb-6 md:px-10 md:pt-48 md:pb-8 lg:pt-56">
+          <h1 className="max-w-2xl border-l-4 border-primary pl-4 font-sans text-3xl/tight font-bold tracking-tight text-balance text-foreground sm:text-4xl/tight lg:text-5xl/tight">
+            {headline.lead}{' '}
+            <span className="text-primary">{headline.emphasis}</span>
+          </h1>
+          <p className="mt-4 max-w-xl text-lg/relaxed text-muted-foreground">
+            {article.description}
+          </p>
+          <div className="mt-8">{children}</div>
         </div>
       </div>
-      <div className="mt-6">{children}</div>
     </header>
   );
 }

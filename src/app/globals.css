@@ -61,6 +61,7 @@
 
   --color-paper: oklch(0.915 0.068 77);
   --color-ink-red: oklch(0.56 0.19 28);
+  --color-hero-fade: var(--hero-fade);
   --color-prose: var(--prose);
   --color-link: var(--link);
   --color-highlight: var(--highlight);
@@ -126,6 +127,7 @@
   --before-surface: oklch(0.975 0.01 45);
   --after: oklch(0.45 0.1 240);
   --after-surface: oklch(0.975 0.01 240);
+  --hero-fade: oklch(0.95 0.035 70);
 
   color-scheme: light;
 }
@@ -177,6 +179,7 @@
     --before-surface: oklch(0.25 0.03 40);
     --after: oklch(0.78 0.1 240);
     --after-surface: oklch(0.25 0.03 240);
+    --hero-fade: oklch(0.2 0.018 40);
   }
 }
 

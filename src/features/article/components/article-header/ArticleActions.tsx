@@ -11,10 +11,10 @@ type Props = { prompt: string };
 
 export function ArticleActions({ prompt }: Props) {
   return (
-    <Row wrap gap="sm" className="mt-7">
+    <Row wrap gap="sm">
       <Button
         variant="outline"
-        size="lg"
+        size="pill"
         onClick={() => {
           void copyToClipboard(window.location.href, 'Link copied');
         }}
@@ -24,7 +24,7 @@ export function ArticleActions({ prompt }: Props) {
       </Button>
       <Button
         variant="outline"
-        size="lg"
+        size="pill"
         onClick={() => {
           void copyToClipboard(prompt, 'Prompt copied');
         }}
@@ -33,7 +33,7 @@ export function ArticleActions({ prompt }: Props) {
         Copy prompt
       </Button>
       <Button
-        size="lg"
+        size="pill"
         onClick={() => {
           toast.error('The MCP server isn’t available yet');
         }}

@@ -65,7 +65,7 @@ export function ArticleLayout({ topic, article, children }: Props) {
               {headline.lead}{' '}
               <span className="text-ink-red">{headline.emphasis}</span>
             </h1>
-            <p className="mt-3 max-w-xl pl-5 text-lg/relaxed text-muted-foreground">
+            <p className="mt-3 max-w-xl pl-5 text-lg/relaxed text-foreground/80">
               {article.description}
             </p>
           </div>

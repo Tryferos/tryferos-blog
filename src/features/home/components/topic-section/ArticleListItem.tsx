@@ -11,18 +11,25 @@ import type { Article, Topic } from '@/types/content.types';
 type Props = { topic: Topic; article: Article };
 
 export function ArticleListItem({ topic, article }: Props) {
+  const isPublished = articleModel.isPublished(article);
+
   return (
     <li>
       <Item asChild variant="plain" size="flush" className="items-start">
         <Link href={topicModel.articleHref(topic, article)} prefetch>
           <Item.Header className="mb-2.5">
-            <div className="w-full overflow-hidden rounded-lg">
+            <div className="relative w-full overflow-hidden rounded-lg">
               <Image
                 src={article.illustration.src}
                 alt={article.illustration.alt}
                 sizes="(max-width: 40rem) calc(100vw - 3rem), (max-width: 64rem) 50vw, 21rem"
                 className="h-auto w-full"
               />
+              {!isPublished && (
+                <Badge variant="secondary" className="absolute top-3 left-3">
+                  Coming soon
+                </Badge>
+              )}
             </div>
           </Item.Header>
           <Item.Content>
@@ -33,19 +40,10 @@ export function ArticleListItem({ topic, article }: Props) {
             <Item.Description variant="prose">
               {article.description}
             </Item.Description>
-            <ArticleAvailability article={article} />
+            {isPublished && <PublishedDate date={article.publishedAt} />}
           </Item.Content>
         </Link>
       </Item>
     </li>
   );
-}
-
-type ArticleAvailabilityProps = { article: Article };
-
-function ArticleAvailability({ article }: ArticleAvailabilityProps) {
-  if (articleModel.isPublished(article)) {
-    return <PublishedDate date={article.publishedAt} />;
-  }
-  return <Badge variant="secondary">Coming soon</Badge>;
 }

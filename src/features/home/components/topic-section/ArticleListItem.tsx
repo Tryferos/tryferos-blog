@@ -26,7 +26,7 @@ export function ArticleListItem({ topic, article }: Props) {
                 className="h-auto w-full"
               />
               {!isPublished && (
-                <Badge variant="overlay" className="absolute top-3 left-3">
+                <Badge variant="overlay" className="absolute top-1.5 right-1.5">
                   Coming soon
                 </Badge>
               )}

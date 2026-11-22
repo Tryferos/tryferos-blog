@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { PublishedDate } from '@/components/shared/PublishedDate';
 import { Badge } from '@/components/ui/Badge';
 import { Item } from '@/components/ui/Item';
+import { thumbnailSizes } from '@/data/article-illustration.sizes';
 import * as articleModel from '@/models/article.model';
 import * as topicModel from '@/models/topic.model';
 import type { Article, Topic } from '@/types/content.types';
@@ -22,7 +23,7 @@ export function ArticleListItem({ topic, article }: Props) {
               <Image
                 src={article.illustration.src}
                 alt={article.illustration.alt}
-                sizes="(max-width: 40rem) calc(100vw - 3rem), (max-width: 64rem) 50vw, 21rem"
+                sizes={thumbnailSizes}
                 className="h-auto w-full rounded-lg"
               />
               {!isPublished && (

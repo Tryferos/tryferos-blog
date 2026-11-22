@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 
 import { ArticleBreadcrumb } from './components/ArticleBreadcrumb';
 import { headerFade, headerPaper } from '@/data/article-header.images';
+import { thumbnailSizes } from '@/data/article-illustration.sizes';
 import * as articleModel from '@/models/article.model';
 import type { Article, Topic } from '@/types/content.types';
 
@@ -35,11 +36,18 @@ export function ArticleLayout({ topic, article, children }: Props) {
         <div className="absolute inset-x-0 top-0 -z-10 overflow-hidden mask-b-from-45% mask-b-to-100% lg:mask-b-from-85%">
           <Image
             src={article.illustration.src}
+            alt=""
+            sizes={thumbnailSizes}
+            loading="eager"
+            placeholder="blur"
+            className="absolute inset-0 size-full scale-110 bg-right! object-cover object-right"
+          />
+          <Image
+            src={article.illustration.src}
             alt={article.illustration.alt}
             sizes={cardSizes}
             loading="eager"
-            placeholder="blur"
-            className="aspect-2/1 w-full scale-110 bg-right! object-cover object-right lg:aspect-3/1"
+            className="relative aspect-2/1 w-full scale-110 object-cover object-right lg:aspect-3/1"
           />
         </div>
         <Image

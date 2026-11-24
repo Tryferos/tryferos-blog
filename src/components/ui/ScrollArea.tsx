@@ -54,5 +54,5 @@ function ScrollBar({
 }
 
 export const ScrollArea = Object.assign(ScrollAreaRoot, {
-  ScrollBar: ScrollBar,
+  ScrollBar,
 });

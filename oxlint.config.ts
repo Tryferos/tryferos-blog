@@ -24,6 +24,7 @@ export default defineConfig({
     'react/button-has-type': 'error',
     'unicorn/prefer-set-has': 'error',
     'unicorn/prefer-string-replace-all': 'error',
+    'object-shorthand': 'error',
   },
   extends: [
     strictTypes,

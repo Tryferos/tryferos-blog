@@ -1,5 +1,5 @@
 // WHY: Pages render content at build time, where an unchecked type becomes a broken page or a failed deploy.
-// SOLVES: Applies strict type-aware TypeScript rules, bans deprecated APIs and keeps one naming and type style.
+// SOLVES: Applies strict type-aware TypeScript rules, bans deprecated APIs and unsafe type assertions and keeps one naming and type style.
 import path from 'node:path';
 import { defineConfig } from 'oxlint';
 import { typescriptStrict } from '../rule-sets/typescript.strict.ts';
@@ -15,7 +15,10 @@ export default defineConfig({
     {
       files: ['**/*.{js,jsx,ts,tsx}'],
       plugins: ['typescript'],
-      rules: { 'typescript/no-deprecated': 'error' },
+      rules: {
+        'typescript/no-deprecated': 'error',
+        'typescript/no-unsafe-type-assertion': 'error',
+      },
     },
     {
       files: ['src/**/*.{ts,tsx}'],

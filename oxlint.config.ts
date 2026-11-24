@@ -25,6 +25,7 @@ export default defineConfig({
     'unicorn/prefer-set-has': 'error',
     'unicorn/prefer-string-replace-all': 'error',
     'object-shorthand': 'error',
+    'typescript/no-unsafe-type-assertion': 'error',
   },
   extends: [
     strictTypes,

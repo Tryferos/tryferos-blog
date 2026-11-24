@@ -4,6 +4,7 @@ import concernFolders from './verification/configs/concern-folders.ts';
 import designSystem from './verification/configs/design-system.ts';
 import explicitBehavior from './verification/configs/explicit-behavior.ts';
 import jsxRuntime from './verification/configs/jsx-runtime.ts';
+import lintConfig from './verification/configs/lint-config.ts';
 import moduleBoundaries from './verification/configs/module-boundaries.ts';
 import modelConventions from './verification/configs/model-conventions.ts';
 import modernSyntax from './verification/configs/modern-syntax.ts';
@@ -24,6 +25,7 @@ export default defineConfig({
   extends: [
     jsxRuntime,
     sideEffectImports,
+    lintConfig,
     strictTypes,
     explicitBehavior,
     modernSyntax,

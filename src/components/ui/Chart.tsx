@@ -202,6 +202,7 @@ function ChartTooltipContent({
             const key = `${nameKey ?? item.name ?? item.dataKey ?? 'value'}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
             const indicatorColor = color ?? item.payload?.fill ?? item.color;
+            const hasValue = item.value !== undefined && item.value !== null;
 
             return (
               <div
@@ -251,7 +252,7 @@ function ChartTooltipContent({
                           {itemConfig?.label ?? item.name}
                         </span>
                       </div>
-                      {item.value != null && (
+                      {hasValue && (
                         <span className="font-mono font-medium text-foreground tabular-nums">
                           {typeof item.value === 'number'
                             ? item.value.toLocaleString()

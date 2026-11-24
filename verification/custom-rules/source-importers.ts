@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
 const sourceRoot = path.join(import.meta.dirname, '../../src');
-const sourceExtensions = ['.ts', '.tsx', '.mdx'];
+const sourceExtensions = new Set(['.ts', '.tsx', '.mdx']);
 const resolvableSuffixes = ['', '.ts', '.tsx', '/index.ts', '/index.tsx'];
 const aliasPrefix = '@/';
 const moduleSpecifier = /(?:from|import)\s*\(?\s*['"]([^'"]+)['"]/g;
@@ -11,7 +11,7 @@ function sourceFilesIn(folder: string): string[] {
   return readdirSync(folder, { withFileTypes: true }).flatMap(entry => {
     const entryPath = path.join(folder, entry.name);
     if (entry.isDirectory()) return sourceFilesIn(entryPath);
-    const isSource = sourceExtensions.includes(path.extname(entry.name));
+    const isSource = sourceExtensions.has(path.extname(entry.name));
     return isSource ? [entryPath] : [];
   });
 }

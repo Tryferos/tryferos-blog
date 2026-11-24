@@ -20,6 +20,7 @@ export default defineConfig({
   rules: {
     'react/react-in-jsx-scope': 'off',
     'import/no-unassigned-import': ['warn', { allow: ['**/*.css'] }],
+    'react/button-has-type': 'error',
   },
   extends: [
     strictTypes,

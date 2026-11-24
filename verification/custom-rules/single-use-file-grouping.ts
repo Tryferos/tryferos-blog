@@ -15,8 +15,8 @@ const isOptions = (value: unknown): value is Options =>
 function folderNameFor(file: string) {
   const name = path.basename(file).split('.')[0] ?? '';
   return name
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/_/g, '-')
+    .replaceAll(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replaceAll('_', '-')
     .toLowerCase();
 }
 

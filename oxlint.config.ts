@@ -22,6 +22,7 @@ export default defineConfig({
     'import/no-unassigned-import': ['warn', { allow: ['**/*.css'] }],
     eqeqeq: 'error',
     'react/button-has-type': 'error',
+    'unicorn/prefer-string-replace-all': 'error',
   },
   extends: [
     strictTypes,

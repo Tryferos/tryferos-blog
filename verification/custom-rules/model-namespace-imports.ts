@@ -8,7 +8,7 @@ function namespaceNameOf(source: unknown) {
   if (typeof source !== 'string') return undefined;
   const unit = modelPath.exec(source)?.[1];
   if (!unit) return undefined;
-  const camelCaseUnit = unit.replace(/-([a-z0-9])/g, (_, letter: string) =>
+  const camelCaseUnit = unit.replaceAll(/-([a-z0-9])/g, (_, letter: string) =>
     letter.toUpperCase(),
   );
   return `${camelCaseUnit}${modelSuffix}`;

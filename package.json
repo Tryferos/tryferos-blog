@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "oxlint --deny-warnings",
     "lint:fix": "oxlint --fix --deny-warnings",
-    "typecheck": "next typegen && tsc --noEmit && tsc -p verification",
+    "typecheck": "next typegen && bun check --no-script && bun check --no-script -p verification",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "unused": "knip",

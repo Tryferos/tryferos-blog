@@ -14,11 +14,11 @@ Commit on `main` as `<type>: <Imperative summary>`, one concern per commit, neve
 
 ## Checks
 
-Run `pnpm check`, then `pnpm build`. Fix findings in the code, never by disabling rules, raising limits or ignoring Knip. There are no tests.
+Run `bun check`, then `bun run build`. Fix findings in the code, never by disabling rules, raising limits or ignoring Knip. There are no tests.
 
 ## Packages
 
-- Use pnpm. Add packages with `pnpm add`.
+- Use bun. Add packages with `bun add`.
 - Before writing a lot of complex code, research libraries and tools, then let the user choose with the trade-offs.
 
 ## Code

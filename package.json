@@ -11,10 +11,8 @@
     "lint": "oxlint --deny-warnings",
     "lint:fix": "oxlint --fix --deny-warnings",
     "typecheck": "next typegen && bun check --no-script && bun check --no-script -p verification",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
     "unused": "knip",
-    "check": "bun lint && bun typecheck && bun format:check && bun unused"
+    "check": "bun lint && bun typecheck && bun fmt --check && bun unused"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -66,17 +64,16 @@
     "lint-staged": "^17.6.0",
     "oxlint": "^1.93.0",
     "oxlint-tsgolint": "^7.0.2007",
-    "prettier": "^3.10.1",
     "tailwindcss": "4.3.3",
     "typescript": "^7.0.2"
   },
   "packageManager": "bun@1.4.5",
   "lint-staged": {
     "*.{js,jsx,mjs,cjs,ts,tsx}": [
-      "prettier --write",
+      "bun fmt",
       "oxlint --fix --deny-warnings --no-error-on-unmatched-pattern"
     ],
-    "*.{json,jsonc,md,mdx,yaml,yml,css}": "prettier --write"
+    "*.{json,jsonc,md,mdx,yaml,yml,css}": "bun fmt"
   },
   "trustedDependencies": []
 }

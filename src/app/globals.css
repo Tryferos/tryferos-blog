@@ -134,6 +134,38 @@
   --hero-paper: oklch(0.91 0.06 81);
   --ink-red: oklch(0.56 0.19 28);
 
+  --syntax-foreground: oklch(0.3 0.012 60);
+  --syntax-token-keyword: oklch(0.5 0.16 5);
+  --syntax-token-string: oklch(0.48 0.09 180);
+  --syntax-token-function: oklch(0.47 0.13 260);
+  --syntax-token-constant: oklch(0.52 0.13 50);
+  --syntax-token-parameter: oklch(0.46 0.1 320);
+  --syntax-token-comment: oklch(0.55 0.012 70);
+  --syntax-token-punctuation: oklch(0.5 0.012 65);
+  --syntax-token-inserted: oklch(0.5 0.12 150);
+
+  --syntax-background: var(--code);
+  --syntax-token-string-expression: var(--syntax-token-string);
+  --syntax-token-link: var(--link);
+  --syntax-token-deleted: var(--destructive);
+  --syntax-token-changed: var(--syntax-token-constant);
+  --syntax-ansi-black: var(--syntax-foreground);
+  --syntax-ansi-red: var(--destructive);
+  --syntax-ansi-green: var(--syntax-token-inserted);
+  --syntax-ansi-yellow: var(--syntax-token-constant);
+  --syntax-ansi-blue: var(--syntax-token-function);
+  --syntax-ansi-magenta: var(--syntax-token-parameter);
+  --syntax-ansi-cyan: var(--syntax-token-string);
+  --syntax-ansi-white: var(--syntax-token-comment);
+  --syntax-ansi-bright-black: var(--syntax-token-comment);
+  --syntax-ansi-bright-red: var(--syntax-ansi-red);
+  --syntax-ansi-bright-green: var(--syntax-ansi-green);
+  --syntax-ansi-bright-yellow: var(--syntax-ansi-yellow);
+  --syntax-ansi-bright-blue: var(--syntax-ansi-blue);
+  --syntax-ansi-bright-magenta: var(--syntax-ansi-magenta);
+  --syntax-ansi-bright-cyan: var(--syntax-ansi-cyan);
+  --syntax-ansi-bright-white: var(--syntax-foreground);
+
   color-scheme: light;
 }
 
@@ -187,6 +219,16 @@
     --after-surface: oklch(0.25 0.03 240);
     --hero-paper: oklch(0.23 0.019 36);
     --ink-red: oklch(0.66 0.2 28);
+
+    --syntax-foreground: oklch(0.88 0.01 80);
+    --syntax-token-keyword: oklch(0.74 0.14 5);
+    --syntax-token-string: oklch(0.78 0.09 180);
+    --syntax-token-function: oklch(0.76 0.1 260);
+    --syntax-token-constant: oklch(0.8 0.11 65);
+    --syntax-token-parameter: oklch(0.76 0.09 320);
+    --syntax-token-comment: oklch(0.62 0.012 75);
+    --syntax-token-punctuation: oklch(0.7 0.012 75);
+    --syntax-token-inserted: oklch(0.76 0.12 150);
   }
 }
 

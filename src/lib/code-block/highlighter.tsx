@@ -1,8 +1,11 @@
 import * as React from 'react';
 import {
+  createCssVariablesTheme,
   createHighlighterCore,
+  getTokenStyleObject,
   type GrammarState,
   type HighlighterCore,
+  type ThemedToken,
 } from 'shiki/core';
 import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
 
@@ -42,14 +45,16 @@ function isAlias(name: string): name is keyof typeof aliases {
   return Object.hasOwn(aliases, name);
 }
 
+const syntaxTheme = createCssVariablesTheme({
+  name: 'syntax',
+  variablePrefix: '--syntax-',
+});
+
 let highlighter: Promise<HighlighterCore> | undefined;
 
 function getHighlighter() {
   highlighter ??= createHighlighterCore({
-    themes: [
-      import('shiki/themes/github-light.mjs'),
-      import('shiki/themes/github-dark.mjs'),
-    ],
+    themes: [syntaxTheme],
     langs: [],
     engine: createJavaScriptRegexEngine({ forgiving: true }),
   });
@@ -93,8 +98,7 @@ export async function loadHighlighter(language: string) {
       const tokenize = (text: string) =>
         shiki.codeToTokens(text, {
           lang,
-          themes: { light: 'github-light', dark: 'github-dark' },
-          defaultColor: false,
+          theme: syntaxTheme,
           grammarState: state,
         }).tokens;
 
@@ -106,11 +110,7 @@ export async function loadHighlighter(language: string) {
       return {
         lines: tokens.map(line =>
           line.map((token, index) => (
-            <span
-              key={index}
-              style={token.htmlStyle as React.CSSProperties}
-              className="text-(--shiki-light) dark:text-(--shiki-dark)"
-            >
+            <span key={index} style={tokenStyle(token)}>
               {token.content}
             </span>
           )),
@@ -119,6 +119,19 @@ export async function loadHighlighter(language: string) {
       };
     },
   };
+}
+
+const kebabSegment = /-(\w)/g;
+
+function tokenStyle(token: ThemedToken): React.CSSProperties {
+  return Object.fromEntries(
+    Object.entries(getTokenStyleObject(token)).map(([property, value]) => [
+      property.replaceAll(kebabSegment, (_, letter: string) =>
+        letter.toUpperCase(),
+      ),
+      value,
+    ]),
+  );
 }
 
 export async function highlightCode(code: string, language: string) {

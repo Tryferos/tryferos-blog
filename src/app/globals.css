@@ -211,7 +211,7 @@
     --link: oklch(0.76 0.13 5);
     --highlight: oklch(0.4 0.06 45);
     --scrollbar: oklch(1 0 0 / 28%);
-    --code: oklch(0.04 0.14 5);
+    --code: oklch(0.215 0.008 60);
     --code-foreground: oklch(0.85 0.07 5);
     --before: oklch(0.74 0.14 40);
     --before-surface: oklch(0.25 0.03 40);
